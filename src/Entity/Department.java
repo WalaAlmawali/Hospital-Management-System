@@ -93,4 +93,15 @@ public class Department {
         }
     }
 
+    // Assign nurse
+    public void assignNurse(Nurse nurse) {
+
+        if (!nurses.contains(nurse)) {
+            nurses.add(nurse);
+            System.out.println("Nurse assigned successfully.");
+        } else {
+            System.out.println("Nurse already assigned.");
+        }
+    }
+
 }
