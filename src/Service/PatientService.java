@@ -203,5 +203,10 @@ public class PatientService {
 
     }
 
+    //search functionality
+    public void searchPatientsByName(String name) {
+
+    }
+
 
 }
