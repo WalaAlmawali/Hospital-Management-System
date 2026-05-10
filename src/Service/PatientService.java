@@ -194,5 +194,11 @@ public class PatientService {
         return null;
    }
 
+   //display all patients with formatted output
+    public void displayAllPatients(){
+
+
+    }
+
 
 }
