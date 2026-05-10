@@ -17,8 +17,9 @@ public class PatientService {
     List<Appointment> appointments = new ArrayList<>();
 
 
-    public Patient addPatient(){
+    //add new patient
 
+    public Patient addPatient(){
 
         System.out.println("Enter patient id :");
         String id = scanner.nextLine();
@@ -81,6 +82,7 @@ public class PatientService {
 
         return patient;
     }
+
     public List<Patient> addPatients(){
 
         Boolean continueFlag = true;
@@ -98,6 +100,7 @@ public class PatientService {
 
     }
 
+    //update existing patient
    public void editPatient(String patientId, Patient updatedPatient){
 
         for(Patient patient: patients ){
@@ -163,15 +166,13 @@ public class PatientService {
                     }
                 }
 
-
-
-
-
-
-
-
             }
         }
+
+   }
+
+   // remove patient by ID
+   public void removePatient(String patientId){
 
    }
 
