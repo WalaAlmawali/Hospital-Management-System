@@ -176,6 +176,10 @@ public class DoctorService {
 
         List<Doctor> specializationDoctors = new ArrayList<>();
 
+        for(Doctor doctor : doctors){
+
+
+        }
 
 
     }
