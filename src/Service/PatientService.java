@@ -197,6 +197,9 @@ public class PatientService {
    //display all patients with formatted output
     public void displayAllPatients(){
 
+        for(Patient patient: patients){
+            patient.displayInfo();
+        }
 
     }
 
