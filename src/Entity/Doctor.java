@@ -57,4 +57,10 @@ public class Doctor extends Person{
             System.out.println("Patient not found.");
         }
     }
+
+    // Method to update availability
+    public void updateAvailability(List<String> newSlots) {
+        availableSlots = newSlots;
+        System.out.println("Availability updated.");
+    }
 }
