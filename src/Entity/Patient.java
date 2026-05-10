@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Patient extends Person {
 
-
     private String patientId;
     private String bloodGroup;
     private List<String> allergies;
@@ -17,9 +16,20 @@ public class Patient extends Person {
     private List<MedicalRecord> medicalRecords;
     private List <Appointment>appointments;
 
-    public Patient(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address) {
+    public Patient(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address, String patientId, String bloodGroup, List<String> allergies, String emergencyContact, LocalDate registrationDate, List<MedicalRecord> medicalRecords, String insuranceId, List<Appointment> appointments) {
         super(id, firstName, dateOfBirth, lastName, gender, phoneNumber, email, address);
+
+        this.patientId = patientId;
+        this.bloodGroup = bloodGroup;
+        this.allergies = allergies;
+        this.emergencyContact = emergencyContact;
+        this.registrationDate = registrationDate;
+        this.medicalRecords = medicalRecords;
+        this.insuranceId = insuranceId;
+        this.appointments = appointments;
     }
+
+
 
     @Override
     public void displayInfo() {
