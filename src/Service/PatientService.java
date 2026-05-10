@@ -105,7 +105,7 @@ public class PatientService {
 
         for(Patient patient: patients ){
 
-            if(patient.getId().equals(patientId)){
+            if(patient.getPatientId().equals(patientId)){
 
                 System.out.println("Enter updated patient id :");
                 patient.setId(scanner.nextLine());
@@ -174,7 +174,7 @@ public class PatientService {
    // remove patient by ID
    public void removePatient(String patientId){
 
-       patients.removeIf(b -> b.getId() == patientId);
+       patients.removeIf(b -> b.getPatientId() == patientId);
        System.out.println("patient removed successfully");
 
        System.out.println("patient not found");
@@ -185,10 +185,13 @@ public class PatientService {
    public Patient getPatientById(String patientId){
 
         for(Patient patient: patients){
-
+            if(patient.getPatientId().equals(patientId)){
+                return patient;
+            }
 
         }
-
+       System.out.println("patient not found");
+        return null;
    }
 
 
