@@ -27,4 +27,19 @@ public class Doctor extends Person{
         this.availableSlots = new ArrayList<>();
         this.assignedPatients =new ArrayList<>();
     }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+
+        System.out.println("Doctor ID: " + doctorId);
+        System.out.println("Specialization: " + specialization);
+        System.out.println("Qualification: " + qualification);
+        System.out.println("Experience: " + experienceYears + " years");
+        System.out.println("Department ID: " + departmentId);
+        System.out.println("Consultation Fee: $" + consultationFee);
+
+        System.out.println("Available Slots: " + availableSlots);
+        System.out.println("Assigned Patients: " + assignedPatients);
+    }
 }
