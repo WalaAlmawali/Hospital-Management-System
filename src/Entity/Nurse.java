@@ -40,5 +40,15 @@ public class Nurse extends Person {
         assignedPatients.add(patientId);
         System.out.println(patientId + " assigned to Nurse " + nurseId);
     }
+
+    // Method to remove patient
+    public void removePatient(String patientId ,String nurseId) {
+        if (assignedPatients.remove(patientId)) {
+            System.out.println(patientId + " removed from Nurse " + nurseId);
+        } else {
+            System.out.println("Patient not found.");
+        }
+    }
+
 }
 
