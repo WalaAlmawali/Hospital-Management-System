@@ -174,6 +174,11 @@ public class PatientService {
    // remove patient by ID
    public void removePatient(String patientId){
 
+       patients.removeIf(b -> b.getId() == patientId);
+       System.out.println("patient removed successfully");
+
+       System.out.println("patient not found");
+
    }
 
 }
