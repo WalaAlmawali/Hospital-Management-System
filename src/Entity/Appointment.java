@@ -99,4 +99,13 @@ public class Appointment {
         System.out.println("Notes: " + notes);
     }
 
+    public void reschedule(LocalDate newDate, String newTime) {
+
+        this.appointmentDate = newDate;
+        this.appointmentTime = newTime;
+        this.status = "Rescheduled";
+
+        System.out.println("Appointment rescheduled successfully.");
+    }
+
     }
