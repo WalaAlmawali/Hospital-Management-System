@@ -100,6 +100,21 @@ public class PatientService {
 
    public void editPatient(String patientId, Patient updatedPatient){
 
+        for(Patient patient: patients ){
+
+            if(patient.getId().equals(patientId)){
+
+
+
+
+
+
+
+
+
+
+            }
+        }
 
    }
 
