@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 public class Patient extends Person {
@@ -14,4 +15,7 @@ public class Patient extends Person {
     private List medicalRecords;
     private List appointments;
 
+    public Patient(String id, String firstName, Date dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address) {
+        super(id, firstName, dateOfBirth, lastName, gender, phoneNumber, email, address);
+    }
 }
