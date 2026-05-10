@@ -117,4 +117,11 @@ public class Appointment {
         System.out.println("Appointment cancelled.");
     }
 
+    // Complete Appointment
+    public void complete() {
+        this.status = "Completed";
+
+        System.out.println("Appointment marked as completed.");
+    }
+
     }
