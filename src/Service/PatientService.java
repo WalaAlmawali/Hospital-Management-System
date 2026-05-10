@@ -213,10 +213,14 @@ public class PatientService {
 
             String fullName = patient.getFirstName() + " " + patient.getLastName();
 
-            if(fullName.equals(name)){
+            if(fullName.toLowerCase().contains(name.toLowerCase())){
+                patient.displayInfo();
                 found = true;
             }
+        }
 
+        if(!found){
+            System.out.println("No patients found with this name");
         }
 
     }
