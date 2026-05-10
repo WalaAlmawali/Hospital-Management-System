@@ -60,7 +60,6 @@ public class DoctorService {
         System.out.println("Enter Doctor consultationFee :");
         double consultationFee = scanner.nextDouble();
 
-        // List<String> availableSlots, List<String> assignedPatients) {
         Doctor doctor = new Doctor(id,doctorFName,DOB,doctorLName,gender,phone,email,address,doctorId,specialization,qualification,experienceYears,departmentId,consultationFee,availableSlots,assignedPatients);
         return doctor;
     }
@@ -71,7 +70,7 @@ public class DoctorService {
         while (continueFlag) {
 
             doctors.add(addDoctor());
-            System.out.println("Patient add successfully");
+            System.out.println("Doctor add successfully");
 
             System.out.println("Enter c to add more , and q to exit");
             if (scanner.nextLine().equalsIgnoreCase("q")) {
@@ -82,13 +81,62 @@ public class DoctorService {
 
     }
 
-    public void editDoctor(String doctorId, Doctor updatedDoctor){
+    public void editDoctor(String doctorId){
 
         for(Doctor doctor : doctors){
 
+            if(doctor.getDoctorId().equals(doctorId)){
+                System.out.println("Enter updated Doctor id :");
+                doctor.setId(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor first name :");
+                doctor.setFirstName(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor last name :");
+               doctor.setLastName(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor DOB: ");
+                String dateOfBirth = scanner.nextLine();
+                LocalDate DOB = LocalDate.parse(dateOfBirth);
+                doctor.setDateOfBirth(DOB);
+
+                System.out.println("Enter updated Doctor gender :");
+                doctor.setGender(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor phone number :");
+                doctor.setPhoneNumber(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor email :");
+               doctor.setEmail(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor address :");
+                String address = scanner.nextLine();
+
+                System.out.println("Enter updated Doctor ID :");
+                doctor.setDoctorId(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor specialization :");
+                doctor.setSpecialization(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor qualification :");
+              doctor.setQualification(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor experienceYears :");
+                doctor.setExperienceYears(scanner.nextInt());
+
+                System.out.println("Enter updated Doctor departmentId :");
+               doctor.setDepartmentId(scanner.nextLine());
+
+                System.out.println("Enter updated Doctor consultationFee :");
+                doctor.setConsultationFee(scanner.nextDouble());
+
+                System.out.println("patient updated successfully");
+
+            }
         }
 
     }
+
 
 
 }

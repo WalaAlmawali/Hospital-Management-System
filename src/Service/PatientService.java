@@ -101,7 +101,7 @@ public class PatientService {
     }
 
     //update existing patient
-   public void editPatient(String patientId, Patient updatedPatient){
+   public void editPatient(String patientId){
 
         for(Patient patient: patients ){
 
