@@ -89,6 +89,13 @@ public class Person {
     }
 
     public void displayInfo(){
+        System.out.println(" full name : " + firstName + lastName);
+        System.out.println(" dateOfBirth : " + dateOfBirth);
+        System.out.println(" gender : " + gender);
+        System.out.println(" phoneNumber : " + phoneNumber);
+        System.out.println(" email : " + email);
+        System.out.println(" address : " + address);
+
 
     }
 
