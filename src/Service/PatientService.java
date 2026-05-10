@@ -181,4 +181,15 @@ public class PatientService {
 
    }
 
+   //retrieve patient
+   public Patient getPatientById(String patientId){
+
+        for(Patient patient: patients){
+
+
+        }
+
+   }
+
+
 }
