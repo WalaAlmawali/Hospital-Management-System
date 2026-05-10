@@ -65,4 +65,10 @@ public class DoctorService {
         return doctor;
     }
 
+    public List<Doctor> addDoctors(){
+
+
+
+    }
+
 }
