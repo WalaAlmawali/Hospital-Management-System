@@ -58,4 +58,10 @@ public class Patient extends Person {
         System.out.println("Appointment added.");
     }
 
+    // Update insurance
+    public void updateInsurance(String newInsuranceId) {
+        this.insuranceId = newInsuranceId;
+        System.out.println("Insurance updated.");
+    }
+
 }
