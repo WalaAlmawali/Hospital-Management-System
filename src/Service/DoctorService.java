@@ -192,9 +192,13 @@ public class DoctorService {
 
         for(Doctor doctor : doctors){
 
+            if (!doctor.getAvailableSlots().isEmpty()) {
+                availableDoctors.add(doctor);
+            }
 
         }
 
+        return availableDoctors;
     }
 
 
