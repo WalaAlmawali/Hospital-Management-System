@@ -185,6 +185,12 @@ public class DoctorService {
             return specializationDoctors;
     }
 
+    //get Available Doctors()
+    public List<Doctor> getAvailableDoctors(){
+
+
+
+    }
 
 
 }
