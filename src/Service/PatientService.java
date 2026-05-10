@@ -10,4 +10,9 @@ public class PatientService {
 
     static List<Patient> patients = new ArrayList<>();
 
+    public Patient addPatient(){
+
+
+    }
+
 }
