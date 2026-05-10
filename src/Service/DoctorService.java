@@ -1,6 +1,7 @@
 package Service;
 
 import Entity.Doctor;
+import Entity.Patient;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -145,6 +146,19 @@ public class DoctorService {
 
         System.out.println("patient not found");
 
+    }
+
+    //retrieve doctor
+    public Doctor getDoctorById(String doctorId){
+
+        for(Doctor doctor: doctors){
+            if(doctor.getDoctorId().equals(doctorId)){
+                return doctor;
+            }
+
+        }
+        System.out.println("doctor not found");
+        return null;
     }
 
 
