@@ -82,5 +82,9 @@ public class DoctorService {
 
     }
 
+    public void editDoctor(String doctorId, Doctor updatedDoctor){
+
+    }
+
 
 }
