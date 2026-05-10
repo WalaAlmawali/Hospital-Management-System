@@ -188,9 +188,12 @@ public class DoctorService {
     //get Available Doctors()
     public List<Doctor> getAvailableDoctors(){
 
-        List<Doctor> specializationDoctors = new ArrayList<>();
+        List<Doctor> availableDoctors = new ArrayList<>();
+
+        for(Doctor doctor : doctors){
 
 
+        }
 
     }
 
