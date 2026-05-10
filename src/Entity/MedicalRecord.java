@@ -86,4 +86,18 @@ public class MedicalRecord {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    public void displayInfo(){
+
+        System.out.println("record Id : " + recordId);
+        System.out.println("patient Id : " + patientId);
+        System.out.println("doctor Id : " + doctorId);
+        System.out.println("visit Date  : " + visitDate);
+        System.out.println("diagnosis  : " + diagnosis);
+        System.out.println("prescription  : " + prescription);
+        System.out.println("test Results  : " + testResults);
+        System.out.println("notes  : " + notes);
+
+
+    }
 }
