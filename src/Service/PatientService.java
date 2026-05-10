@@ -21,7 +21,7 @@ public class PatientService {
 
 
         System.out.println("Enter patient id :");
-        String patientId = scanner.nextLine();
+        String id = scanner.nextLine();
 
         System.out.println("Enter patient first name :");
         String patientFName = scanner.nextLine();
@@ -77,7 +77,7 @@ public class PatientService {
             }
         }
 
-        Patient patient = new Patient(patientId,patientFName,DOB,patientLName,gender,phone,email,address,patientID,bloodGroup,allergies,emergencyContact,DOR,medicalRecords,insuranceId,appointments);
+        Patient patient = new Patient(id,patientFName,DOB,patientLName,gender,phone,email,address,patientID,bloodGroup,allergies,emergencyContact,DOR,medicalRecords,insuranceId,appointments);
 
         return patient;
     }
@@ -104,7 +104,64 @@ public class PatientService {
 
             if(patient.getId().equals(patientId)){
 
+                System.out.println("Enter updated patient id :");
+                patient.setId(scanner.nextLine());
 
+                System.out.println("Enter updated patient first name :");
+                patient.setFirstName(scanner.nextLine());
+
+                System.out.println("Enter updated patient last name :");
+                patient.setLastName(scanner.nextLine());
+
+                System.out.println("Enter updated patient DOB: ");
+                String dateOfBirth = scanner.nextLine();
+                LocalDate DOB = LocalDate.parse(dateOfBirth);
+                patient.setDateOfBirth(DOB);
+
+                System.out.println("Enter updated patient gender :");
+                patient.setGender(scanner.nextLine());
+
+                System.out.println("Enter updated patient phone number :");
+                patient.setPhoneNumber(scanner.nextLine());
+
+                System.out.println("Enter updated patient email :");
+                patient.setEmail(scanner.nextLine());
+
+                System.out.println("Enter updated patient address :");
+                patient.setAddress(scanner.nextLine());
+
+                System.out.println("Enter updated patient id :");
+                patient.setPatientId(scanner.nextLine());
+
+                System.out.println("Enter updated patient blood Group :");
+               patient.setBloodGroup(scanner.nextLine());
+
+                System.out.println("Enter updated patient emergency Contact :");
+                patient.setEmergencyContact(scanner.nextLine());
+
+                System.out.println("Enter updated registration Date :");
+                String dateOfRegistration = scanner.nextLine();
+                LocalDate DOR = LocalDate.parse(dateOfBirth);
+                patient.setRegistrationDate(DOR);
+
+
+                System.out.println("Enter updated patient insurance Id :");
+               patient.setInsuranceId(scanner.nextLine());
+
+                System.out.println("Enter updated patient allergies :");
+
+                Boolean continueFlag = true;
+
+                List<String> allergies = new ArrayList<>();
+
+                while (continueFlag) {
+
+                    allergies.add(scanner.nextLine());
+                    System.out.println("Enter c to add more allergies , and q to exit");
+                    if (scanner.nextLine().equalsIgnoreCase("q")) {
+                        continueFlag = false;
+                    }
+                }
 
 
 
