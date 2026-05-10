@@ -137,6 +137,16 @@ public class DoctorService {
 
     }
 
+    // remove doctor by ID
+    public void removeDoctor(String doctorId){
+
+        doctors.removeIf(b -> b.getDoctorId() == doctorId);
+        System.out.println("patient removed successfully");
+
+        System.out.println("patient not found");
+
+    }
+
 
 
 }
