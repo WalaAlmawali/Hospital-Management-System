@@ -52,4 +52,10 @@ public class Patient extends Person {
         System.out.println("Medical record added.");
     }
 
+    // Add appointment
+    public void addAppointment(Appointment appointment) {
+        appointments.add(appointment);
+        System.out.println("Appointment added.");
+    }
+
 }
