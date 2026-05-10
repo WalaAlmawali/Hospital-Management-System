@@ -84,6 +84,10 @@ public class DoctorService {
 
     public void editDoctor(String doctorId, Doctor updatedDoctor){
 
+        for(Doctor doctor : doctors){
+
+        }
+
     }
 
 
