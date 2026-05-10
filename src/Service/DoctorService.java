@@ -162,5 +162,15 @@ public class DoctorService {
     }
 
 
+    //display all doctors with formatted output
+    public void displayAllDoctors(){
+
+        for(Doctor doctor: doctors){
+            doctor.displayInfo();
+        }
+
+    }
+
+
 
 }
