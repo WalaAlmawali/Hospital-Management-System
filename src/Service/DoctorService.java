@@ -67,8 +67,20 @@ public class DoctorService {
 
     public List<Doctor> addDoctors(){
 
+        Boolean continueFlag = true;
+        while (continueFlag) {
 
+            doctors.add(addDoctor());
+            System.out.println("Patient add successfully");
+
+            System.out.println("Enter c to add more , and q to exit");
+            if (scanner.nextLine().equalsIgnoreCase("q")) {
+                continueFlag = false;
+            }
+        }
+        return doctors;
 
     }
+
 
 }
