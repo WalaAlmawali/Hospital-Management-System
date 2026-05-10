@@ -99,6 +99,7 @@ public class Appointment {
         System.out.println("Notes: " + notes);
     }
 
+    // reschedule() method
     public void reschedule(LocalDate newDate, String newTime) {
 
         this.appointmentDate = newDate;
@@ -106,6 +107,14 @@ public class Appointment {
         this.status = "Rescheduled";
 
         System.out.println("Appointment rescheduled successfully.");
+    }
+
+    // cancel() method
+    public void cancel() {
+
+        this.status = "Cancelled";
+
+        System.out.println("Appointment cancelled.");
     }
 
     }
