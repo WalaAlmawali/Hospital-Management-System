@@ -2,6 +2,7 @@ package Entity;
 
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,12 +22,12 @@ public class Patient extends Person {
 
         this.patientId = patientId;
         this.bloodGroup = bloodGroup;
-        this.allergies = allergies;
+        this.allergies = new ArrayList<>();
         this.emergencyContact = emergencyContact;
         this.registrationDate = registrationDate;
-        this.medicalRecords = medicalRecords;
+        this.medicalRecords = new ArrayList<>();
         this.insuranceId = insuranceId;
-        this.appointments = appointments;
+        this.appointments = new ArrayList<>();
     }
 
 
@@ -45,11 +46,10 @@ public class Patient extends Person {
 
     }
 
-    public void addMedicalRecord(){
-
-        System.out.println("Add new medical");
-
-
+    // Add medical record
+    public void addMedicalRecord(MedicalRecord record){
+        medicalRecords.add(record);
+        System.out.println("Medical record added.");
     }
 
 }
