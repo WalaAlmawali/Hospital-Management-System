@@ -42,4 +42,10 @@ public class Doctor extends Person{
         System.out.println("Available Slots: " + availableSlots);
         System.out.println("Assigned Patients: " + assignedPatients);
     }
+
+    // Method to assign a patient
+    public void assignPatient(String patientId , String doctorId) {
+        assignedPatients.add(patientId);
+        System.out.println(patientId + " assigned to Dr. " + doctorId);
+    }
 }
