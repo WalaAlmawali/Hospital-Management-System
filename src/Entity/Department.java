@@ -81,4 +81,16 @@ public class Department {
     public void setAvailableBeds(int availableBeds) {
         this.availableBeds = availableBeds;
     }
+
+    // Assign doctor
+    public void assignDoctor(Doctor doctor) {
+
+        if (!doctors.contains(doctor)) {
+            doctors.add(doctor);
+            System.out.println("Doctor assigned successfully.");
+        } else {
+            System.out.println("Doctor already assigned.");
+        }
+    }
+
 }
