@@ -178,10 +178,11 @@ public class DoctorService {
 
         for(Doctor doctor : doctors){
 
-
+            if(doctor.getSpecialization().equals(specialization)){
+                specializationDoctors.add(doctor);
+            }
         }
-
-
+            return specializationDoctors;
     }
 
 
