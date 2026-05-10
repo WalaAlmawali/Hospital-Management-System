@@ -208,6 +208,12 @@ public class PatientService {
 
         boolean found = false;
 
+
+        for(Patient patient : patients){
+
+
+        }
+
     }
 
 
