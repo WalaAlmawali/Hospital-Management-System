@@ -23,5 +23,16 @@ public class Nurse extends Person {
         this.qualification = qualification;
         this.assignedPatients = new ArrayList<>();
     }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+
+        System.out.println("Nurse ID: " + nurseId);
+        System.out.println("Department ID: " + departmentId);
+        System.out.println("Shift: " + shift);
+        System.out.println("Qualification: " + qualification);
+        System.out.println("Assigned Patients: " + assignedPatients);
+    }
 }
 
