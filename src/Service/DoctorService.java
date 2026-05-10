@@ -171,6 +171,13 @@ public class DoctorService {
 
     }
 
+    //get Doctors By Specialization
+    public List<Doctor> getDoctorsBySpecialization(String specialization) {
+
+
+
+    }
+
 
 
 }
