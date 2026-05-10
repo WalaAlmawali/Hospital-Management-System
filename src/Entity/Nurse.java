@@ -34,5 +34,11 @@ public class Nurse extends Person {
         System.out.println("Qualification: " + qualification);
         System.out.println("Assigned Patients: " + assignedPatients);
     }
+
+    // Method to assign patient
+    public void assignPatient(String patientId ,String nurseId ) {
+        assignedPatients.add(patientId);
+        System.out.println(patientId + " assigned to Nurse " + nurseId);
+    }
 }
 
