@@ -173,9 +173,6 @@ public class PatientService {
 
 
 
-
-
-
         //update existing patient
    public void editPatient(String patientId){
 
@@ -274,6 +271,14 @@ public class PatientService {
         }
 
     }
+
+    // display filtered by criteria
+
+    public void displayPatients(String filter){
+
+
+    }
+
 
     //search functionality
     public void searchPatientsByName(String name) {
