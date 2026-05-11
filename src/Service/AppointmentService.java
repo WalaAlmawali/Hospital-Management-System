@@ -158,12 +158,12 @@ public class AppointmentService {
         List<Appointment> dateAppointments = new ArrayList<>();
 
         for(Appointment appointment : appointmentList){
-
-
+            if(appointment.getAppointmentDate().equals(date)){
+                dateAppointments.add(appointment);
+            }
 
         }
-
-
+            return dateAppointments;
         }
 
 
