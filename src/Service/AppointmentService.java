@@ -143,10 +143,13 @@ public class AppointmentService {
         List<Appointment> doctorAppointments = new ArrayList<>();
 
         for(Appointment appointment : appointmentList){
+            if(appointment.getDoctorId().equals(doctorId)){
 
-
+                doctorAppointments.add(appointment);
+            }
+        }
+            return doctorAppointments;
         }
 
 
-        }
 }
