@@ -151,5 +151,13 @@ public class AppointmentService {
             return doctorAppointments;
         }
 
+   // get Appointments By Date
+
+    public List<Appointment> getAppointmentsByDate(LocalDate date){
+
+
+
+    }
+
 
 }
