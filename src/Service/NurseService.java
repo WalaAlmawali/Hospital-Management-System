@@ -179,8 +179,7 @@ public class NurseService {
                 shiftNurse.add(nurse);
             }
         }
-
-
+        return shiftNurse;
     }
 
 
