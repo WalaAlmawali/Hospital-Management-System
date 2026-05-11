@@ -39,4 +39,13 @@ public class OutPatient extends Patient{
     public void setPreferredDoctorId(String preferredDoctorId) {
         this.preferredDoctorId = preferredDoctorId;
     }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Visit Count        : " + visitCount);
+        System.out.println("Last Visit Date    : " + lastVisitDate);
+        System.out.println("Preferred DoctorId : " + preferredDoctorId);
+
+    }
 }
