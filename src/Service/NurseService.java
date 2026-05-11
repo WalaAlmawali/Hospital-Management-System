@@ -81,12 +81,49 @@ public class NurseService {
 
             if(nurse.getNurseId().equals(nurseId)){
 
+                System.out.println("Enter updated Nurse id :");
+                nurse.setId(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse first name :");
+                nurse.setFirstName(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse last name :");
+                nurse.setLastName(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse DOB: ");
+                String dateOfBirth = scanner.nextLine();
+                LocalDate DOB = LocalDate.parse(dateOfBirth);
+                nurse.setDateOfBirth(DOB);
+
+                System.out.println("Enter updated Nurse gender :");
+                nurse.setGender(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse phone number :");
+                nurse.setPhoneNumber(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse email :");
+                nurse.setEmail(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse address :");
+                nurse.setAddress(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse nurse Id :");
+                nurse.setNurseId(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse department Id :");
+                nurse.setDepartmentId(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse shift :");
+                nurse.setShift(scanner.nextLine());
+
+                System.out.println("Enter updated Nurse qualification :");
+                nurse.setQualification(scanner.nextLine());
 
             }
 
         }
 
-
-
     }
+
+
 }
