@@ -158,10 +158,15 @@ public class PatientService {
     public List<Patient> searchPatients(String firstName, String lastName) {
 
         List<Patient> matchedPatients = new ArrayList<>();
+        for (Patient patient : patients) {
 
 
 
-    }
+        }
+
+
+
+        }
 
 
 
