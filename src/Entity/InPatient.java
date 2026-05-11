@@ -81,6 +81,8 @@ public class InPatient extends Patient{
         System.out.println("bedNumber :" + bedNumber);
         System.out.println("admitting Doctor Id : "+ admittingDoctorId);
         System.out.println("daily Charges: "+ dailyCharges);
+        System.out.println("Stay Duration      : " + calculateStayDuration() + " days");
+        System.out.println("Total Charges      : " + calculateTotalCharges());
     }
 
     //calculate Stay Duration
