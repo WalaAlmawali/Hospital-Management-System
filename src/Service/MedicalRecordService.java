@@ -155,5 +155,10 @@ public class MedicalRecordService {
 
     public void displayPatientHistory(String patientId) {
 
+        for(MedicalRecord medicalRecord : medicalRecordList){
+            if(medicalRecord.getPatientId().equals(patientId)){
+                medicalRecord.displayInfo();
+            }
+        }
     }
 }
