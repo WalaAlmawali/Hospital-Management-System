@@ -12,6 +12,7 @@ public class AppointmentService {
     static List<Appointment> appointmentList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
+    //add new appointment
     public Appointment addAppointment(){
 
         System.out.println("Enter appointment Id :");
@@ -45,4 +46,7 @@ public class AppointmentService {
         return appointment;
     }
 
-}
+    public List<Appointment> addAppointments(){
+
+
+    }
