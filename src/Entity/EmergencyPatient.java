@@ -39,6 +39,12 @@ public class EmergencyPatient extends Patient{
     }
 
     public void setTriageLevel(int triageLevel) {
+
+        if (triageLevel < 1 || triageLevel > 5) {
+            System.out.println("Invalid triage level.");
+            return;
+        }
+
         this.triageLevel = triageLevel;
     }
 
@@ -48,5 +54,15 @@ public class EmergencyPatient extends Patient{
 
     public void setAdmittedViaER(boolean admittedViaER) {
         this.admittedViaER = admittedViaER;
+    }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Emergency Type : " + emergencyType);
+        System.out.println("Arrival Mode   : " + arrivalMode);
+        System.out.println("Triage Level   : " + triageLevel);
+        System.out.println("Admitted Via ER: " + admittedViaER);
+
     }
 }
