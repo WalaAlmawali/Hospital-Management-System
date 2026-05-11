@@ -158,7 +158,6 @@ public class NurseService {
     }
 
     // get Nurse By Department
-
     public List<Nurse> getNursesByDepartment(String department){
 
         List<Nurse> departmentNurse = new ArrayList<>();
@@ -167,8 +166,14 @@ public class NurseService {
                 departmentNurse.add(nurse);
             }
         }
-
         return departmentNurse;
+    }
+
+    // get Nurse By Shift
+    public List<Nurse> getNursesByShift(String shift){
+
+
+
     }
 
 
