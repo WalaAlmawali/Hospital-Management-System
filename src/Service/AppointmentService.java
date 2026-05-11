@@ -65,6 +65,7 @@ public class AppointmentService {
     // edit appointment by ID
 
     public void editAppointment(String appointmentId){
+
         for(Appointment appointment : appointmentList){
             if(appointment.getAppointmentId().equals(appointmentId)){
 
@@ -95,6 +96,15 @@ public class AppointmentService {
 
         }
 
+    }
+
+    // Delete appointment by ID
+    public void removeAppointment(String appointmentId ){
+
+        appointmentList.removeIf(A -> A.getAppointmentId() == appointmentId);
+        System.out.println("Appointment removed successfully");
+
+        System.out.println("Appointment record not found");
     }
 
     }
