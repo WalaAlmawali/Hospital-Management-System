@@ -170,10 +170,11 @@ public class AppointmentService {
     public void rescheduleAppointment(String appointmentId, LocalDate newDate, String newTime){
 
         for(Appointment appointment : appointmentList){
-
-
+            if(appointment.getAppointmentId().equals(appointmentId)){
+                appointment.setAppointmentDate(newDate);
+                appointment.setAppointmentTime(newTime);
+            }
         }
-
 
         }
 
