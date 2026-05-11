@@ -154,12 +154,19 @@ public class PatientService {
         return matchedPatients;
     }
 
+    // search by name
+    public List<Patient> searchPatients(String firstName, String lastName) {
+
+
+
+    }
 
 
 
 
 
-    //update existing patient
+
+        //update existing patient
    public void editPatient(String patientId){
 
         for(Patient patient: patients ){
