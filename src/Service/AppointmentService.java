@@ -62,4 +62,11 @@ public class AppointmentService {
 
     }
 
+    // edit appointment by ID
+
+    public void editAppointment(String appointmentId){
+
+
+    }
+
     }
