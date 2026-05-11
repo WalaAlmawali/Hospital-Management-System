@@ -115,6 +115,22 @@ public class PatientService {
 
     }
 
+    // Overload addPatient(String firstName, String lastName, String phone, String bloodGroup, String email)
+
+    public void addPatient(String firstName, String lastName, String phone, String bloodGroup, String email){
+        Patient patient = new Patient();
+
+        patient.setFirstName(firstName);
+        patient.setLastName(lastName);
+        patient.setPhoneNumber(phone);
+        patient.setBloodGroup(bloodGroup);
+        patient.setEmail(email);
+
+        patients.add(patient);
+        System.out.println("Patient add successfully");
+
+    }
+
     //update existing patient
    public void editPatient(String patientId){
 
