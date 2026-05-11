@@ -178,5 +178,11 @@ public class AppointmentService {
 
         }
 
+        // cancel Appointment
+
+    public void cancelAppointment(String appointmentId){
+
+    }
+
 
 }
