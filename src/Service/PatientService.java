@@ -131,6 +131,23 @@ public class PatientService {
 
     }
 
+    // search Patients by any field
+    public List<Patient> searchPatients(String keyword) {
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
     //update existing patient
    public void editPatient(String patientId){
 
