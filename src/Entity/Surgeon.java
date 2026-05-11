@@ -42,4 +42,12 @@ public class Surgeon extends Doctor{
     public void setOperationTheatreAccess(boolean operationTheatreAccess) {
         this.operationTheatreAccess = operationTheatreAccess;
     }
+
+    //performSurgery()
+
+    public boolean  performSurgery(String surgeryType){
+
+
+    }
+
 }
