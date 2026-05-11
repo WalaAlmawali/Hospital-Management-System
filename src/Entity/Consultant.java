@@ -42,4 +42,14 @@ public class Consultant extends Doctor{
     public void setConsultationDuration(int consultationDuration) {
         this.consultationDuration = consultationDuration;
     }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println(" consultation Types : " + consultationTypes);
+        System.out.println(" online Consultation Available : " + onlineConsultationAvailable);
+        System.out.println(" consultation Duration : " + consultationDuration);
+
+
+    }
 }
