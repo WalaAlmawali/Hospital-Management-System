@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class MedicalRecordService {
 
     Scanner scanner = new Scanner(System.in);
-    static List<MedicalRecordService> medicalRecordServiceList = new ArrayList<>();
+    static List<MedicalRecord> medicalRecordList = new ArrayList<>();
 
     public MedicalRecord addMedicalRecord() {
 
@@ -43,5 +43,22 @@ public class MedicalRecordService {
         MedicalRecord medicalRecord = new MedicalRecord(recordId,patientId,doctorId,date,diagnosis,testResults,prescription,notes);
 
         return medicalRecord;
+    }
+
+    public List<MedicalRecord> addMedicalRecords() {
+
+        Boolean continueFlag = true;
+        while (continueFlag) {
+
+            medicalRecordList.add(addMedicalRecord());
+            System.out.println("Medical record add successfully");
+
+            System.out.println("Enter c to add more , and q to exit");
+            if (scanner.nextLine().equalsIgnoreCase("q")) {
+                continueFlag = false;
+            }
+        }
+        return medicalRecordList;
+
     }
 }
