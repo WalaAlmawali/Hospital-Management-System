@@ -56,4 +56,12 @@ public class GeneralPractitioner extends Doctor {
 
     }
 
+    // administerVaccine()
+    public void administerVaccine(String patientName, String vaccineName) {
+
+        System.out.println("Vaccine administered successfully.");
+        System.out.println("Patient Name : " + patientName);
+        System.out.println("Vaccine      : " + vaccineName);
+    }
+
     }
