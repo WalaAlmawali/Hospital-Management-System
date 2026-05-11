@@ -61,4 +61,9 @@ public class MedicalRecordService {
         return medicalRecordList;
 
     }
+
+    public void editMedicalRecord(String recordId) {
+
+
+    }
 }
