@@ -52,4 +52,12 @@ public class Consultant extends Doctor{
 
 
     }
-}
+
+    // scheduleConsultation()
+
+    public void scheduleConsultation(String consultationType, boolean online) {
+
+
+    }
+
+    }
