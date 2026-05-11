@@ -93,4 +93,10 @@ public class InPatient extends Patient{
         return ChronoUnit.DAYS.between(admissionDate, dischargeDate);
 
     }
+
+    // calculateTotalCharges()
+    public double calculateTotalCharges() {
+
+        return calculateStayDuration() * dailyCharges;
+    }
 }
