@@ -30,6 +30,10 @@ public class Patient extends Person {
         this.appointments = new ArrayList<>();
     }
 
+    public Patient(){
+
+    }
+
     public String getPatientId() {
         return patientId;
     }

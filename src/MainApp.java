@@ -7,8 +7,7 @@ public class MainApp {
 
         Scanner scanner = new Scanner(System.in);
         PatientService patientService = new PatientService();
-        patientService.addPatients();
-        System.out.println("enter name to search");
-        patientService.searchPatientsByName(scanner.nextLine());
+        patientService.addPatient("wala","salam","9888");
+        patientService.displayAllPatients();
     }
 }

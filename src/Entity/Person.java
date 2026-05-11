@@ -25,6 +25,10 @@ public class Person {
         this.address = address;
     }
 
+    public Person(){
+
+    }
+
     public String getId() {
         return id;
     }
@@ -90,7 +94,7 @@ public class Person {
     }
 
     public void displayInfo(){
-        System.out.println(" full name : " + firstName + lastName);
+        System.out.println(" full name : " + firstName + " "+lastName);
         System.out.println(" dateOfBirth : " + dateOfBirth);
         System.out.println(" gender : " + gender);
         System.out.println(" phoneNumber : " + phoneNumber);

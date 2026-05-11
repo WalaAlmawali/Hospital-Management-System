@@ -104,6 +104,14 @@ public class PatientService {
 
     public void addPatient(String firstName, String lastName, String phone){
 
+        Patient patient = new Patient();
+
+        patient.setFirstName(firstName);
+        patient.setLastName(lastName);
+        patient.setPhoneNumber(phone);
+
+        patients.add(patient);
+        System.out.println("Patient add successfully");
 
     }
 
