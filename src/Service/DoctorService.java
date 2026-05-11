@@ -87,6 +87,7 @@ public class DoctorService {
         for(Doctor doctor : doctors){
 
             if(doctor.getDoctorId().equals(doctorId)){
+
                 System.out.println("Enter updated Doctor id :");
                 doctor.setId(scanner.nextLine());
 
