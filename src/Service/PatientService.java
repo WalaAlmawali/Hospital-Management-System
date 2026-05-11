@@ -132,10 +132,13 @@ public class PatientService {
     }
 
     // search Patients by any field
+
     public List<Patient> searchPatients(String keyword) {
 
+        for(Patient patient : patients){
 
 
+        }
 
     }
 
