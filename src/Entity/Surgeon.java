@@ -1,6 +1,25 @@
 package Entity;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Surgeon extends Doctor{
+
+    private int surgeriesPerformed;
+    private List<String> surgeryTypes;
+    private boolean operationTheatreAccess;
+
+    public Surgeon(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address, String doctorId, String specialization, String qualification, int experienceYears, String departmentId, double consultationFee, List<String> availableSlots, List<String> assignedPatients, int surgeriesPerformed, List<String> surgeryTypes, boolean operationTheatreAccess) {
+
+        super(id, firstName, dateOfBirth, lastName, gender, phoneNumber, email, address, doctorId, specialization, qualification, experienceYears, departmentId, consultationFee, availableSlots, assignedPatients);
+
+        this.surgeriesPerformed = surgeriesPerformed;
+        this.surgeryTypes = new ArrayList<>();
+        this.operationTheatreAccess = operationTheatreAccess;
+    }
+
+
 
 
 }
