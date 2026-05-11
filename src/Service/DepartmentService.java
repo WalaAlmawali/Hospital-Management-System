@@ -9,4 +9,11 @@ public class DepartmentService {
 
     static List<Department> departmentList = new ArrayList<>();
 
+    public Department addDepartment(){
+
+
+
+
+    }
+
 }
