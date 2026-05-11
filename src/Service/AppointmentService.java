@@ -124,7 +124,7 @@ public class AppointmentService {
     //get Appointments By Patient
 
     public List<Appointment> getAppointmentsByPatient(String patientId){
-
+        List<Appointment> patientAppointments = new ArrayList<>();
 
 
     }
