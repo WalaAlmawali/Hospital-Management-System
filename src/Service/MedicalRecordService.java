@@ -151,4 +151,9 @@ public class MedicalRecordService {
         return doctorMedicalRecords;
     }
 
+    //display PatientHistory
+
+    public void displayPatientHistory(String patientId) {
+
+    }
 }
