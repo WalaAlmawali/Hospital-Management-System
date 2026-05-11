@@ -157,6 +157,14 @@ public class NurseService {
 
     }
 
+    // get Nurse By Department
+
+    public List<Nurse> getNursesByDepartment(){
+
+
+
+    }
+
 
 
 }
