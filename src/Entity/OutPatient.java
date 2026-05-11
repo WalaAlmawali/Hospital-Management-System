@@ -55,4 +55,13 @@ public class OutPatient extends Patient{
         System.out.println("Follow-up scheduled successfully.");
         System.out.println("Follow-up Date : " + followUpDate);
     }
+
+    // update Visit Count
+    public void updateVisitCount(){
+
+        visitCount++;
+        lastVisitDate = LocalDate.now();
+        System.out.println("Visit count updated successfully.");
+
+    }
 }
