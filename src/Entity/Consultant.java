@@ -72,7 +72,14 @@ public class Consultant extends Doctor{
         System.out.println("Mode      : " + (online ? "Online" : "Offline"));
         System.out.println("Duration  : " + consultationDuration + " minutes");
 
-
     }
+
+    // provideSecondOpinion()
+    public void provideSecondOpinion(String patientCase) {
+
+        System.out.println("Providing second opinion for case:");
+        System.out.println(patientCase);
+    }
+
 
     }
