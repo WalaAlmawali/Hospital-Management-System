@@ -14,7 +14,7 @@ public class NurseService {
     static List<Nurse> nurseList = new ArrayList<>();
     List<String> assignedPatients = new ArrayList<>();
 
-    public Nurse addNurse(){
+    public Nurse addNurse() {
 
         System.out.println("Enter Nurse id :");
         String id = scanner.nextLine();
@@ -53,12 +53,12 @@ public class NurseService {
         System.out.println("Enter Nurse qualification :");
         String qualification = scanner.nextLine();
 
-        Nurse nurse = new Nurse(id,nurseFName,DOB,nurseLName,gender,phone,email,address,nurseId,departmentId,shift,qualification,assignedPatients);
+        Nurse nurse = new Nurse(id, nurseFName, DOB, nurseLName, gender, phone, email, address, nurseId, departmentId, shift, qualification, assignedPatients);
 
-        return  nurse;
+        return nurse;
     }
 
-    public List<Nurse> addNurses(){
+    public List<Nurse> addNurses() {
 
         Boolean continueFlag = true;
         while (continueFlag) {
@@ -75,5 +75,8 @@ public class NurseService {
 
     }
 
+    public void editNurse(String nurseId) {
 
+
+    }
 }
