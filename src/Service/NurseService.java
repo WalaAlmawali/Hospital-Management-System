@@ -161,6 +161,7 @@ public class NurseService {
 
     public List<Nurse> getNursesByDepartment(){
 
+        List<Nurse> departmentNurse = new ArrayList<>();
 
 
     }
