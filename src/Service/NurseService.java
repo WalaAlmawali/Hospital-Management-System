@@ -11,5 +11,10 @@ public class NurseService {
 
     static List<Nurse> nurseList = new ArrayList<>();
 
+    public Nurse addNurse(){
+
+
+    }
+
 
 }
