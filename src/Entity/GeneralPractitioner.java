@@ -39,4 +39,12 @@ public class GeneralPractitioner extends Doctor {
     public void setHomeVisitAvailable(boolean homeVisitAvailable) {
         this.homeVisitAvailable = homeVisitAvailable;
     }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("walk in Available : "+ walkinAvailable);
+        System.out.println("home Visit Available :"+ homeVisitAvailable);
+        System.out.println("vaccination Certified :"+ vaccinationCertified);
+    }
 }
