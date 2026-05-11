@@ -121,6 +121,13 @@ public class AppointmentService {
         return null;
     }
 
+    //get Appointments By Patient
+
+    public List<Appointment> getAppointmentsByPatient(String patientId){
+
+
+
+    }
 
 
     }
