@@ -62,6 +62,10 @@ public class Consultant extends Doctor{
             return;
         }
 
+        if(!onlineConsultationAvailable){
+            System.out.println("Online consultation is not available.");
+            return;
+        }
 
 
 
