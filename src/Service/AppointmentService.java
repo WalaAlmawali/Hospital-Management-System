@@ -39,8 +39,10 @@ public class AppointmentService {
         System.out.println("Enter notes :");
         String notes = scanner.nextLine();
 
+        Appointment appointment = new Appointment(notes,reason,status,appointmentTime,date,doctorId,patientId,appointmentId);
 
 
+        return appointment;
     }
 
 }
