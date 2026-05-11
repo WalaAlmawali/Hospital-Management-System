@@ -155,7 +155,7 @@ public class AppointmentService {
 
     public List<Appointment> getAppointmentsByDate(LocalDate date){
 
-
+        List<Appointment> dateAppointments = new ArrayList<>();
 
     }
 
