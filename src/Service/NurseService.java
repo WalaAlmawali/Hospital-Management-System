@@ -159,14 +159,16 @@ public class NurseService {
 
     // get Nurse By Department
 
-    public List<Nurse> getNursesByDepartment(){
+    public List<Nurse> getNursesByDepartment(String department){
 
         List<Nurse> departmentNurse = new ArrayList<>();
         for(Nurse nurse : nurseList){
-
-
+            if(nurse.getDepartmentId().equals(department)){
+                departmentNurse.add(nurse);
+            }
         }
 
+        return departmentNurse;
     }
 
 
