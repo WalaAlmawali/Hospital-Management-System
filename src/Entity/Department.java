@@ -1,5 +1,6 @@
 package Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Department {
@@ -20,8 +21,8 @@ public class Department {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
         this.headDoctorId = headDoctorId;
-        this.doctors = doctors;
-        this.nurses = nurses;
+        this.doctors = new ArrayList<>();
+        this.nurses = new ArrayList<>();
         this.bedCapacity = bedCapacity;
         this.availableBeds = availableBeds;
     }

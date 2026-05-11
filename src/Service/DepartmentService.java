@@ -16,6 +16,7 @@ public class DepartmentService {
     static List<Department> departmentList = new ArrayList<>();
     List<Doctor> doctors = new ArrayList<>();
     List<Nurse> nurses = new ArrayList<>();
+    DoctorService doctorService = new DoctorService();
 
     public Department addDepartment(){
 
@@ -117,12 +118,20 @@ public class DepartmentService {
     }
 
     // assign Doctor To Department(String doctorId, String departmentId)
+
     public void assignDoctorToDepartment(String doctorId, String departmentId){
 
+        Doctor doctor = doctorService.getDoctorById(doctorId);
+
         for(Department department : departmentList){
+
+            if(department.getDepartmentId().equals(departmentId)){
+
+                department.getDoctors().add(doctor);
+            }
+        }
 
 
         }
 
-    }
 }
