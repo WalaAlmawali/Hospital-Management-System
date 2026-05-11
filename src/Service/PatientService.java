@@ -157,6 +157,8 @@ public class PatientService {
     // search by name
     public List<Patient> searchPatients(String firstName, String lastName) {
 
+        List<Patient> matchedPatients = new ArrayList<>();
+
 
 
     }
