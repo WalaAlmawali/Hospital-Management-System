@@ -79,6 +79,10 @@ public class NurseService {
 
         for (Nurse nurse : nurseList){
 
+            if(nurse.getNurseId().equals(nurseId)){
+
+
+            }
 
         }
 
