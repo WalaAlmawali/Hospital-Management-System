@@ -19,7 +19,7 @@ public class PatientService {
 
     //add new patient
 
-    public Patient addPatient(){
+    public Patient addPatient() {
 
         System.out.println("Enter patient id :");
         String id = scanner.nextLine();
@@ -78,12 +78,12 @@ public class PatientService {
             }
         }
 
-        Patient patient = new Patient(id,patientFName,DOB,patientLName,gender,phone,email,address,patientID,bloodGroup,allergies,emergencyContact,DOR,medicalRecords,insuranceId,appointments);
+        Patient patient = new Patient(id, patientFName, DOB, patientLName, gender, phone, email, address, patientID, bloodGroup, allergies, emergencyContact, DOR, medicalRecords, insuranceId, appointments);
 
         return patient;
     }
 
-    public List<Patient> addPatients(){
+    public List<Patient> addPatients() {
 
         Boolean continueFlag = true;
         while (continueFlag) {
@@ -102,7 +102,7 @@ public class PatientService {
 
     // Overload addPatient(String firstName, String lastName, String phone) - minimal info
 
-    public void addPatient(String firstName, String lastName, String phone){
+    public void addPatient(String firstName, String lastName, String phone) {
 
         Patient patient = new Patient();
 
@@ -117,7 +117,7 @@ public class PatientService {
 
     // Overload addPatient(String firstName, String lastName, String phone, String bloodGroup, String email)
 
-    public void addPatient(String firstName, String lastName, String phone, String bloodGroup, String email){
+    public void addPatient(String firstName, String lastName, String phone, String bloodGroup, String email) {
         Patient patient = new Patient();
 
         patient.setFirstName(firstName);
@@ -135,16 +135,24 @@ public class PatientService {
 
     public List<Patient> searchPatients(String keyword) {
 
-        for(Patient patient : patients){
+        List<Patient> matchedPatients = new ArrayList<>();
 
+
+        for (Patient patient : patients) {
+            if (patient.getPatientId().toLowerCase().contains(keyword.toLowerCase())
+                    || patient.getFirstName().toLowerCase().contains(keyword.toLowerCase())
+                    || patient.getLastName().toLowerCase().contains(keyword.toLowerCase())
+                    || patient.getPhoneNumber().contains(keyword)
+                    || patient.getBloodGroup().toLowerCase().contains(keyword.toLowerCase())
+                    || patient.getEmail().toLowerCase().contains(keyword.toLowerCase())) {
+
+                matchedPatients.add(patient);
+
+            }
 
         }
-
+        return matchedPatients;
     }
-
-
-
-
 
 
 
