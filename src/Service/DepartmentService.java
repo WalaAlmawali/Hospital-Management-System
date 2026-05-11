@@ -57,4 +57,12 @@ public class DepartmentService {
 
     }
 
+    // edit department
+
+    public void editDepartment(String departmentId){
+
+
+
+    }
+
 }
