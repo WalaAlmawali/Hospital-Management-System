@@ -150,10 +150,10 @@ public class DoctorService {
     }
 
     //retrieve doctor
-    public Doctor getDoctorById(String doctorId){
+    public Doctor getDoctorById(String doctorId) {
 
-        for(Doctor doctor: doctors){
-            if(doctor.getDoctorId().equals(doctorId)){
+        for (Doctor doctor : doctors) {
+            if (doctor.getDoctorId().equals(doctorId)) {
                 return doctor;
             }
 

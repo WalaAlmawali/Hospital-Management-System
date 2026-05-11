@@ -148,6 +148,15 @@ public class NurseService {
         return null;
     }
 
+    //display all nurses with formatted output
+    public void displayAllNurses(){
+
+        for(Nurse nurse: nurseList){
+
+        }
+
+    }
+
 
 
 }
