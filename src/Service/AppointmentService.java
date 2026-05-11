@@ -166,5 +166,10 @@ public class AppointmentService {
             return dateAppointments;
         }
 
+        // reschedule Appointment
+    public void rescheduleAppointment(String appointmentId, LocalDate newDate, String newTime){
+
+
+    }
 
 }
