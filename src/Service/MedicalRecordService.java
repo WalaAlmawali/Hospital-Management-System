@@ -66,8 +66,39 @@ public class MedicalRecordService {
 
         for(MedicalRecord medicalRecord : medicalRecordList){
 
+            if(medicalRecord.getRecordId().equals(recordId)){
+
+                System.out.println("Enter updated record Id :");
+                medicalRecord.setRecordId(scanner.nextLine());
+
+                System.out.println("Enter updated patient Id :");
+                medicalRecord.setPatientId(scanner.nextLine());
+
+                System.out.println("Enter updated doctor Id :");
+                medicalRecord.setDoctorId(scanner.nextLine());
+
+                System.out.println("Enter updated visit Date:");
+                String visitDate = scanner.nextLine();
+                LocalDate date = LocalDate.parse(visitDate);
+                medicalRecord.setVisitDate(date);
+
+                System.out.println("Enter updated diagnosis :");
+                medicalRecord.setDiagnosis(scanner.nextLine());
+
+                System.out.println("Enter updated prescription :");
+                medicalRecord.setPrescription(scanner.nextLine());
+
+                System.out.println("Enter updated test Results :");
+                medicalRecord.setTestResults(scanner.nextLine());
+
+                System.out.println("Enter updated notes :");
+                medicalRecord.setNotes(scanner.nextLine());
+
+            }
 
         }
 
     }
+
+
 }
