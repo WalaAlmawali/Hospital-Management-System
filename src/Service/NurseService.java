@@ -125,5 +125,15 @@ public class NurseService {
 
     }
 
+    // remove nurse by ID
+    public void removeNurse(String nurseId){
+
+        nurseList.removeIf(N -> N.getNurseId() == nurseId);
+        System.out.println("Nurse removed successfully");
+
+        System.out.println("Nurse not found");
+
+    }
+
 
 }

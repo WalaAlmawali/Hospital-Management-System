@@ -132,7 +132,7 @@ public class DoctorService {
                 System.out.println("Enter updated Doctor consultationFee :");
                 doctor.setConsultationFee(scanner.nextDouble());
 
-                System.out.println("patient updated successfully");
+                System.out.println("doctor updated successfully");
 
             }
         }
@@ -143,9 +143,9 @@ public class DoctorService {
     public void removeDoctor(String doctorId){
 
         doctors.removeIf(b -> b.getDoctorId() == doctorId);
-        System.out.println("patient removed successfully");
+        System.out.println("doctor removed successfully");
 
-        System.out.println("patient not found");
+        System.out.println("doctor not found");
 
     }
 
