@@ -157,7 +157,14 @@ public class AppointmentService {
 
         List<Appointment> dateAppointments = new ArrayList<>();
 
-    }
+        for(Appointment appointment : appointmentList){
+
+
+
+        }
+
+
+        }
 
 
 }
