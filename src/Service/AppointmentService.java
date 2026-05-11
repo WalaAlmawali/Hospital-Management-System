@@ -128,10 +128,12 @@ public class AppointmentService {
 
         for(Appointment appointment : appointmentList){
 
+            if(appointment.getPatientId().equals(patientId)){
+                patientAppointments.add(appointment);
 
+            }
         }
-
-
+        return patientAppointments;
     }
 
 
