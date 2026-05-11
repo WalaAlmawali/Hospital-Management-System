@@ -69,4 +69,15 @@ public class Surgeon extends Doctor{
 
         this.surgeriesPerformed = count;
     }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("surgeries Performed : " + surgeriesPerformed);
+        System.out.println("surgery Types : " + surgeryTypes);
+        System.out.println("operation Theatre Access : " + operationTheatreAccess);
+
+
+
+    }
 }
