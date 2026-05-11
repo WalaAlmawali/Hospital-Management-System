@@ -119,6 +119,10 @@ public class DepartmentService {
     // assign Doctor To Department(String doctorId, String departmentId)
     public void assignDoctorToDepartment(String doctorId, String departmentId){
 
+        for(Department department : departmentList){
+
+
+        }
 
     }
 }
