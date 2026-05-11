@@ -174,6 +174,11 @@ public class NurseService {
 
         List<Nurse> shiftNurse = new ArrayList<>();
 
+        for(Nurse nurse : nurseList){
+            if(nurse.getShift().equals(shift)){
+                shiftNurse.add(nurse);
+            }
+        }
 
 
     }
