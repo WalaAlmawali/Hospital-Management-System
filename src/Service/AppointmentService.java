@@ -126,6 +126,11 @@ public class AppointmentService {
     public List<Appointment> getAppointmentsByPatient(String patientId){
         List<Appointment> patientAppointments = new ArrayList<>();
 
+        for(Appointment appointment : appointmentList){
+
+
+        }
+
 
     }
 
