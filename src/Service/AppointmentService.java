@@ -1,6 +1,7 @@
 package Service;
 
 import Entity.Appointment;
+import Entity.MedicalRecord;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -106,5 +107,20 @@ public class AppointmentService {
 
         System.out.println("Appointment record not found");
     }
+
+    //retrieve appointment
+    public Appointment getAppointment(String appointmentId){
+
+        for(Appointment appointment: appointmentList){
+            if(appointment.getAppointmentId().equals(appointmentId)){
+                return appointment;
+            }
+
+        }
+        System.out.println("appointment Record not found");
+        return null;
+    }
+
+
 
     }
