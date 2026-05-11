@@ -64,6 +64,10 @@ public class MedicalRecordService {
 
     public void editMedicalRecord(String recordId) {
 
+        for(MedicalRecord medicalRecord : medicalRecordList){
+
+
+        }
 
     }
 }
