@@ -140,6 +140,8 @@ public class AppointmentService {
 
     public List<Appointment> getAppointmentsByDoctor(String doctorId) {
 
+        List<Appointment> doctorAppointments = new ArrayList<>();
+
 
     }
 }
