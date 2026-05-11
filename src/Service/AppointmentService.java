@@ -136,5 +136,10 @@ public class AppointmentService {
         return patientAppointments;
     }
 
+    // get Appointments By Doctor
+
+    public List<Appointment> getAppointmentsByDoctor(String doctorId) {
+
 
     }
+}
