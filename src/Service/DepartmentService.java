@@ -41,6 +41,19 @@ public class DepartmentService {
 
     public List<Department> addDepartments(){
 
+        Boolean continueFlag = true;
+        while (continueFlag) {
+
+            departmentList.add(addDepartment());
+            System.out.println("Department add successfully");
+
+            System.out.println("Enter c to add more , and q to exit");
+
+            if (scanner.nextLine().equalsIgnoreCase("q")) {
+                continueFlag = false;
+            }
+        }
+        return departmentList;
 
     }
 
