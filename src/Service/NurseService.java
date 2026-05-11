@@ -152,7 +152,7 @@ public class NurseService {
     public void displayAllNurses(){
 
         for(Nurse nurse: nurseList){
-
+            nurse.displayInfo();
         }
 
     }
