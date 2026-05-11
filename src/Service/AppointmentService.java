@@ -182,7 +182,13 @@ public class AppointmentService {
 
     public void cancelAppointment(String appointmentId){
 
-    }
+        for(Appointment appointment : appointmentList){
+
+
+        }
+
+
+        }
 
 
 }
