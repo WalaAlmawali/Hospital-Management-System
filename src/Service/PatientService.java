@@ -314,7 +314,6 @@ public class PatientService {
 
     //display limited number
     public void displayPatients(int limit){
-
         int count = 0;
 
             for(Patient patient :patients){

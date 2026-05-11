@@ -82,6 +82,18 @@ public class DoctorService {
 
     }
 
+    // Overloaded addDoctor
+
+    public void addDoctor(String name, String specialization, String phone){
+
+        Doctor doctor = new Doctor();
+        doctor.setFirstName(name);
+        doctor.setSpecialization(specialization);
+        doctor.setPhoneNumber(phone);
+
+        doctors.add(doctor);
+    }
+
     public void editDoctor(String doctorId){
 
         for(Doctor doctor : doctors){
