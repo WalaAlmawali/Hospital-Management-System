@@ -108,4 +108,12 @@ public class DepartmentService {
         return null;
     }
 
+    // display All Departments
+    public void displayAllDepartments(){
+
+        for(Department department : departmentList){
+            department.displayInfo();
+        }
+    }
+
 }
