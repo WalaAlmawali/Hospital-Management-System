@@ -61,7 +61,10 @@ public class DepartmentService {
 
     public void editDepartment(String departmentId){
 
+        for(Department department : departmentList){
 
+
+        }
 
     }
 
