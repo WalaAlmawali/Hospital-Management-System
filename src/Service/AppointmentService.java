@@ -9,4 +9,9 @@ public class AppointmentService {
 
     static List<Appointment> appointmentList = new ArrayList<>();
 
+    public Appointment addAppointment(){
+
+
+    }
+
 }
