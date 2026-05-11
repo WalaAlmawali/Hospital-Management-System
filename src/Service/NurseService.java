@@ -77,6 +77,12 @@ public class NurseService {
 
     public void editNurse(String nurseId) {
 
+        for (Nurse nurse : nurseList){
+
+
+        }
+
+
 
     }
 }
