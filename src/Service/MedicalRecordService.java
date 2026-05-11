@@ -135,4 +135,20 @@ public class MedicalRecordService {
         return patientMedicalRecords;
     }
 
+    // get Records By DoctorId
+
+    public List<MedicalRecord> getRecordsByDoctorId(String doctorId){
+
+        List<MedicalRecord> doctorMedicalRecords = new ArrayList<>();
+
+        for (MedicalRecord medicalRecord : medicalRecordList){
+
+            if(medicalRecord.getDoctorId().equals(doctorId)){
+                doctorMedicalRecords.add(medicalRecord);
+            }
+        }
+
+        return doctorMedicalRecords;
+    }
+
 }
