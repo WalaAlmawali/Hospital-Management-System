@@ -169,7 +169,13 @@ public class AppointmentService {
         // reschedule Appointment
     public void rescheduleAppointment(String appointmentId, LocalDate newDate, String newTime){
 
+        for(Appointment appointment : appointmentList){
 
-    }
+
+        }
+
+
+        }
+
 
 }
