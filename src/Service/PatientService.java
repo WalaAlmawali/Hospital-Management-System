@@ -100,6 +100,13 @@ public class PatientService {
 
     }
 
+    // Overload addPatient(String firstName, String lastName, String phone) - minimal info
+
+    public void addPatient(String firstName, String lastName, String phone){
+
+
+    }
+
     //update existing patient
    public void editPatient(String patientId){
 
