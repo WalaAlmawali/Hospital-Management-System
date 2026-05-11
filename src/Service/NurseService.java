@@ -113,6 +113,9 @@ public class NurseService {
                 System.out.println("Enter updated Nurse qualification :");
                 nurse.setQualification(scanner.nextLine());
 
+                System.out.println("Nurse updated successfully");
+
+
             }
 
         }

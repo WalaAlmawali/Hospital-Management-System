@@ -91,6 +91,9 @@ public class MedicalRecordService {
                 System.out.println("Enter updated notes :");
                 medicalRecord.setNotes(scanner.nextLine());
 
+                System.out.println("Medical record updated successfully");
+
+
             }
 
         }

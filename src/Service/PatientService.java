@@ -159,6 +159,8 @@ public class PatientService {
                         continueFlag = false;
                     }
                 }
+                System.out.println("Patient updated successfully");
+
 
             }
         }

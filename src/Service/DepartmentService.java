@@ -62,10 +62,35 @@ public class DepartmentService {
     public void editDepartment(String departmentId){
 
         for(Department department : departmentList){
+            if(department.getDepartmentId().equals(departmentId)){
 
+                System.out.println("Enter updated department Name :");
+                department.setDepartmentName(scanner.nextLine());
+
+                System.out.println("Enter updated department head DoctorId :");
+                department.setHeadDoctorId(scanner.nextLine());
+
+                System.out.println("Enter updated department  bed Capacity :");
+                department.setBedCapacity(scanner.nextInt());
+
+                System.out.println("Enter updated department available Beds :");
+                department.setAvailableBeds(scanner.nextInt());
+
+                System.out.println("department updated successfully");
+
+            }
 
         }
 
+    }
+
+    // remove department by ID
+    public void removeDepartment(String departmentId){
+
+        departmentList.removeIf(D -> D.getDepartmentId() == departmentId);
+        System.out.println("Department removed successfully");
+
+        System.out.println("Department record not found");
     }
 
 }

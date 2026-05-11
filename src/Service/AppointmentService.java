@@ -93,6 +93,9 @@ public class AppointmentService {
                 System.out.println("Enter updated notes :");
                appointment.setNotes(scanner.nextLine());
 
+                System.out.println("Appointment updated successfully");
+
+
             }
 
         }
