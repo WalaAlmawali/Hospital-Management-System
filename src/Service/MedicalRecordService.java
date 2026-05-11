@@ -121,16 +121,18 @@ public class MedicalRecordService {
     }
 
     //get Records By PatientId
-    public MedicalRecord getRecordsByPatientId(String patientId){
+    public List<MedicalRecord> getRecordsByPatientId(String patientId){
+
+        List<MedicalRecord> patientMedicalRecords = new ArrayList<>();
 
         for (MedicalRecord medicalRecord : medicalRecordList){
 
             if(medicalRecord.getPatientId().equals(patientId)){
-               return medicalRecord;
+                patientMedicalRecords.add(medicalRecord);
             }
         }
-        System.out.println("medical record not found");
-        return null;
+
+        return patientMedicalRecords;
     }
 
 }
