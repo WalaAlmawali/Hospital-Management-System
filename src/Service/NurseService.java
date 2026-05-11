@@ -1,5 +1,6 @@
 package Service;
 
+import Entity.Doctor;
 import Entity.Nurse;
 
 import java.time.LocalDate;
@@ -55,6 +56,23 @@ public class NurseService {
         Nurse nurse = new Nurse(id,nurseFName,DOB,nurseLName,gender,phone,email,address,nurseId,departmentId,shift,qualification,assignedPatients);
 
         return  nurse;
+    }
+
+    public List<Nurse> addNurses(){
+
+        Boolean continueFlag = true;
+        while (continueFlag) {
+
+            nurseList.add(addNurse());
+            System.out.println("Nurse add successfully");
+
+            System.out.println("Enter c to add more , and q to exit");
+            if (scanner.nextLine().equalsIgnoreCase("q")) {
+                continueFlag = false;
+            }
+        }
+        return nurseList;
+
     }
 
 
