@@ -55,7 +55,14 @@ public class Consultant extends Doctor{
 
     // scheduleConsultation()
 
-    public void scheduleConsultation(String consultationType, boolean online) {
+    public void scheduleConsultation(String consultationType) {
+
+        if (!consultationTypes.contains(consultationType)) {
+            System.out.println("Consultation type not available.");
+            return;
+        }
+
+
 
 
     }
