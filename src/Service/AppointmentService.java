@@ -184,9 +184,10 @@ public class AppointmentService {
 
         for(Appointment appointment : appointmentList){
 
-
+            if(appointment.getAppointmentId().equals(appointmentId)){
+                appointment.setStatus("Cancelled");
+            }
         }
-
 
         }
 
