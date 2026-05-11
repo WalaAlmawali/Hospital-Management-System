@@ -88,9 +88,6 @@ public class DoctorService {
 
             if(doctor.getDoctorId().equals(doctorId)){
 
-                System.out.println("Enter updated Doctor id :");
-                doctor.setId(scanner.nextLine());
-
                 System.out.println("Enter updated Doctor first name :");
                 doctor.setFirstName(scanner.nextLine());
 
@@ -113,9 +110,6 @@ public class DoctorService {
 
                 System.out.println("Enter updated Doctor address :");
                 String address = scanner.nextLine();
-
-                System.out.println("Enter updated Doctor ID :");
-                doctor.setDoctorId(scanner.nextLine());
 
                 System.out.println("Enter updated Doctor specialization :");
                 doctor.setSpecialization(scanner.nextLine());

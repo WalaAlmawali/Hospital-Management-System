@@ -107,9 +107,6 @@ public class PatientService {
 
             if(patient.getPatientId().equals(patientId)){
 
-                System.out.println("Enter updated patient id :");
-                patient.setId(scanner.nextLine());
-
                 System.out.println("Enter updated patient first name :");
                 patient.setFirstName(scanner.nextLine());
 
@@ -132,9 +129,6 @@ public class PatientService {
 
                 System.out.println("Enter updated patient address :");
                 patient.setAddress(scanner.nextLine());
-
-                System.out.println("Enter updated patient id :");
-                patient.setPatientId(scanner.nextLine());
 
                 System.out.println("Enter updated patient blood Group :");
                patient.setBloodGroup(scanner.nextLine());

@@ -68,9 +68,6 @@ public class MedicalRecordService {
 
             if(medicalRecord.getRecordId().equals(recordId)){
 
-                System.out.println("Enter updated record Id :");
-                medicalRecord.setRecordId(scanner.nextLine());
-
                 System.out.println("Enter updated patient Id :");
                 medicalRecord.setPatientId(scanner.nextLine());
 
@@ -121,6 +118,12 @@ public class MedicalRecordService {
         }
         System.out.println("medical Record not found");
         return null;
+    }
+
+    //get Records By Patient Id
+    public void getRecordsByPatientId(String patientId){
+
+
     }
 
 

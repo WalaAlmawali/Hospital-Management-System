@@ -81,9 +81,6 @@ public class NurseService {
 
             if(nurse.getNurseId().equals(nurseId)){
 
-                System.out.println("Enter updated Nurse id :");
-                nurse.setId(scanner.nextLine());
-
                 System.out.println("Enter updated Nurse first name :");
                 nurse.setFirstName(scanner.nextLine());
 
@@ -106,9 +103,6 @@ public class NurseService {
 
                 System.out.println("Enter updated Nurse address :");
                 nurse.setAddress(scanner.nextLine());
-
-                System.out.println("Enter updated Nurse nurse Id :");
-                nurse.setNurseId(scanner.nextLine());
 
                 System.out.println("Enter updated Nurse department Id :");
                 nurse.setDepartmentId(scanner.nextLine());
