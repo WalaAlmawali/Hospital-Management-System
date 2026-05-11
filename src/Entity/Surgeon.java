@@ -47,7 +47,16 @@ public class Surgeon extends Doctor{
 
     public boolean  performSurgery(String surgeryType){
 
+        if(!surgeryTypes.contains(surgeryType)){
+            return false;
+        }
 
+        if(!operationTheatreAccess){
+            return false;
+        }
+
+        surgeriesPerformed++;
+        return true;
     }
 
 }
