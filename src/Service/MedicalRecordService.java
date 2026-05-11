@@ -100,5 +100,15 @@ public class MedicalRecordService {
 
     }
 
+    // remove medical record by ID
+    public void removeMedicalRecord(String recordId){
+
+        medicalRecordList.removeIf(M -> M.getRecordId() == recordId);
+        System.out.println("medical record removed successfully");
+
+        System.out.println("medical record not found");
+
+    }
+
 
 }
