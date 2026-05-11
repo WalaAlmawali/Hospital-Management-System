@@ -39,4 +39,9 @@ public class DepartmentService {
 
     }
 
+    public List<Department> addDepartments(){
+
+
+    }
+
 }
