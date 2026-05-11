@@ -1,5 +1,6 @@
 package Service;
 
+import Entity.Appointment;
 import Entity.Department;
 import Entity.Doctor;
 import Entity.Nurse;
@@ -91,6 +92,20 @@ public class DepartmentService {
         System.out.println("Department removed successfully");
 
         System.out.println("Department record not found");
+    }
+
+    //retrieve department
+    public Department getDepartment(String departmentId){
+
+        for(Department department: departmentList){
+
+            if(department.getDepartmentId().equals(departmentId)){
+                return department;
+            }
+
+        }
+        System.out.println("department not found");
+        return null;
     }
 
 }
