@@ -69,4 +69,16 @@ public class InPatient extends Patient{
     public void setDailyCharges(double dailyCharges) {
         this.dailyCharges = dailyCharges;
     }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+
+        System.out.println("admission Date : " + admissionDate);
+        System.out.println("discharge Date :"+ dischargeDate);
+        System.out.println("room Number: " + roomNumber);
+        System.out.println("bedNumber :" + bedNumber);
+        System.out.println("admitting Doctor Id : "+ admittingDoctorId);
+        System.out.println("daily Charges: "+ dailyCharges);
+    }
 }
