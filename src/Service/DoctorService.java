@@ -280,4 +280,9 @@ public class DoctorService {
 
     }
 
+    // Overloaded displayDoctors(String departmentId, boolean showAvailableOnly)
+public void displayDoctors(String departmentId, boolean showAvailableOnly){
+
+
+}
 }
