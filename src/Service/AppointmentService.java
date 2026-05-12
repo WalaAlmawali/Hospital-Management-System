@@ -240,6 +240,7 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
                 return;
             }
         }
+
         System.out.println("Appointment not found.");
 
     }
@@ -248,6 +249,33 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     @Override
     public void scheduleAppointment(Appointment appointment) {
+
+        // Validate appointment object
+        if (HelperUtils.isNull(appointment)) {
+            System.out.println("Invalid appointment.");
+            return;
+        }
+
+        // Validate appointment date
+        if (!HelperUtils.isValidDate(appointment.getAppointmentDate()) ||
+                HelperUtils.isPastDate(appointment.getAppointmentDate())) {
+
+            System.out.println("Invalid appointment date.");
+            return;
+        }
+
+        // Validate appointment time
+        if (!HelperUtils.isValidString(appointment.getAppointmentTime())) {
+            System.out.println("Invalid appointment time.");
+            return;
+        }
+
+        // Schedule appointment
+        appointment.setStatus("Scheduled");
+        appointmentList.add(appointment);
+
+        System.out.println("Appointment scheduled successfully.");
+
 
     }
 
