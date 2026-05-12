@@ -13,7 +13,7 @@ public class Doctor extends Person{
     private String departmentId;
     private double consultationFee;
     private List<String> availableSlots;
-    private List<String> assignedPatients;
+    private List<Patient> assignedPatients;
 
     public Doctor(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address, String doctorId, String specialization, String qualification, int experienceYears, String departmentId, double consultationFee, List<String> availableSlots, List<String> assignedPatients) {
         super(id, firstName, dateOfBirth, lastName, gender, phoneNumber, email, address);
@@ -88,11 +88,11 @@ public class Doctor extends Person{
         this.availableSlots = availableSlots;
     }
 
-    public List<String> getAssignedPatients() {
+    public List<Patient> getAssignedPatients() {
         return assignedPatients;
     }
 
-    public void setAssignedPatients(List<String> assignedPatients) {
+    public void setAssignedPatients(List<Patient> assignedPatients) {
         this.assignedPatients = assignedPatients;
     }
 
@@ -112,9 +112,9 @@ public class Doctor extends Person{
     }
 
     // Method to assign a patient
-    public void assignPatient(String patientId , String doctorId) {
-        assignedPatients.add(patientId);
-        System.out.println(patientId + " assigned to Dr. " + doctorId);
+
+    public void assignPatient() {
+
     }
 
     // Method to remove a patient

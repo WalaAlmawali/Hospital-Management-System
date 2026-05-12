@@ -13,7 +13,8 @@ public class DoctorService {
 
     static List<Doctor> doctors = new ArrayList<>();
     private List<String> availableSlots;
-    private List<String> assignedPatients;
+    private List<Patient> assignedPatients;
+    PatientService patientService = new PatientService();
 
 
     public Doctor addDoctor(){
@@ -220,6 +221,23 @@ public class DoctorService {
 
         return availableDoctors;
     }
+
+    // Overloaded
+    public void assignPatient(String doctorId , String patientId) {
+
+        Patient patient = patientService.getPatientById(patientId);
+
+        for(Doctor doctor : doctors){
+
+            if(doctor.getDoctorId().equals(doctorId)){
+                doctor.getAssignedPatients().add(patient);
+
+                System.out.println("Patient : "+ patientId + " assigned to Dr. " + doctorId);
+            }
+        }
+
+    }
+
 
 
 }
