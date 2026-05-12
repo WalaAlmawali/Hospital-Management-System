@@ -121,7 +121,23 @@ public class InPatient extends Patient implements Displayable, Billable {
     // calculateTotalCharges()
     public double calculateTotalCharges() {
 
-        return calculateStayDuration() * dailyCharges;
+        // Validate daily charges
+        if (HelperUtils.isNegative(dailyCharges)) {
+            System.out.println("Invalid daily charges.");
+            return 0;
+        }
+        // Get stay duration
+        long days = calculateStayDuration();
+
+        // Validate duration
+        if (HelperUtils.isNegative(days)) {
+            System.out.println("Invalid stay duration.");
+            return 0;
+        }
+
+        // Calculate total charges
+        return days * dailyCharges;
+
     }
 
     @Override
