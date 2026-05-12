@@ -31,15 +31,20 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
         System.out.println("Enter doctor Id :");
         String doctorId = scanner.nextLine();
 
-        System.out.println("Enter appointment Date :");
+        System.out.println("Enter appointment Date (yyyy-MM-dd):");
         String appointmentDate = scanner.nextLine();
-        LocalDate date = LocalDate.parse(appointmentDate);
+
+        LocalDate date;
+
+        try {
+            date = LocalDate.parse(appointmentDate);
+        } catch (Exception e) {
+            System.out.println("Invalid date format.");
+            return null;
+        }
 
         System.out.println("Enter appointment Time :");
         String appointmentTime = scanner.nextLine();
-
-       //System.out.println("Enter status :");
-        String status = "Scheduled";
 
         System.out.println("Enter reason :");
         String reason = scanner.nextLine();
@@ -47,9 +52,25 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
         System.out.println("Enter notes :");
         String notes = scanner.nextLine();
 
-            //public Appointment(String notes, String reason, String status, String appointmentTime, LocalDate appointmentDate, String doctorId, String patientId, String appointmentId) {
+        // Validate required fields
+        if (!HelperUtils.isValidString(patientId) ||
+                !HelperUtils.isValidString(doctorId) ||
+                !HelperUtils.isValidString(appointmentTime)) {
 
-            Appointment appointment = new Appointment(notes,reason,status,appointmentTime,date,doctorId,patientId,appointmentID);
+            System.out.println("Invalid input data.");
+            return null;
+        }
+
+        if (HelperUtils.isPastDate(date)) {
+            System.out.println("Appointment date cannot be in the past.");
+            return null;
+        }
+
+        String status = "Scheduled";
+
+
+
+        Appointment appointment = new Appointment(notes,reason,status,appointmentTime,date,doctorId,patientId,appointmentID);
 
 
         return appointment;
