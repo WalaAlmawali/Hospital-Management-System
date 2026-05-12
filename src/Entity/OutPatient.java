@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -63,6 +64,18 @@ public class OutPatient extends Patient implements Displayable {
     // scheduleFollowUp()
     public void scheduleFollowUp(LocalDate followUpDate ) {
 
+        // Validate date using HelperUtils
+        if (!HelperUtils.isValidDate(followUpDate)) {
+            System.out.println("Invalid follow-up date.");
+            return;
+        }
+
+        // Prevent past follow-up dates
+        if (HelperUtils.isPastDate(followUpDate)) {
+            System.out.println("Follow-up date cannot be in the past.");
+            return;
+        }
+
         System.out.println("Follow-up scheduled successfully.");
         System.out.println("Follow-up Date : " + followUpDate);
     }
@@ -70,9 +83,22 @@ public class OutPatient extends Patient implements Displayable {
     // update Visit Count
     public void updateVisitCount(){
 
+        //  validation (ensure object is in valid state)
+        if (!HelperUtils.isValidDate(lastVisitDate)) {
+            System.out.println("Patient record is not initialized properly.");
+            return;
+        }
+
+
+        // Update visit count
         visitCount++;
+
+        // Update last visit date
         lastVisitDate = LocalDate.now();
+
         System.out.println("Visit count updated successfully.");
+        System.out.println("Total Visits: " + visitCount);
+        System.out.println("Last Visit Date: " + lastVisitDate);
 
     }
 }
