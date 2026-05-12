@@ -50,15 +50,30 @@ public class Surgeon extends Doctor{
 
     public boolean  performSurgery(String surgeryType){
 
+        // Validate surgery type input
+        if (surgeryType == null || surgeryType.trim().isEmpty()) {
+            System.out.println("Invalid surgery type.");
+            return false;
+        }
+
         if(!surgeryTypes.contains(surgeryType)){
+
+            System.out.println("Surgery type not authorized: " + surgeryType);
+
             return false;
         }
 
         if(!operationTheatreAccess){
+
+            System.out.println("Access denied: No operation theatre privileges.");
+
             return false;
         }
 
         surgeriesPerformed++;
+
+        System.out.println("Surgery performed successfully: " + surgeryType);
+
         return true;
     }
 
