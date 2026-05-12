@@ -212,6 +212,12 @@ public class Helper {
         return num > 0;
     }
 
+    // Check negative integer
+    public static boolean isNegative(int num) {
+        return num < 0;
+    }
+
+
 
 
 }
