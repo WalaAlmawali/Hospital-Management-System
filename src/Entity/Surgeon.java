@@ -87,12 +87,14 @@ public class Surgeon extends Doctor implements Displayable {
     // updateSurgeryCount()
     public void updateSurgeryCount(int count) {
 
-        if (count < 0) {
+        if (HelperUtils.isValidNumber(count, 0, Integer.MAX_VALUE)) {
             System.out.println("Invalid surgery count.");
             return;
         }
 
         this.surgeriesPerformed = count;
+        System.out.println("Surgery count updated successfully.");
+        System.out.println("Total surgeries performed: " + surgeriesPerformed);
     }
 
     @Override
