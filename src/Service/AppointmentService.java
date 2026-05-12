@@ -1,6 +1,7 @@
 package Service;
 
 import Entity.Appointment;
+import Entity.Doctor;
 import Entity.MedicalRecord;
 
 import java.time.LocalDate;
@@ -12,6 +13,8 @@ public class AppointmentService {
 
     static List<Appointment> appointmentList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
+
+    DoctorService doctorService = new DoctorService();
 
     //add new appointment
     public Appointment addAppointment(){
@@ -285,6 +288,33 @@ public class AppointmentService {
         }
     }
 
+    // Overloaded displayAppointments(String doctorId, LocalDate startDate, LocalDate endDate)
 
+    public void displayAppointments(String doctorId, LocalDate startDate, LocalDate endDate){
+
+
+
+        for(Appointment appointment: appointmentList){
+
+            if(appointment.getDoctorId().equals(doctorId)){
+
+                LocalDate appointmentDate = appointment.getAppointmentDate();
+
+                if ((appointmentDate.isEqual(startDate) || appointmentDate.isAfter(startDate)) &&
+                        (appointmentDate.isEqual(endDate) || appointmentDate.isBefore(endDate))) {
+
+                    appointment.displayInfo();
+
+                }
+
+
+            }
+
+
+
+
+            }
+
+    }
 
 }
