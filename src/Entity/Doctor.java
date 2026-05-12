@@ -147,4 +147,12 @@ public class Doctor extends Person{
     }
 
     // overloaded updateFee(double fee, String reason)
+    public void updateFee(double fee, String reason){
+
+        this.consultationFee = fee;
+
+        System.out.println("consultation Fee updated because of this reason : " + reason );
+
+    }
+
 }
