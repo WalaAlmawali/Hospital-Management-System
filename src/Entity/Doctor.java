@@ -135,4 +135,16 @@ public class Doctor extends Person{
         availableSlots = newSlots;
         System.out.println("Availability updated.");
     }
+
+    // overloaded updateFee(double fee)
+
+    public void updateFee(double fee){
+
+        this.consultationFee = fee;
+
+        System.out.println("consultation Fee updated.");
+
+    }
+
+    // overloaded updateFee(double fee, String reason)
 }
