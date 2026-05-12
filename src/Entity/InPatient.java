@@ -2,6 +2,7 @@ package Entity;
 
 import Behavior.Billable;
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -100,7 +101,16 @@ public class InPatient extends Patient implements Displayable, Billable {
     //calculate Stay Duration
     public long  calculateStayDuration(){
 
-        if (admissionDate == null || dischargeDate == null) {
+        if (HelperUtils.isNull(admissionDate) || HelperUtils.isNull(dischargeDate)) {
+
+            System.out.println("Admission or discharge date is missing.");
+            return 0;
+        }
+
+        // Prevent invalid date order
+        if (dischargeDate.isBefore(admissionDate)) {
+
+            System.out.println("Discharge date cannot be before admission date.");
             return 0;
         }
 
