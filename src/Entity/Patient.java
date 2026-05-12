@@ -140,8 +140,23 @@ public class Patient extends Person implements Displayable {
 
     // Add appointment
     public void addAppointment(Appointment appointment) {
+
+        // Validate appointment
+        if (HelperUtils.isNull(appointment)) {
+            System.out.println("Invalid appointment.");
+            return;
+        }
+
+        //  prevent duplicate appointments
+        if (appointments.contains(appointment)) {
+            System.out.println("Appointment already exists.");
+            return;
+        }
+
+        // Add appointment
         appointments.add(appointment);
-        System.out.println("Appointment added.");
+
+        System.out.println("Appointment added successfully.");
     }
 
     // Update insurance
