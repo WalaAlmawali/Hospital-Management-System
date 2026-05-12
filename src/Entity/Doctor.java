@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -124,7 +125,25 @@ public class Doctor extends Person implements Displayable {
 
     // Method to assign a patient
 
-    public void assignPatient() {
+    public void assignPatient(Patient patient) {
+
+        // Validate patient using HelperUtils
+        if (HelperUtils.isNull(patient)) {
+            System.out.println("Invalid patient.");
+            return;
+        }
+
+        // Check duplicate assignment
+        if (assignedPatients.contains(patient)) {
+            System.out.println("Patient already assigned.");
+            return;
+        }
+
+        // Assign patient
+        assignedPatients.add(patient);
+
+        System.out.println("Patient assigned successfully: "
+                + patient.getPatientId());
 
     }
 
