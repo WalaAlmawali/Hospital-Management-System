@@ -155,4 +155,13 @@ public class Doctor extends Person{
 
     }
 
+    // overloaded addAvailability(String slot)
+    public void  addAvailability(String slot){
+
+        availableSlots.add(slot);
+
+        System.out.println("Availability add successfully.");
+
+    }
+
 }
