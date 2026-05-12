@@ -269,8 +269,12 @@ public class DoctorService {
 
     // Overloaded displayDoctors(String specialization)
     public void displayDoctors(String specialization){
+
         for (Doctor doctor : doctors){
 
+            if(doctor.getSpecialization().equalsIgnoreCase(specialization)){
+                doctor.displayInfo();
+            }
 
         }
 
