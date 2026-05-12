@@ -77,6 +77,12 @@ public class Consultant extends Doctor{
     // provideSecondOpinion()
     public void provideSecondOpinion(String patientCase) {
 
+        // Validate patientCase
+        if (patientCase == null || patientCase.trim().isEmpty()) {
+            System.out.println("Invalid patient case.");
+            return;
+        }
+
         System.out.println("Providing second opinion for case:");
         System.out.println(patientCase);
     }
