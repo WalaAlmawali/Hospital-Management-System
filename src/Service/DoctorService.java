@@ -251,6 +251,8 @@ public class DoctorService {
 
         Doctor doctor = getDoctorById(doctorId);
 
+        List<Patient> patientList = new ArrayList<>();
+
     }
 
 }
