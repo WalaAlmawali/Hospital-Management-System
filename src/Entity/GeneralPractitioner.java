@@ -72,6 +72,18 @@ public class GeneralPractitioner extends Doctor {
     // administerVaccine()
     public void administerVaccine(String patientName, String vaccineName) {
 
+        // Validate patient name
+        if (patientName == null || patientName.trim().isEmpty()) {
+            System.out.println("Invalid patient name.");
+            return;
+        }
+
+        // Validate vaccineName name
+        if (vaccineName == null || vaccineName.trim().isEmpty()) {
+            System.out.println("Invalid vaccine name .");
+            return;
+        }
+
         System.out.println("Vaccine administered successfully.");
         System.out.println("Patient Name : " + patientName);
         System.out.println("Vaccine      : " + vaccineName);
