@@ -188,6 +188,14 @@ public class Appointment {
             return;
         }
 
+        // Store formatted note
+        this.notes =
+                "Added By: " + addedBy +
+                        "\nTimestamp: " + timestamp +
+                        "\nNote: " + notes;
+
+        System.out.println("Notes added successfully ");
+
     }
 
 }
