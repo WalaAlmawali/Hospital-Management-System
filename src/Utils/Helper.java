@@ -7,5 +7,9 @@ public class Helper {
         return obj == null;
     }
 
+    // Check if String is null OR empty
+    public static boolean isNull(String str) {
+        return str == null || str.trim().isEmpty();
+    }
 
 }
