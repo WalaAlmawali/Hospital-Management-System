@@ -251,7 +251,11 @@ public class DoctorService {
 
         Doctor doctor = getDoctorById(doctorId);
 
-        List<Patient> patientList = new ArrayList<>();
+        for(String patientId : patientIds){
+
+            doctor.getAssignedPatients().add(patientService.getPatientById(patientId));
+
+        }
 
     }
 
