@@ -1,6 +1,11 @@
 package Utils;
+import java.util.UUID;
+import java.util.Random;
 
 public class Helper {
+
+    private static final Random random = new Random();
+
 
     // *****Null Check Methods (Overloaded)*****
 
@@ -54,6 +59,23 @@ public class Helper {
         return length >= minLength && length <= maxLength;
     }
 
+   // Validate using regex pattern
+
+    public static boolean isValidString(String str, String regex) {
+
+        if (!isValidString(str) || regex == null) {
+            return false;
+        }
+
+        return str.matches(regex);
+    }
+
+    // *****ID Generation Methods (Overloaded)*****
+
+    // Generate random UUID
+    public static String generateId() {
+        return UUID.randomUUID().toString();
+    }
 
 
 
