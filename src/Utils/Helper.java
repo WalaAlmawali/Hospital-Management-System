@@ -77,6 +77,18 @@ public class Helper {
         return UUID.randomUUID().toString();
     }
 
+    // 2. Generate ID with prefix (e.g., PAT-12345)
+    public static String generateId(String prefix) {
+
+        if (prefix == null || prefix.trim().isEmpty()) {
+            prefix = "ID";
+        }
+
+        int number = 10000 + random.nextInt(90000); // 5-digit number
+
+        return prefix + "-" + number;
+    }
+
 
 
 }
