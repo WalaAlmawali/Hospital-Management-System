@@ -150,8 +150,17 @@ public class Patient extends Person {
 
         System.out.println("Contact phone number and email are updated.");
 
-
     }
 
+    //overloaded updateContact(String phone, String email)
+    public void updateContact(String phone, String email, String address){
+
+        this.setPhoneNumber(phone);
+        this.setEmail(email);
+        this.setAddress(address);
+
+        System.out.println("Contact phone number, email and address are updated.");
+
+    }
 
 }
