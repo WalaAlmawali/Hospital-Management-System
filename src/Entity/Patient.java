@@ -131,6 +131,12 @@ public class Patient extends Person {
     // Update insurance
     public void updateInsurance(String newInsuranceId) {
 
+        // Validate newInsuranceId
+        if (newInsuranceId == null || newInsuranceId.trim().isEmpty()) {
+            System.out.println("newInsuranceId  cannot be empty.");
+            return;
+        }
+
         this.insuranceId = newInsuranceId;
         System.out.println("Insurance updated.");
     }
