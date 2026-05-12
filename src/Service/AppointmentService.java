@@ -243,6 +243,13 @@ public class AppointmentService {
 
     }
 
+    // Overloaded rescheduleAppointment(String appointmentId, LocalDate newDate)
+
+    public void rescheduleAppointment(String appointmentId, LocalDate newDate){
+
+
+    }
+
 
 
 
