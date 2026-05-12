@@ -249,6 +249,7 @@ public class DoctorService {
     // Overloaded assignPatient(String doctorId, List<String> patientIds) - bulk assignment
     public void assignPatient(String doctorId, List<String> patientIds){
 
+        Doctor doctor = getDoctorById(doctorId);
 
     }
 
