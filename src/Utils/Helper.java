@@ -222,5 +222,12 @@ public class Helper {
         return num < 0;
     }
 
+    // *****Input Validation Methods (Overloaded) *****
+
+    // Validate age directly (int)
+    public static boolean isValidAge(int age) {
+
+        return age >= 0 && age <= 120;
+    }
 
 }
