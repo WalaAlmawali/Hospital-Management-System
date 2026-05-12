@@ -1,5 +1,7 @@
 package Entity;
 
+import Behavior.Displayable;
+
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 // Level 2 Inheritance
-public class Patient extends Person {
+public class Patient extends Person implements Displayable {
 
     private String patientId;
     private String bloodGroup;
@@ -113,6 +115,11 @@ public class Patient extends Person {
         System.out.println("patient insuranceId : "+ insuranceId);
         System.out.println("patient medical Records : "+ medicalRecords);
         System.out.println("patient appointments : "+ appointments);
+
+    }
+
+    @Override
+    public void displaySummary() {
 
     }
 

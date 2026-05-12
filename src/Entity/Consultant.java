@@ -1,10 +1,12 @@
 package Entity;
 
+import Behavior.Displayable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Consultant extends Doctor{
+public class Consultant extends Doctor implements Displayable {
 
     private List<String> consultationTypes;
     private boolean onlineConsultationAvailable;
@@ -50,6 +52,11 @@ public class Consultant extends Doctor{
         System.out.println(" online Consultation Available : " + onlineConsultationAvailable);
         System.out.println(" consultation Duration : " + consultationDuration);
 
+
+    }
+
+    @Override
+    public void displaySummary() {
 
     }
 

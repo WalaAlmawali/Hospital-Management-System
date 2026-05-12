@@ -1,5 +1,8 @@
 package Service;
 
+import Behavior.Appointable;
+import Behavior.Manageable;
+import Behavior.Searchable;
 import Entity.Appointment;
 import Entity.Doctor;
 import Entity.MedicalRecord;
@@ -9,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AppointmentService {
+public class AppointmentService implements Manageable,Searchable, Appointable {
 
     static List<Appointment> appointmentList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
@@ -189,6 +192,11 @@ public class AppointmentService {
 
         // cancel Appointment
 
+    @Override
+    public void scheduleAppointment(Appointment appointment) {
+
+    }
+
     public void cancelAppointment(String appointmentId){
 
         for(Appointment appointment : appointmentList){
@@ -317,4 +325,28 @@ public class AppointmentService {
 
     }
 
+    @Override
+    public void add(Object entity) {
+
+    }
+
+    @Override
+    public void remove(String id) {
+
+    }
+
+    @Override
+    public List<Object> getAll() {
+        return List.of();
+    }
+
+    @Override
+    public void search(String keyword) {
+
+    }
+
+    @Override
+    public Object searchById(String id) {
+        return null;
+    }
 }

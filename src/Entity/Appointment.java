@@ -1,9 +1,11 @@
 package Entity;
 
+import Behavior.Displayable;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Appointment {
+public class Appointment implements Displayable {
 
     private String appointmentId;
     private String patientId;
@@ -102,6 +104,11 @@ public class Appointment {
         System.out.println("Status: " + status);
         System.out.println("Reason: " + reason);
         System.out.println("Notes: " + notes);
+    }
+
+    @Override
+    public void displaySummary() {
+        
     }
 
     // reschedule() method

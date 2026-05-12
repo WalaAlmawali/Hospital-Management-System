@@ -1,10 +1,12 @@
 package Entity;
 
+import Behavior.Displayable;
+
 import java.time.LocalDate;
 import java.util.List;
 
 // Level 3 Inheritance
-public class OutPatient extends Patient{
+public class OutPatient extends Patient implements Displayable {
 
     private int visitCount;
     private LocalDate lastVisitDate;
@@ -50,6 +52,11 @@ public class OutPatient extends Patient{
         System.out.println("Visit Count        : " + visitCount);
         System.out.println("Last Visit Date    : " + lastVisitDate);
         System.out.println("Preferred DoctorId : " + preferredDoctorId);
+
+    }
+
+    @Override
+    public void displaySummary() {
 
     }
 

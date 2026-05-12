@@ -1,12 +1,14 @@
 package Entity;
 
+import Behavior.Displayable;
+
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 // Base Class
 
-public class Person {
+public class Person implements Displayable {
     private String id;
     private String firstName;
     private String lastName;
@@ -103,6 +105,11 @@ public class Person {
         System.out.println(" email : " + email);
         System.out.println(" address : " + address);
 
+
+    }
+
+    @Override
+    public void displaySummary() {
 
     }
 

@@ -1,9 +1,11 @@
 package Entity;
 
+import Behavior.Displayable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Department {
+public class Department implements Displayable {
 
     // Fields
     private String departmentId;
@@ -92,6 +94,11 @@ public class Department {
         System.out.println("Nurses: " + nurses);
         System.out.println("Bed Capacity: " + bedCapacity);
         System.out.println("Available Beds: " + availableBeds);
+    }
+
+    @Override
+    public void displaySummary() {
+
     }
 
     // Assign doctor

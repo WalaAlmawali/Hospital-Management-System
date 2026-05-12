@@ -1,9 +1,11 @@
 package Entity;
 
+import Behavior.Displayable;
+
 import java.time.LocalDate;
 import java.util.List;
 
-public class EmergencyPatient extends InPatient{
+public class EmergencyPatient extends InPatient implements Displayable {
 
     private String emergencyType;
     private String arrivalMode; // Ambulance / Walk-in
@@ -63,6 +65,11 @@ public class EmergencyPatient extends InPatient{
         System.out.println("Arrival Mode   : " + arrivalMode);
         System.out.println("Triage Level   : " + triageLevel);
         System.out.println("Admitted Via ER: " + admittedViaER);
+
+    }
+
+    @Override
+    public void displaySummary() {
 
     }
 }

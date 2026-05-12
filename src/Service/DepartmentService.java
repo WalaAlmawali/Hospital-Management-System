@@ -1,5 +1,7 @@
 package Service;
 
+import Behavior.Manageable;
+import Behavior.Searchable;
 import Entity.Appointment;
 import Entity.Department;
 import Entity.Doctor;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DepartmentService {
+public class DepartmentService implements Manageable, Searchable {
 
     Scanner scanner = new Scanner(System.in);
 
@@ -134,4 +136,28 @@ public class DepartmentService {
 
         }
 
+    @Override
+    public void add(Object entity) {
+
+    }
+
+    @Override
+    public void remove(String id) {
+
+    }
+
+    @Override
+    public List<Object> getAll() {
+        return List.of();
+    }
+
+    @Override
+    public void search(String keyword) {
+
+    }
+
+    @Override
+    public Object searchById(String id) {
+        return null;
+    }
 }

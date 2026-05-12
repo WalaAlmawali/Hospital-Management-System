@@ -1,11 +1,14 @@
 package Entity;
 
+import Behavior.Billable;
+import Behavior.Displayable;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 // Level 3 Inheritance
-public class InPatient extends Patient{
+public class InPatient extends Patient implements Displayable, Billable {
 
     private LocalDate admissionDate;
     private LocalDate dischargeDate;
@@ -89,6 +92,11 @@ public class InPatient extends Patient{
         System.out.println("Total Charges      : " + calculateTotalCharges());
     }
 
+    @Override
+    public void displaySummary() {
+
+    }
+
     //calculate Stay Duration
     public long  calculateStayDuration(){
 
@@ -104,5 +112,20 @@ public class InPatient extends Patient{
     public double calculateTotalCharges() {
 
         return calculateStayDuration() * dailyCharges;
+    }
+
+    @Override
+    public double calculateCharges() {
+        return 0;
+    }
+
+    @Override
+    public void generateBill() {
+
+    }
+
+    @Override
+    public boolean processPayment(double amount) {
+        return false;
     }
 }

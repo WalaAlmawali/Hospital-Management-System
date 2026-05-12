@@ -1,11 +1,13 @@
 package Entity;
 
+import Behavior.Displayable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 // Level 3 Inheritance
-public class Surgeon extends Doctor{
+public class Surgeon extends Doctor implements Displayable {
 
     private int surgeriesPerformed;
     private List<String> surgeryTypes;

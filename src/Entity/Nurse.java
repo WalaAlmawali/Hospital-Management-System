@@ -1,11 +1,13 @@
 package Entity;
 
+import Behavior.Displayable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 // Level 2 Inheritance
-public class Nurse extends Person {
+public class Nurse extends Person implements Displayable {
 
     // Nurse-specific fields
     private String nurseId;
@@ -75,6 +77,11 @@ public class Nurse extends Person {
         System.out.println("Shift: " + shift);
         System.out.println("Qualification: " + qualification);
         System.out.println("Assigned Patients: " + assignedPatients);
+    }
+
+    @Override
+    public void displaySummary() {
+
     }
 
     // Method to assign patient
