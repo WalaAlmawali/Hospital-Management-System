@@ -178,18 +178,21 @@ public class Patient extends Person implements Displayable {
     public void updateContact(String phone){
 
         // Validate phone number
-        if (phone == null || phone.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(phone)) {
             System.out.println("Phone number cannot be empty.");
             return;
         }
 
-        if (!phone.matches("\\d+")) {
+        // Validate numeric format using HelperUtils regex method
+        if (!HelperUtils.isValidString(phone, "\\d+")) {
             System.out.println("Invalid phone number format. Only digits are allowed.");
             return;
         }
 
+        // Update phone
         this.setPhoneNumber(phone);
-        System.out.println("Contact phone number is updated.");
+
+        System.out.println("Contact phone number is updated successfully");
 
     }
 
