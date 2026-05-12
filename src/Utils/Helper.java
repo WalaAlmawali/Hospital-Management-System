@@ -1,4 +1,5 @@
 package Utils;
+import java.time.LocalDate;
 import java.util.UUID;
 import java.util.Random;
 
@@ -124,6 +125,15 @@ public class Helper {
 
         return prefix + "-" + number + "-" + suffix;
     }
+
+    // *****Date Validation Methods (Overloaded)*****
+
+    // 1. Check not null date
+    public static boolean isValidDate(LocalDate date) {
+        return date != null;
+    }
+
+
 
 
 }
