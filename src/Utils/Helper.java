@@ -190,5 +190,11 @@ public class Helper {
         return date.isEqual(LocalDate.now());
     }
 
+    // *****Numeric Validation Methods (Overloaded)*****
+
+    // Integer range validation
+    public static boolean isValidNumber(int num, int min, int max) {
+        return num >= min && num <= max;
+    }
 
 }
