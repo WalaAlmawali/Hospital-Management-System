@@ -222,7 +222,7 @@ public class DoctorService {
         return availableDoctors;
     }
 
-    // Overloaded
+    // Overloaded assignPatient(String doctorId , String patientId)
     public void assignPatient(String doctorId , String patientId) {
 
         Patient patient = patientService.getPatientById(patientId);
@@ -238,6 +238,12 @@ public class DoctorService {
 
     }
 
+    // Overloaded assignPatient(Doctor doctor, Patient patient)
+    public void assignPatient(Doctor doctor ,  Patient patient) {
+
+
+
+    }
 
 
 }
