@@ -148,9 +148,15 @@ public class Doctor extends Person implements Displayable {
     }
 
     // Method to remove a patient
-    public void removePatient(String patientId,String doctorId) {
-        if (assignedPatients.remove(patientId)) {
-            System.out.println(doctorId + " removed from Dr. " + doctorId);
+    public void removePatient(Patient patient) {
+
+        if(HelperUtils.isNull(patient)){
+            System.out.println("Invalid patient.");
+            return;
+        }
+
+        if (assignedPatients.remove(patient)) {
+            System.out.println(" patient removed successfully");
         } else {
             System.out.println("Patient not found.");
         }
