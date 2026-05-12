@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -88,13 +89,13 @@ public class Nurse extends Person implements Displayable {
     public void assignPatient(Patient patient ,String nurseId ) {
 
         // Validate patient object
-        if (patient == null) {
+        if (HelperUtils.isNull(patient)) {
             System.out.println("Invalid patient.");
             return;
         }
 
         // Validate nurse ID
-        if (nurseId == null || nurseId.trim().isEmpty()) {
+        if (HelperUtils.isValidString(nurseId)) {
             System.out.println("Invalid nurse ID.");
             return;
         }
