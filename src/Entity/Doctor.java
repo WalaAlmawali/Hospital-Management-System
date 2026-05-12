@@ -150,6 +150,7 @@ public class Doctor extends Person implements Displayable {
     // Method to remove a patient
     public void removePatient(Patient patient) {
 
+        // Check if patient not null
         if(HelperUtils.isNull(patient)){
             System.out.println("Invalid patient.");
             return;
@@ -164,8 +165,15 @@ public class Doctor extends Person implements Displayable {
 
     // Method to update availability
     public void updateAvailability(List<String> newSlots) {
-        availableSlots = newSlots;
-        System.out.println("Availability updated.");
+
+        //Check if new list isnull
+        if(HelperUtils.isNull(newSlots)){
+            System.out.println("Invalid list");
+            return;
+        }
+
+        availableSlots = new ArrayList<>(newSlots);
+        System.out.println("Availability updated successfully");
     }
 
     // overloaded updateFee(double fee)
@@ -173,7 +181,7 @@ public class Doctor extends Person implements Displayable {
     public void updateFee(double fee){
 
         // Validate fee amount
-        if (fee < 0) {
+        if (HelperUtils.isNegative(fee)) {
             System.out.println("Fee cannot be negative.");
             return;
         }
@@ -188,13 +196,13 @@ public class Doctor extends Person implements Displayable {
     public void updateFee(double fee, String reason){
 
         // Validate fee
-        if (fee < 0) {
+        if (HelperUtils.isNegative(fee)) {
             System.out.println("Fee cannot be negative.");
             return;
         }
 
         // Validate reason
-        if (reason == null || reason.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(reason)) {
             System.out.println("Reason cannot be empty.");
             return;
         }
@@ -209,7 +217,7 @@ public class Doctor extends Person implements Displayable {
     public void  addAvailability(String slot){
 
         // Validate slot
-        if (slot == null || slot.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(slot)) {
             System.out.println("Availability slot cannot be empty.");
             return;
         }
@@ -224,7 +232,7 @@ public class Doctor extends Person implements Displayable {
     public void addAvailability(List<String> slots){
 
         // Check if the list is empty
-        if (slots == null || slots.isEmpty()) {
+        if (HelperUtils.isNull(slots)) {
             System.out.println("No availability slots provided.");
             return;
         }
