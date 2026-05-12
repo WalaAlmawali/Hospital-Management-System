@@ -281,16 +281,25 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     public void cancelAppointment(String appointmentId){
 
+        // Validate input
+        if (!HelperUtils.isValidString(appointmentId)) {
+            System.out.println("Invalid appointment ID.");
+            return;
+        }
+
+        // Search and cancel
         for(Appointment appointment : appointmentList){
 
             if(appointment.getAppointmentId().equals(appointmentId)){
                 appointment.setStatus("Cancelled");
+
+                System.out.println("Appointment cancelled successfully.");
+                return;
             }
         }
+            System.out.println("Appointment not found.");
 
-        }
-
-        // Overloaded createAppointment(String patientId, String doctorId, LocalDate date)
+     }
 
     public void createAppointment(String patientId, String doctorId, LocalDate date){
 
