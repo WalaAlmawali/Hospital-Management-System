@@ -194,5 +194,24 @@ public class AppointmentService {
 
         }
 
+        // Overloaded createAppointment(String patientId, String doctorId, LocalDate date)
+
+    public void createAppointment(String patientId, String doctorId, LocalDate date){
+
+        Appointment appointment = new Appointment();
+
+        appointment.setPatientId(patientId);
+
+        appointment.setDoctorId(doctorId);
+
+        appointment.setAppointmentDate(date);
+
+        appointmentList.add(appointment);
+
+        System.out.println("Appointment add successfully");
+
+
+    }
+
 
 }

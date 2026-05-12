@@ -23,6 +23,10 @@ public class Appointment {
         this.patientId = patientId;
         this.appointmentId = appointmentId;
     }
+    public Appointment(){
+
+
+    }
 
     public String getAppointmentId() {
         return appointmentId;
