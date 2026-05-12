@@ -145,6 +145,11 @@ public class Patient extends Person {
     //overloaded updateContact(String phone, String email)
     public void updateContact(String phone, String email){
 
+        this.setPhoneNumber(phone);
+        this.setEmail(email);
+
+        System.out.println("Contact phone number and email are updated.");
+
 
     }
 
