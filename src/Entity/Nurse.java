@@ -104,12 +104,28 @@ public class Nurse extends Person {
     }
 
     // Method to remove patient
-    public void removePatient(String patientId ,String nurseId) {
-        if (assignedPatients.remove(patientId)) {
-            System.out.println(patientId + " removed from Nurse " + nurseId);
-        } else {
-            System.out.println("Patient not found.");
+    public void removePatient(Patient patient ,String nurseId) {
+
+        // Validate patient
+        if (patient == null) {
+            System.out.println("Invalid patient.");
+            return;
         }
+
+        // Validate nurse ID
+        if (nurseId == null || nurseId.trim().isEmpty()) {
+            System.out.println("Invalid nurse ID.");
+            return;
+        }
+
+        // Remove patient from assigned list
+        if (assignedPatients.remove(patient)) {
+            System.out.println("Patient " + patient.getPatientId()
+                    + " removed from Nurse " + nurseId);
+        } else {
+            System.out.println("Patient not found for Nurse " + nurseId);
+        }
+
     }
 
 }
