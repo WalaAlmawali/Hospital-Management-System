@@ -32,8 +32,8 @@ public class AppointmentService {
         System.out.println("Enter appointment Time :");
         String appointmentTime = scanner.nextLine();
 
-        System.out.println("Enter status :");
-        String status = scanner.nextLine();
+       //System.out.println("Enter status :");
+        String status = "Scheduled";
 
         System.out.println("Enter reason :");
         String reason = scanner.nextLine();
@@ -173,9 +173,12 @@ public class AppointmentService {
     public void rescheduleAppointment(String appointmentId, LocalDate newDate, String newTime){
 
         for(Appointment appointment : appointmentList){
+
             if(appointment.getAppointmentId().equals(appointmentId)){
+
                 appointment.setAppointmentDate(newDate);
                 appointment.setAppointmentTime(newTime);
+                appointment.setStatus("Rescheduled");
             }
         }
 
@@ -205,6 +208,8 @@ public class AppointmentService {
         appointment.setDoctorId(doctorId);
 
         appointment.setAppointmentDate(date);
+
+        appointment.setStatus("Scheduled");
 
         appointmentList.add(appointment);
 
@@ -247,10 +252,28 @@ public class AppointmentService {
 
     public void rescheduleAppointment(String appointmentId, LocalDate newDate){
 
+        Appointment appointment = getAppointment(appointmentId);
+        appointment.setAppointmentDate(newDate);
+
+        appointment.setStatus("Rescheduled");
+        System.out.println("Appointment rescheduled successfully.");
+
+    }
+
+    // Overloaded rescheduleAppointment(Appointment appointment, LocalDate newDate, String newTime, String reason)
+
+    public void rescheduleAppointment(Appointment appointment, LocalDate newDate, String newTime, String reason){
+
+        appointment.setAppointmentDate(newDate);
+        appointment.setAppointmentTime(newTime);
+        appointment.setReason(reason);
+        appointment.setStatus("Rescheduled");
+
+        System.out.println("Appointment rescheduled successfully.");
+
 
     }
 
 
 
-
-    }
+}
