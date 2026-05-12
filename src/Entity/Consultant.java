@@ -57,6 +57,12 @@ public class Consultant extends Doctor{
 
     public void scheduleConsultation(String consultationType, boolean online) {
 
+        // Validate consultation type
+        if (consultationType == null || consultationType.trim().isEmpty()) {
+            System.out.println("Invalid consultation type.");
+            return;
+        }
+
         if (!consultationTypes.contains(consultationType)) {
             System.out.println("Consultation type not available.");
             return;
