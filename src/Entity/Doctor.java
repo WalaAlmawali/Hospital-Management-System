@@ -164,4 +164,19 @@ public class Doctor extends Person{
 
     }
 
+    // overloaded addAvailability(List<String> slots)
+    public void addAvailability(List<String> slots){
+
+        // Check if the list is empty
+        if (slots == null || slots.isEmpty()) {
+            System.out.println("No availability slots provided.");
+            return;
+        }
+
+        // Add each slot to doctor's availability schedule
+        availableSlots.addAll(slots);
+
+
+    }
+
 }
