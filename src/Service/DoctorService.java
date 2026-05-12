@@ -1,5 +1,6 @@
 package Service;
 
+import Entity.Department;
 import Entity.Doctor;
 import Entity.Patient;
 
@@ -15,6 +16,7 @@ public class DoctorService {
     private List<String> availableSlots;
     private List<Patient> assignedPatients;
     PatientService patientService = new PatientService();
+    DepartmentService departmentService = new DepartmentService();
 
 
     public Doctor addDoctor(){
@@ -282,6 +284,21 @@ public class DoctorService {
 
     // Overloaded displayDoctors(String departmentId, boolean showAvailableOnly)
 public void displayDoctors(String departmentId, boolean showAvailableOnly){
+
+    Department department = departmentService.getDepartment(departmentId) ;
+
+        if(showAvailableOnly){
+
+            List<Doctor> availableDoctors = department.getDoctors();
+
+            for(Doctor doctor : availableDoctors){
+
+                if(!doctor.getAvailableSlots().isEmpty()){
+
+                    doctor.displayInfo();
+                }
+            }
+        }
 
 
 }
