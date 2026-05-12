@@ -182,6 +182,12 @@ public class Appointment {
             return;
         }
 
+        // Validate timestamp
+        if (timestamp == null) {
+            System.out.println("Timestamp cannot be null.");
+            return;
+        }
+
     }
 
 }
