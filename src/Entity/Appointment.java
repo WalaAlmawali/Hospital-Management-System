@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.Helper;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -108,11 +109,29 @@ public class Appointment implements Displayable {
 
     @Override
     public void displaySummary() {
-        
+
     }
 
     // reschedule() method
     public void reschedule(LocalDate newDate, String newTime) {
+
+        if(!Helper.isValidDate(newDate)){
+            System.out.println("Invalid appointment date.");
+            return;
+        }
+
+        // Check if date is in the past
+        if (Helper.isPastDate(newDate)) {
+            System.out.println("Appointment date cannot be in the past.");
+            return;
+        }
+
+        // Check if time is valid
+
+        if(!Helper.isValidString(newTime)){
+            System.out.println("Invalid appointment time.");
+            return;
+        }
 
         this.appointmentDate = newDate;
         this.appointmentTime = newTime;
@@ -140,7 +159,7 @@ public class Appointment implements Displayable {
     public void addNotes(String notes){
 
         // Check if notes are empty
-        if (notes == null || notes.trim().isEmpty()) {
+        if(!Helper.isValidString(notes)){
             System.out.println("Notes cannot be empty.");
             return;
         }
@@ -157,12 +176,13 @@ public class Appointment implements Displayable {
     public void addNotes(String notes, String addedBy){
 
         // Check if notes are empty
-        if (notes == null || notes.trim().isEmpty()) {
+        if(!Helper.isValidString(notes)){
             System.out.println("Notes cannot be empty.");
             return;
         }
 
-        if (addedBy == null || addedBy.trim().isEmpty()) {
+        // Check if addedBy is empty
+        if (!Helper.isValidString(addedBy)) {
             System.out.println("AddedBy field cannot be empty.");
             return;
         }
@@ -178,20 +198,21 @@ public class Appointment implements Displayable {
 
     public void addNotes(String notes, String addedBy, LocalDateTime timestamp){
 
-        // Validate notes
-        if (notes == null || notes.trim().isEmpty()) {
+        // Check if notes are empty
+        if(!Helper.isValidString(notes)){
             System.out.println("Notes cannot be empty.");
             return;
         }
 
-        // Validate addedBy
-        if (addedBy == null || addedBy.trim().isEmpty()) {
+
+        // Check if addedBy is empty
+        if (!Helper.isValidString(addedBy)) {
             System.out.println("AddedBy field cannot be empty.");
             return;
         }
 
         // Validate timestamp
-        if (timestamp == null) {
+        if (!Helper.isValidDate(timestamp.toLocalDate())) {
             System.out.println("Timestamp cannot be null.");
             return;
         }

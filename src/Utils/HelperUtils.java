@@ -130,12 +130,12 @@ public class Helper {
 
     // *****Date Validation Methods (Overloaded)*****
 
-    // 1. Check not null date
+    //  Check not null date
     public static boolean isValidDate(LocalDate date) {
         return date != null;
     }
 
-    // 2. Validate date string (parse check)
+    //  Validate date string (parse check)
     public static boolean isValidDate(String dateStr) {
 
         if (dateStr == null || dateStr.trim().isEmpty()) {
