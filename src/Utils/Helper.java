@@ -108,6 +108,22 @@ public class Helper {
         return prefix + "-" + number;
     }
 
+    // Generate ID with prefix and suffix
+
+    public static String generateId(String prefix, String suffix) {
+
+        if (prefix == null || prefix.trim().isEmpty()) {
+            prefix = "ID";
+        }
+
+        if (suffix == null || suffix.trim().isEmpty()) {
+            suffix = "END";
+        }
+
+        int number = 1000 + random.nextInt(9000); // 4-digit number
+
+        return prefix + "-" + number + "-" + suffix;
+    }
 
 
 }
