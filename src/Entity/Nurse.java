@@ -115,13 +115,13 @@ public class Nurse extends Person implements Displayable {
     public void removePatient(Patient patient ,String nurseId) {
 
         // Validate patient
-        if (patient == null) {
+        if (HelperUtils.isNull(patient)) {
             System.out.println("Invalid patient.");
             return;
         }
 
         // Validate nurse ID
-        if (nurseId == null || nurseId.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(nurseId)) {
             System.out.println("Invalid nurse ID.");
             return;
         }
