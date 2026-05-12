@@ -140,9 +140,15 @@ public class Doctor extends Person{
 
     public void updateFee(double fee){
 
+        // Validate fee amount
+        if (fee < 0) {
+            System.out.println("Fee cannot be negative.");
+            return;
+        }
+
         this.consultationFee = fee;
 
-        System.out.println("consultation Fee updated.");
+        System.out.println("Fee updated successfully");
 
     }
 
