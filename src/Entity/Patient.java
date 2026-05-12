@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
@@ -125,8 +126,16 @@ public class Patient extends Person implements Displayable {
 
     // Add medical record
     public void addMedicalRecord(MedicalRecord record){
+
+        // Validate record
+        if (HelperUtils.isNull(record)) {
+            System.out.println("Invalid medical record.");
+            return;
+        }
+
+        // Add record
         medicalRecords.add(record);
-        System.out.println("Medical record added.");
+        System.out.println("Medical record added successfully.");
     }
 
     // Add appointment
