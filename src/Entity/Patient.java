@@ -163,16 +163,18 @@ public class Patient extends Person implements Displayable {
     public void updateInsurance(String newInsuranceId) {
 
         // Validate newInsuranceId
-        if (newInsuranceId == null || newInsuranceId.trim().isEmpty()) {
-            System.out.println("newInsuranceId  cannot be empty.");
+        if (!HelperUtils.isValidString(newInsuranceId)) {
+            System.out.println("Insurance ID cannot be empty.");
             return;
         }
 
         this.insuranceId = newInsuranceId;
-        System.out.println("Insurance updated.");
-    }
-     //overloaded updateContact(String phone)
 
+        System.out.println("Insurance updated successfully.");
+    }
+
+
+    //overloaded updateContact(String phone)
     public void updateContact(String phone){
 
         // Validate phone number
