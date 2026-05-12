@@ -217,7 +217,10 @@ public class Helper {
         return num < 0;
     }
 
-
+    // Check negative double
+    public static boolean isNegative(double num) {
+        return num < 0;
+    }
 
 
 }
