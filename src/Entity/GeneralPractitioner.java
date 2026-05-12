@@ -76,13 +76,13 @@ public class GeneralPractitioner extends Doctor implements Displayable{
     public void administerVaccine(String patientName, String vaccineName) {
 
         // Validate patient name
-        if (patientName == null || patientName.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(patientName)) {
             System.out.println("Invalid patient name.");
             return;
         }
 
         // Validate vaccineName name
-        if (vaccineName == null || vaccineName.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(vaccineName)) {
             System.out.println("Invalid vaccine name .");
             return;
         }
