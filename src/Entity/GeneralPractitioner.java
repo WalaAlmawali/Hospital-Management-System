@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -54,13 +55,13 @@ public class GeneralPractitioner extends Doctor implements Displayable{
     public void scheduleHomeVisit(String patientName, String address) {
 
         // Validate patient name
-        if (patientName == null || patientName.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(patientName)) {
             System.out.println("Invalid patient name.");
             return;
         }
 
         // Validate address
-        if (address == null || address.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(address)) {
             System.out.println("Invalid address.");
             return;
         }
