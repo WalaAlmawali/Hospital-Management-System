@@ -202,5 +202,10 @@ public class Helper {
         return num >= min && num <= max;
     }
 
+    // Check positive integer
+    public static boolean isPositive(int num) {
+        return num > 0;
+    }
+
 
 }
