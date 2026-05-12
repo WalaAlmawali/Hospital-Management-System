@@ -108,6 +108,12 @@ public class Department {
     // Assign nurse
     public void assignNurse(Nurse nurse) {
 
+        // Validate nurse object
+        if (nurse == null) {
+            System.out.println("Invalid nurse.");
+            return;
+        }
+
         if (!nurses.contains(nurse)) {
             nurses.add(nurse);
             System.out.println("Nurse assigned successfully.");
