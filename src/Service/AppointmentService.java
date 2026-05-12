@@ -278,6 +278,10 @@ public class AppointmentService {
 
         for(Appointment appointment: appointmentList){
 
+            if(appointment.getAppointmentDate().equals(date)){
+
+                appointment.displayInfo();
+            }
         }
     }
 
