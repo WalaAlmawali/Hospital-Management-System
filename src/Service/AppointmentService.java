@@ -271,7 +271,14 @@ public class AppointmentService {
 
         System.out.println("Appointment rescheduled successfully.");
 
+    }
 
+    // Overloaded displayAppointments(LocalDate date)
+    public void displayAppointments(LocalDate date){
+
+        for(Appointment appointment: appointmentList){
+
+        }
     }
 
 
