@@ -6,6 +6,7 @@ import Behavior.Searchable;
 import Entity.Appointment;
 import Entity.Doctor;
 import Entity.MedicalRecord;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,8 +23,7 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
     //add new appointment
     public Appointment addAppointment(){
 
-        System.out.println("Enter appointment Id :");
-        String appointmentId = scanner.nextLine();
+        String appointmentID = HelperUtils.generateId();
 
         System.out.println("Enter patient Id :");
         String patientId = scanner.nextLine();
@@ -47,13 +47,16 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
         System.out.println("Enter notes :");
         String notes = scanner.nextLine();
 
-        Appointment appointment = new Appointment(notes,reason,status,appointmentTime,date,doctorId,patientId,appointmentId);
+            //public Appointment(String notes, String reason, String status, String appointmentTime, LocalDate appointmentDate, String doctorId, String patientId, String appointmentId) {
+
+            Appointment appointment = new Appointment(notes,reason,status,appointmentTime,date,doctorId,patientId,appointmentID);
 
 
         return appointment;
     }
 
     public List<Appointment> addAppointments(){
+
         Boolean continueFlag = true;
         while (continueFlag) {
 
@@ -73,7 +76,13 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     public void editAppointment(String appointmentId){
 
+        if(!HelperUtils.isValidString(appointmentId)){
+            System.out.println(" Invalid appointmentId");
+            return;
+        }
+
         for(Appointment appointment : appointmentList){
+
             if(appointment.getAppointmentId().equals(appointmentId)){
 
                 System.out.println("Enter updated patient Id :");
@@ -111,6 +120,11 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
     // Delete appointment by ID
     public void removeAppointment(String appointmentId ){
 
+        if(!HelperUtils.isValidString(appointmentId)){
+            System.out.println("Invalid appointmentId");
+            return;
+        }
+
         appointmentList.removeIf(A -> A.getAppointmentId() == appointmentId);
         System.out.println("Appointment removed successfully");
 
@@ -119,6 +133,11 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     //retrieve appointment
     public Appointment getAppointment(String appointmentId){
+
+        if(!HelperUtils.isValidString(appointmentId)){
+            System.out.println("Invalid appointmentId");
+            return null;
+        }
 
         for(Appointment appointment: appointmentList){
             if(appointment.getAppointmentId().equals(appointmentId)){
@@ -133,6 +152,12 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
     //get Appointments By Patient
 
     public List<Appointment> getAppointmentsByPatient(String patientId){
+
+        if(!HelperUtils.isValidString(patientId)){
+            System.out.println("Invalid patientId");
+            return null;
+        }
+
         List<Appointment> patientAppointments = new ArrayList<>();
 
         for(Appointment appointment : appointmentList){
@@ -149,6 +174,11 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     public List<Appointment> getAppointmentsByDoctor(String doctorId) {
 
+        if(!HelperUtils.isValidString(doctorId)){
+            System.out.println("Invalid doctorId");
+            return null;
+        }
+
         List<Appointment> doctorAppointments = new ArrayList<>();
 
         for(Appointment appointment : appointmentList){
@@ -164,6 +194,11 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     public List<Appointment> getAppointmentsByDate(LocalDate date){
 
+        if(!HelperUtils.isValidDate(date)){
+            System.out.println("Invalid date");
+            return null;
+        }
+
         List<Appointment> dateAppointments = new ArrayList<>();
 
         for(Appointment appointment : appointmentList){
@@ -178,6 +213,21 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
         // reschedule Appointment
     public void rescheduleAppointment(String appointmentId, LocalDate newDate, String newTime){
 
+        // Validate inputs
+        if (!HelperUtils.isValidString(appointmentId)) {
+            System.out.println("Invalid appointment ID.");
+            return;
+        }
+
+        if (!HelperUtils.isValidDate(newDate) || HelperUtils.isPastDate(newDate)) {
+            System.out.println("Invalid appointment date.");
+            return;
+        }
+
+        if (!HelperUtils.isValidString(newTime)) {
+            System.out.println("Invalid appointment time.");
+            return;
+        }
         for(Appointment appointment : appointmentList){
 
             if(appointment.getAppointmentId().equals(appointmentId)){
@@ -185,10 +235,14 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
                 appointment.setAppointmentDate(newDate);
                 appointment.setAppointmentTime(newTime);
                 appointment.setStatus("Rescheduled");
+
+                System.out.println("Appointment rescheduled successfully.");
+                return;
             }
         }
+        System.out.println("Appointment not found.");
 
-        }
+    }
 
         // cancel Appointment
 
