@@ -12,7 +12,7 @@ public class Nurse extends Person {
     private String departmentId;
     private String shift; // Morning / Evening / Night
     private String qualification;
-    private List<String> assignedPatients;
+    private List<Patient> assignedPatients;
 
     public String getNurseId() {
         return nurseId;
@@ -46,11 +46,11 @@ public class Nurse extends Person {
         this.qualification = qualification;
     }
 
-    public List<String> getAssignedPatients() {
+    public List<Patient> getAssignedPatients() {
         return assignedPatients;
     }
 
-    public void setAssignedPatients(List<String> assignedPatients) {
+    public void setAssignedPatients(List<Patient> assignedPatients) {
         this.assignedPatients = assignedPatients;
     }
 
@@ -78,9 +78,29 @@ public class Nurse extends Person {
     }
 
     // Method to assign patient
-    public void assignPatient(String patientId ,String nurseId ) {
-        assignedPatients.add(patientId);
-        System.out.println(patientId + " assigned to Nurse " + nurseId);
+    public void assignPatient(Patient patient ,String nurseId ) {
+
+        // Validate patient object
+        if (patient == null) {
+            System.out.println("Invalid patient.");
+            return;
+        }
+
+        // Validate nurse ID
+        if (nurseId == null || nurseId.trim().isEmpty()) {
+            System.out.println("Invalid nurse ID.");
+            return;
+        }
+
+        // Check if patient already assigned
+        if (assignedPatients.contains(patient)) {
+            System.out.println("Patient " + patient.getPatientId() + " is already assigned.");
+            return;
+        }
+
+        assignedPatients.add(patient);
+        System.out.println("Patient " + patient.getPatientId()
+                + " assigned to Nurse " + nurseId);
     }
 
     // Method to remove patient
