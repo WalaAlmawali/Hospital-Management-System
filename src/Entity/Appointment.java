@@ -144,4 +144,25 @@ public class Appointment {
 
     }
 
+    // overloaded addNotes(String notes, String addedBy)
+
+    public void addNotes(String notes, String addedBy){
+        // Check if notes are empty
+        if (notes == null || notes.trim().isEmpty()) {
+            System.out.println("Notes cannot be empty.");
+            return;
+        }
+
+        if (addedBy == null || addedBy.trim().isEmpty()) {
+            System.out.println("AddedBy field cannot be empty.");
+            return;
+        }
+
+        // Add notes
+        this.notes = notes + " , Added By:" + addedBy;
+
+        System.out.println("Notes added successfully ");
+
+    }
+
 }
