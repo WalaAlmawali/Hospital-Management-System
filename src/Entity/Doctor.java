@@ -155,9 +155,21 @@ public class Doctor extends Person{
     // overloaded updateFee(double fee, String reason)
     public void updateFee(double fee, String reason){
 
+        // Validate fee
+        if (fee < 0) {
+            System.out.println("Fee cannot be negative.");
+            return;
+        }
+
+        // Validate reason
+        if (reason == null || reason.trim().isEmpty()) {
+            System.out.println("Reason cannot be empty.");
+            return;
+        }
+
         this.consultationFee = fee;
 
-        System.out.println("consultation Fee updated because of this reason : " + reason );
+        System.out.println("Fee updated successfully because of this reason : " + reason );
 
     }
 
