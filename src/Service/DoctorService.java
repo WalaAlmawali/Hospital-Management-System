@@ -259,4 +259,12 @@ public class DoctorService {
 
     }
 
+    //Overloaded displayDoctors()
+    public void displayDoctors(){
+
+        for (Doctor doctor : doctors){
+            doctor.displayInfo();
+        }
+    }
+
 }
