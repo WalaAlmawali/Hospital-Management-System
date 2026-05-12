@@ -170,5 +170,15 @@ public class Helper {
         return date.isAfter(LocalDate.now());
     }
 
+    // 5. Check past date
+    public static boolean isPastDate(LocalDate date) {
+
+        if (date == null) {
+            return false;
+        }
+
+        return date.isBefore(LocalDate.now());
+    }
+
 
 }
