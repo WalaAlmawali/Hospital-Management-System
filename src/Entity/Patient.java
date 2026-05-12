@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// Level 2 Inheritance
 public class Patient extends Person {
 
     private String patientId;
@@ -17,7 +18,10 @@ public class Patient extends Person {
     private List<MedicalRecord> medicalRecords;
     private List <Appointment>appointments;
 
+    // Constructor chaining to Person
     public Patient(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address, String patientId, String bloodGroup, List<String> allergies, String emergencyContact, LocalDate registrationDate, List<MedicalRecord> medicalRecords, String insuranceId, List<Appointment> appointments) {
+
+        // Calls Person constructor
         super(id, firstName, dateOfBirth, lastName, gender, phoneNumber, email, address);
 
         this.patientId = patientId;
@@ -129,5 +133,20 @@ public class Patient extends Person {
         this.insuranceId = newInsuranceId;
         System.out.println("Insurance updated.");
     }
+     //overloaded updateContact(String phone)
+
+    public void updateContact(String phone){
+
+        this.setPhoneNumber(phone);
+        System.out.println("Contact phone number is updated.");
+
+    }
+
+    //overloaded updateContact(String phone, String email)
+    public void updateContact(String phone, String email){
+
+
+    }
+
 
 }

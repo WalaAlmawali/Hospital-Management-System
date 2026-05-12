@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+// Level 2 Inheritance
 public class Nurse extends Person {
 
     // Nurse-specific fields
@@ -53,8 +54,10 @@ public class Nurse extends Person {
         this.assignedPatients = assignedPatients;
     }
 
-    // Constructor with constructor chaining
+    // Constructor chaining to Person
     public Nurse(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address, String nurseId, String departmentId, String shift, String qualification, List<String> assignedPatients) {
+
+        // Calls Person constructor
         super(id, firstName, dateOfBirth, lastName, gender, phoneNumber, email, address);
         this.nurseId = nurseId;
         this.departmentId = departmentId;

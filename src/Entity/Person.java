@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
+// Base Class
+
 public class Person {
     private String id;
     private String firstName;
