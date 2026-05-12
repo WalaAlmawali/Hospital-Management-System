@@ -158,6 +158,29 @@ public class Patient extends Person {
     //overloaded updateContact(String phone, String email)
     public void updateContact(String phone, String email){
 
+        // Validate phone number
+        if (phone == null || phone.trim().isEmpty()) {
+            System.out.println("Phone number cannot be empty.");
+            return;
+        }
+
+        if (!phone.matches("\\d+")) {
+            System.out.println("Invalid phone number format. Only digits are allowed.");
+            return;
+        }
+
+
+        // Validate email
+        if (email == null || email.trim().isEmpty()) {
+            System.out.println("email  cannot be empty.");
+            return;
+        }
+
+        if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            System.out.println("Invalid email format.");
+            return;
+        }
+
         this.setPhoneNumber(phone);
         this.setEmail(email);
 
