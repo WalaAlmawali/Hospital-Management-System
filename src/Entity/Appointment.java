@@ -148,6 +148,7 @@ public class Appointment {
     // overloaded addNotes(String notes, String addedBy)
 
     public void addNotes(String notes, String addedBy){
+
         // Check if notes are empty
         if (notes == null || notes.trim().isEmpty()) {
             System.out.println("Notes cannot be empty.");
