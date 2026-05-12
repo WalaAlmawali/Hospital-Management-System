@@ -207,5 +207,11 @@ public class Helper {
         return num > 0;
     }
 
+    // Check positive double
+    public static boolean isPositive(double num) {
+        return num > 0;
+    }
+
+
 
 }
