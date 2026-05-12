@@ -5,7 +5,7 @@ import java.time.format.DateTimeParseException;
 import java.util.UUID;
 import java.util.Random;
 
-public class Helper {
+public class HelperUtils {
 
     private static final Random random = new Random();
 

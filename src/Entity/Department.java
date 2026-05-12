@@ -1,9 +1,11 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 
 public class Department implements Displayable {
 
@@ -105,7 +107,7 @@ public class Department implements Displayable {
     public void assignDoctor(Doctor doctor) {
 
         // Validate doctor object
-        if (doctor == null) {
+        if (HelperUtils.isNull(doctor)) {
             System.out.println("Invalid doctor.");
             return;
         }
@@ -122,7 +124,7 @@ public class Department implements Displayable {
     public void assignNurse(Nurse nurse) {
 
         // Validate nurse object
-        if (nurse == null) {
+        if (HelperUtils.isNull(nurse)) {
             System.out.println("Invalid nurse.");
             return;
         }
@@ -138,7 +140,7 @@ public class Department implements Displayable {
     // Update bed availability
     public void updateBedAvailability(int beds) {
 
-        if (beds >= 0 && beds <= bedCapacity) {
+        if (HelperUtils.isPositive(beds) && beds <= bedCapacity) {
             availableBeds = beds;
             System.out.println("Available beds updated.");
         } else {

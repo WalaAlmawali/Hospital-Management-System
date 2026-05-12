@@ -1,7 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
-import Utils.Helper;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -66,7 +66,7 @@ public class Consultant extends Doctor implements Displayable {
     public void scheduleConsultation(String consultationType, boolean online) {
 
         // Validate consultation type
-        if (Helper.isValidString(consultationType)) {
+        if (HelperUtils.isNull(consultationType)) {
             System.out.println("Invalid consultation type.");
             return;
         }
@@ -92,7 +92,7 @@ public class Consultant extends Doctor implements Displayable {
     public void provideSecondOpinion(String patientCase) {
 
         // Validate patientCase
-        if (patientCase == null || patientCase.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(patientCase)) {
             System.out.println("Invalid patient case.");
             return;
         }
