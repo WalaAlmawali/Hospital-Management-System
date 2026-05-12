@@ -1,6 +1,7 @@
 package Entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Appointment {
 
@@ -162,6 +163,17 @@ public class Appointment {
         this.notes = notes + " , Added By:" + addedBy;
 
         System.out.println("Notes added successfully ");
+
+    }
+
+    // overloaded addNotes(String notes, String addedBy, LocalDateTime timestamp)
+
+    public void addNotes(String notes, String addedBy, LocalDateTime timestamp){
+        // Validate notes
+        if (notes == null || notes.trim().isEmpty()) {
+            System.out.println("Notes cannot be empty.");
+            return;
+        }
 
     }
 
