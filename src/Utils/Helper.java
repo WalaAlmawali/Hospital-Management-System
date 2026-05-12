@@ -180,5 +180,15 @@ public class Helper {
         return date.isBefore(LocalDate.now());
     }
 
+    // 6. Check today's date
+    public static boolean isToday(LocalDate date) {
+
+        if (date == null) {
+            return false;
+        }
+
+        return date.isEqual(LocalDate.now());
+    }
+
 
 }
