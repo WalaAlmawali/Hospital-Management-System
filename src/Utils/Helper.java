@@ -197,4 +197,10 @@ public class Helper {
         return num >= min && num <= max;
     }
 
+    //  Double range validation
+    public static boolean isValidNumber(double num, double min, double max) {
+        return num >= min && num <= max;
+    }
+
+
 }
