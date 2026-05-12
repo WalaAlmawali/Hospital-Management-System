@@ -128,4 +128,20 @@ public class Appointment {
         System.out.println("Appointment marked as completed.");
     }
 
+    // overloaded addNotes(String notes)
+    public void addNotes(String notes){
+
+        // Check if notes are empty
+        if (notes == null || notes.trim().isEmpty()) {
+            System.out.println("Notes cannot be empty.");
+            return;
+        }
+
+        // Add notes
+        this.notes = notes;
+
+        System.out.println("Notes added successfully.");
+
     }
+
+}

@@ -176,7 +176,6 @@ public class Doctor extends Person{
         // Add each slot to doctor's availability schedule
         availableSlots.addAll(slots);
 
-
     }
 
 }

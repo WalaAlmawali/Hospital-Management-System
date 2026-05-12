@@ -7,7 +7,7 @@ public class MainApp {
 
         Scanner scanner = new Scanner(System.in);
         PatientService patientService = new PatientService();
-        patientService.addPatients();
+        patientService.addPatient("wala","salam","09887");
        patientService.displayPatients("wala");
 
 
