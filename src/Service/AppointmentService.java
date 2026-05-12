@@ -381,10 +381,42 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
     // Overloaded createAppointment(Appointment appointment)
     public void createAppointment(Appointment appointment){
 
+        // Validate appointment object
+        if (HelperUtils.isNull(appointment)) {
+            System.out.println("Invalid appointment.");
+            return;
+        }
+
+        // Validate required fields (basic safety checks)
+        if (!HelperUtils.isValidString(appointment.getPatientId())) {
+            System.out.println("Invalid patient ID.");
+            return;
+        }
+
+        if (!HelperUtils.isValidString(appointment.getDoctorId())) {
+            System.out.println("Invalid doctor ID.");
+            return;
+        }
+
+        if (!HelperUtils.isValidDate(appointment.getAppointmentDate()) ||
+                HelperUtils.isPastDate(appointment.getAppointmentDate())) {
+
+            System.out.println("Invalid appointment date.");
+            return;
+        }
+
+        if (!HelperUtils.isValidString(appointment.getAppointmentTime())) {
+            System.out.println("Invalid appointment time.");
+            return;
+        }
+
+        // Set status
+        appointment.setStatus("Scheduled");
+
+        // Add appointment
         appointmentList.add(appointment);
 
-        System.out.println("Appointment add successfully");
-
+        System.out.println("Appointment created successfully.");
 
     }
 
