@@ -130,12 +130,19 @@ public class Patient extends Person {
 
     // Update insurance
     public void updateInsurance(String newInsuranceId) {
+
         this.insuranceId = newInsuranceId;
         System.out.println("Insurance updated.");
     }
      //overloaded updateContact(String phone)
 
     public void updateContact(String phone){
+
+        // Validate phone number
+        if (phone == null || phone.trim().isEmpty()) {
+            System.out.println("Phone number cannot be empty.");
+            return;
+        }
 
         this.setPhoneNumber(phone);
         System.out.println("Contact phone number is updated.");
