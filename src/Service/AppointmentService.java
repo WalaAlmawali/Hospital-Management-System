@@ -233,5 +233,17 @@ public class AppointmentService {
 
     }
 
+    // Overloaded createAppointment(Appointment appointment)
+    public void createAppointment(Appointment appointment){
 
-}
+        appointmentList.add(appointment);
+
+        System.out.println("Appointment add successfully");
+
+
+    }
+
+
+
+
+    }
