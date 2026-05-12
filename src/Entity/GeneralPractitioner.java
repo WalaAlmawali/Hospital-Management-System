@@ -9,7 +9,7 @@ public class GeneralPractitioner extends Doctor {
     private boolean homeVisitAvailable;
     private boolean vaccinationCertified;
 
-    public GeneralPractitioner(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address, String doctorId, String specialization, String qualification, int experienceYears, String departmentId, double consultationFee, List<String> availableSlots, List<String> assignedPatients, boolean walkinAvailable, boolean homeVisitAvailable, boolean vaccinationCertified) {
+    public GeneralPractitioner(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address, String doctorId, String specialization, String qualification, int experienceYears, String departmentId, double consultationFee, List<String> availableSlots, List<Patient> assignedPatients, boolean walkinAvailable, boolean homeVisitAvailable, boolean vaccinationCertified) {
         super(id, firstName, dateOfBirth, lastName, gender, phoneNumber, email, address, doctorId, specialization, qualification, experienceYears, departmentId, consultationFee, availableSlots, assignedPatients);
         this.walkinAvailable = walkinAvailable;
         this.homeVisitAvailable = homeVisitAvailable;
@@ -50,6 +50,19 @@ public class GeneralPractitioner extends Doctor {
 
     //scheduleHomeVisit
     public void scheduleHomeVisit(String patientName, String address) {
+
+        // Validate patient name
+        if (patientName == null || patientName.trim().isEmpty()) {
+            System.out.println("Invalid patient name.");
+            return;
+        }
+
+        // Validate address
+        if (address == null || address.trim().isEmpty()) {
+            System.out.println("Invalid address.");
+            return;
+        }
+
         System.out.println("Home visit scheduled successfully.");
         System.out.println("Patient Name : " + patientName);
         System.out.println("Address      : " + address);
