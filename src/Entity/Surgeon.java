@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -53,11 +54,12 @@ public class Surgeon extends Doctor implements Displayable {
     public boolean  performSurgery(String surgeryType){
 
         // Validate surgery type input
-        if (surgeryType == null || surgeryType.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(surgeryType)) {
             System.out.println("Invalid surgery type.");
             return false;
         }
 
+        // Check if surgery is authorized
         if(!surgeryTypes.contains(surgeryType)){
 
             System.out.println("Surgery type not authorized: " + surgeryType);
@@ -65,6 +67,7 @@ public class Surgeon extends Doctor implements Displayable {
             return false;
         }
 
+        // Check operation theatre access
         if(!operationTheatreAccess){
 
             System.out.println("Access denied: No operation theatre privileges.");
@@ -72,9 +75,11 @@ public class Surgeon extends Doctor implements Displayable {
             return false;
         }
 
+        // Perform surgery
         surgeriesPerformed++;
 
         System.out.println("Surgery performed successfully: " + surgeryType);
+        System.out.println("Total surgeries performed: " + surgeriesPerformed);
 
         return true;
     }
