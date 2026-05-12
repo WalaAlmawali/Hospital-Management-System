@@ -169,9 +169,16 @@ public class Appointment {
     // overloaded addNotes(String notes, String addedBy, LocalDateTime timestamp)
 
     public void addNotes(String notes, String addedBy, LocalDateTime timestamp){
+
         // Validate notes
         if (notes == null || notes.trim().isEmpty()) {
             System.out.println("Notes cannot be empty.");
+            return;
+        }
+
+        // Validate addedBy
+        if (addedBy == null || addedBy.trim().isEmpty()) {
+            System.out.println("AddedBy field cannot be empty.");
             return;
         }
 
