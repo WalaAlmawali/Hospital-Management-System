@@ -235,30 +235,32 @@ public class Patient extends Person implements Displayable {
     public void updateContact(String phone, String email, String address){
 
         // Validate phone number
-        if (phone == null || phone.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(phone)) {
             System.out.println("Phone number cannot be empty.");
             return;
         }
 
-        if (!phone.matches("\\d+")) {
+        // Validate numeric format using HelperUtils regex method
+        if (!HelperUtils.isValidString(phone, "\\d+")) {
             System.out.println("Invalid phone number format. Only digits are allowed.");
             return;
         }
 
 
-        // Validate email
-        if (email == null || email.trim().isEmpty()) {
-            System.out.println("email  cannot be empty.");
+        // validate email
+        if (!HelperUtils.isValidString(email)) {
+            System.out.println("Email cannot be empty.");
             return;
         }
 
-        if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+        // Validate email using HelperUtils regex
+        if (!HelperUtils.isValidString(email, "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
             System.out.println("Invalid email format.");
             return;
         }
 
         // Validate address
-        if (address == null || address.trim().isEmpty()) {
+        if (!HelperUtils.isValidString(address)) {
             System.out.println("Address cannot be empty.");
             return;
         }
@@ -267,7 +269,7 @@ public class Patient extends Person implements Displayable {
         this.setEmail(email);
         this.setAddress(address);
 
-        System.out.println("Contact phone number, email and address are updated.");
+        System.out.println("Contact details (phone, email, address) updated successfully.");
 
     }
 
