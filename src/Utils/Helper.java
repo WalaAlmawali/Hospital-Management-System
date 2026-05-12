@@ -149,6 +149,17 @@ public class Helper {
         }
     }
 
+    // 3. Date range validation
+    public static boolean isValidDate(LocalDate date, LocalDate minDate, LocalDate maxDate) {
+
+        if (date == null || minDate == null || maxDate == null) {
+            return false;
+        }
+
+        return (date.isEqual(minDate) || date.isAfter(minDate)) &&
+                (date.isEqual(maxDate) || date.isBefore(maxDate));
+    }
+
 
 
 }
