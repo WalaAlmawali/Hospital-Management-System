@@ -97,6 +97,12 @@ public class Department {
     // Assign doctor
     public void assignDoctor(Doctor doctor) {
 
+        // Validate doctor object
+        if (doctor == null) {
+            System.out.println("Invalid doctor.");
+            return;
+        }
+
         if (!doctors.contains(doctor)) {
             doctors.add(doctor);
             System.out.println("Doctor assigned successfully.");
