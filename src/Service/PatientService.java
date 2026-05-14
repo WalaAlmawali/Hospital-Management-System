@@ -323,13 +323,17 @@ public class PatientService implements Manageable, Searchable {
    //retrieve patient
    public Patient getPatientById(String patientId){
 
+       if (!HelperUtils.isValidString(patientId)) {
+           return null;
+       }
+
         for(Patient patient: patients){
-            if(patient.getPatientId().equals(patientId)){
+
+            if(!HelperUtils.isNull(patient) && patient.getPatientId().equals(patientId)){
                 return patient;
             }
 
         }
-       System.out.println("patient not found");
         return null;
    }
 
