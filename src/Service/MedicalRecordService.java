@@ -199,7 +199,15 @@ public class MedicalRecordService implements Manageable, Searchable {
 
         List<MedicalRecord> doctorMedicalRecords = new ArrayList<>();
 
+        if (!HelperUtils.isValidString(doctorId)) {
+            return doctorMedicalRecords;
+        }
+
         for (MedicalRecord medicalRecord : medicalRecordList){
+
+            if (HelperUtils.isNull(medicalRecord)) {
+                continue;
+            }
 
             if(medicalRecord.getDoctorId().equals(doctorId)){
                 doctorMedicalRecords.add(medicalRecord);
