@@ -40,11 +40,16 @@ public class Department implements Displayable {
     }
 
     public String getDepartmentName() {
+
         return departmentName;
     }
 
     public void setDepartmentName(String departmentName) {
+
+        if(HelperUtils.isValidString(departmentName)){
+
         this.departmentName = departmentName;
+        }
     }
 
     public String getHeadDoctorId() {
@@ -52,7 +57,10 @@ public class Department implements Displayable {
     }
 
     public void setHeadDoctorId(String headDoctorId) {
-        this.headDoctorId = headDoctorId;
+
+        if(HelperUtils.isValidString(headDoctorId)) {
+            this.headDoctorId = headDoctorId;
+        }
     }
 
     public List<Doctor> getDoctors() {
@@ -60,7 +68,9 @@ public class Department implements Displayable {
     }
 
     public void setDoctors(List<Doctor> doctors) {
-        this.doctors = doctors;
+        if(HelperUtils.isNotNull(doctors)) {
+            this.doctors = doctors;
+        }
     }
 
     public List<Nurse> getNurses() {
@@ -68,7 +78,10 @@ public class Department implements Displayable {
     }
 
     public void setNurses(List<Nurse> nurses) {
-        this.nurses = nurses;
+
+        if(HelperUtils.isNotNull(nurses)) {
+            this.nurses = nurses;
+        }
     }
 
     public int getBedCapacity() {
@@ -76,7 +89,10 @@ public class Department implements Displayable {
     }
 
     public void setBedCapacity(int bedCapacity) {
-        this.bedCapacity = bedCapacity;
+
+        if(HelperUtils.isPositive(bedCapacity)) {
+            this.bedCapacity = bedCapacity;
+        }
     }
 
     public int getAvailableBeds() {
@@ -84,7 +100,9 @@ public class Department implements Displayable {
     }
 
     public void setAvailableBeds(int availableBeds) {
-        this.availableBeds = availableBeds;
+        if(HelperUtils.isPositive(availableBeds)) {
+            this.availableBeds = availableBeds;
+        }
     }
 
     public void displayInfo() {

@@ -27,7 +27,10 @@ public class Consultant extends Doctor implements Displayable {
     }
 
     public void setConsultationTypes(List<String> consultationTypes) {
-        this.consultationTypes = consultationTypes;
+
+        if(HelperUtils.isNotNull(consultationTypes)) {
+            this.consultationTypes = consultationTypes;
+        }
     }
 
     public boolean isOnlineConsultationAvailable() {
@@ -43,7 +46,9 @@ public class Consultant extends Doctor implements Displayable {
     }
 
     public void setConsultationDuration(int consultationDuration) {
-        this.consultationDuration = consultationDuration;
+        if(HelperUtils.isPositive(consultationDuration)) {
+            this.consultationDuration = consultationDuration;
+        }
     }
 
     @Override

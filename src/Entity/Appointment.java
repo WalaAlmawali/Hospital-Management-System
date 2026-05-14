@@ -127,7 +127,7 @@ public class Appointment implements Displayable {
 
     public void setNotes(String notes) {
 
-        if (HelperUtils.isNull(notes)) {
+        if (!HelperUtils.isValidString(notes)) {
             this.notes = "";
             return;
         }
