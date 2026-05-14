@@ -206,15 +206,28 @@ public class DoctorService implements Manageable, Searchable {
     // remove doctor by ID
     public void removeDoctor(String doctorId){
 
-        doctors.removeIf(b -> b.getDoctorId() == doctorId);
-        System.out.println("doctor removed successfully");
+        if (!HelperUtils.isValidString(doctorId)) {
+            System.out.println("Invalid doctor ID.");
+            return;
+        }
 
-        System.out.println("doctor not found");
+        boolean removed = doctors.removeIf(
+                d -> d.getDoctorId().equals(doctorId));
+
+        if (removed) {
+            System.out.println("Doctor removed successfully.");
+        } else {
+            System.out.println("Doctor not found.");
+        }
 
     }
 
     //retrieve doctor
     public Doctor getDoctorById(String doctorId) {
+
+        if (!HelperUtils.isValidString(doctorId)) {
+            return null;
+        }
 
         for (Doctor doctor : doctors) {
             if (doctor.getDoctorId().equals(doctorId)) {
@@ -222,7 +235,6 @@ public class DoctorService implements Manageable, Searchable {
             }
 
         }
-        System.out.println("doctor not found");
         return null;
     }
 
