@@ -155,8 +155,13 @@ public class MedicalRecordService implements Manageable, Searchable {
     //retrieve medical record
     public MedicalRecord getMedicalRecord(String recordId){
 
+        if (!HelperUtils.isValidString(recordId)) {
+            return null;
+        }
+
         for(MedicalRecord medicalRecord: medicalRecordList){
-            if(medicalRecord.getRecordId().equals(recordId)){
+
+            if(!HelperUtils.isNull(medicalRecord) && medicalRecord.getRecordId().equals(recordId)){
                 return medicalRecord;
             }
 
