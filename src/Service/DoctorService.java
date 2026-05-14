@@ -281,9 +281,18 @@ public class DoctorService implements Manageable, Searchable {
 
         List<Doctor> availableDoctors = new ArrayList<>();
 
+        if (HelperUtils.isNull(doctors)) {
+            return availableDoctors;
+        }
+
         for(Doctor doctor : doctors){
 
-            if (!doctor.getAvailableSlots().isEmpty()) {
+            if(HelperUtils.isNull(doctor)){
+                continue;
+
+            }
+
+            if ( !doctor.getAvailableSlots().isEmpty()) {
                 availableDoctors.add(doctor);
             }
 
