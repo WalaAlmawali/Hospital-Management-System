@@ -54,6 +54,10 @@ public class Patient extends Person implements Displayable {
     }
 
     public void setBloodGroup(String bloodGroup) {
+
+        if (!HelperUtils.isValidString(bloodGroup)) {
+            throw new IllegalArgumentException("Blood group cannot be null or empty");
+        }
         this.bloodGroup = bloodGroup;
     }
 
@@ -62,7 +66,18 @@ public class Patient extends Person implements Displayable {
     }
 
     public void setAllergies(List<String> allergies) {
-        this.allergies = allergies;
+
+        if (HelperUtils.isNull(allergies)) {
+            throw new IllegalArgumentException("Allergies cannot be null");
+        }
+
+        for (String allergy : allergies) {
+            if (!HelperUtils.isValidString(allergy)) {
+                throw new IllegalArgumentException("Invalid allergy entry");
+            }
+        }
+
+        this.allergies = new ArrayList<>(allergies);
     }
 
     public String getEmergencyContact() {
@@ -70,6 +85,10 @@ public class Patient extends Person implements Displayable {
     }
 
     public void setEmergencyContact(String emergencyContact) {
+
+        if (!HelperUtils.isValidString(emergencyContact)) {
+            throw new IllegalArgumentException("Emergency contact cannot be null or empty");
+        }
         this.emergencyContact = emergencyContact;
     }
 
@@ -78,6 +97,14 @@ public class Patient extends Person implements Displayable {
     }
 
     public void setRegistrationDate(LocalDate registrationDate) {
+
+        if (HelperUtils.isNull(registrationDate)) {
+            throw new IllegalArgumentException("Registration date cannot be null");
+        }
+
+        if (registrationDate.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("Registration date cannot be in the future");
+        }
         this.registrationDate = registrationDate;
     }
 
@@ -86,6 +113,10 @@ public class Patient extends Person implements Displayable {
     }
 
     public void setInsuranceId(String insuranceId) {
+
+        if (!HelperUtils.isValidString(insuranceId)) {
+            throw new IllegalArgumentException("Insurance ID cannot be null or empty");
+        }
         this.insuranceId = insuranceId;
     }
 
@@ -94,6 +125,11 @@ public class Patient extends Person implements Displayable {
     }
 
     public void setMedicalRecords(List<MedicalRecord> medicalRecords) {
+
+        if (HelperUtils.isNull(medicalRecords)) {
+            throw new IllegalArgumentException("Medical records cannot be null");
+        }
+
         this.medicalRecords = medicalRecords;
     }
 
@@ -102,6 +138,10 @@ public class Patient extends Person implements Displayable {
     }
 
     public void setAppointments(List<Appointment> appointments) {
+
+        if (HelperUtils.isNull(appointments)) {
+            throw new IllegalArgumentException("Appointments cannot be null");
+        }
         this.appointments = appointments;
     }
 
