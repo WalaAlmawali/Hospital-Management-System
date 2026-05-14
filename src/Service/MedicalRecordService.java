@@ -221,10 +221,26 @@ public class MedicalRecordService implements Manageable, Searchable {
 
     public void displayPatientHistory(String patientId) {
 
+        if (!HelperUtils.isValidString(patientId)) {
+            System.out.println("Invalid patient ID.");
+            return;
+        }
+
+        boolean found = false;
+
         for(MedicalRecord medicalRecord : medicalRecordList){
+
+            if (HelperUtils.isNull(medicalRecord)) {
+                continue;
+            }
             if(medicalRecord.getPatientId().equals(patientId)){
                 medicalRecord.displayInfo();
+                found = true;
+
             }
+        }
+        if (!found) {
+            System.out.println("No medical history found for patient: " + patientId);
         }
     }
 
