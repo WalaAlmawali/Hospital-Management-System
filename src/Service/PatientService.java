@@ -204,13 +204,26 @@ public class PatientService implements Manageable, Searchable {
         }
 
 
-
-        //update existing patient
+   //update existing patient
    public void editPatient(String patientId){
 
-        for(Patient patient: patients ){
+
+       if (!HelperUtils.isValidString(patientId)) {
+           System.out.println("Invalid patient ID.");
+           return;
+       }
+
+       boolean found = false;
+
+       for(Patient patient: patients ){
+
+           if (HelperUtils.isNull(patient)) {
+               continue;
+           }
 
             if(patient.getPatientId().equals(patientId)){
+
+                found = true;
 
                 System.out.println("Enter updated patient first name :");
                 patient.setFirstName(scanner.nextLine());
@@ -218,10 +231,13 @@ public class PatientService implements Manageable, Searchable {
                 System.out.println("Enter updated patient last name :");
                 patient.setLastName(scanner.nextLine());
 
-                System.out.println("Enter updated patient DOB: ");
-                String dateOfBirth = scanner.nextLine();
-                LocalDate DOB = LocalDate.parse(dateOfBirth);
-                patient.setDateOfBirth(DOB);
+                System.out.println("Enter updated patient DOB (yyyy-MM-dd): ");
+
+                try {
+                    patient.setDateOfBirth(LocalDate.parse(scanner.nextLine()));
+                } catch (Exception e) {
+                    System.out.println("Invalid DOB format. Skipping update.");
+                }
 
                 System.out.println("Enter updated patient gender :");
                 patient.setGender(scanner.nextLine());
@@ -241,34 +257,45 @@ public class PatientService implements Manageable, Searchable {
                 System.out.println("Enter updated patient emergency Contact :");
                 patient.setEmergencyContact(scanner.nextLine());
 
-                System.out.println("Enter updated registration Date :");
-                String dateOfRegistration = scanner.nextLine();
-                LocalDate DOR = LocalDate.parse(dateOfBirth);
-                patient.setRegistrationDate(DOR);
+                System.out.println("Enter updated registration Date (yyyy-MM-dd) :");
+
+                try {
+                    LocalDate DOR = LocalDate.parse(scanner.nextLine());
+                    patient.setRegistrationDate(DOR);
+                } catch (Exception e) {
+                    System.out.println("Invalid registration date. Skipping update.");
+                }
 
 
                 System.out.println("Enter updated patient insurance Id :");
                patient.setInsuranceId(scanner.nextLine());
 
-                System.out.println("Enter updated patient allergies :");
-
-                Boolean continueFlag = true;
+                System.out.println("Enter allergies (type 'q' to stop):");
 
                 List<String> allergies = new ArrayList<>();
 
-                while (continueFlag) {
+                while (true) {
+                    String input = scanner.nextLine();
 
-                    allergies.add(scanner.nextLine());
-                    System.out.println("Enter c to add more allergies , and q to exit");
-                    if (scanner.nextLine().equalsIgnoreCase("q")) {
-                        continueFlag = false;
+                    if (input.equalsIgnoreCase("q")) {
+                        break;
+                    }
+
+                    if (!input.trim().isEmpty()) {
+                        allergies.add(input);
                     }
                 }
-                System.out.println("Patient updated successfully");
 
+                patient.setAllergies(allergies);
+
+                System.out.println("Patient updated successfully");
+                break;
 
             }
         }
+       if (!found) {
+           System.out.println("Patient not found.");
+       }
 
    }
 
