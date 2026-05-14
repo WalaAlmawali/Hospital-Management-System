@@ -6,6 +6,7 @@ import Entity.Appointment;
 import Entity.Department;
 import Entity.Doctor;
 import Entity.Nurse;
+import Utils.HelperUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +23,8 @@ public class DepartmentService implements Manageable, Searchable {
 
     public Department addDepartment(){
 
-        System.out.println("Enter Department Id :");
-        String departmentId = scanner.nextLine();
+
+        String departmentId = HelperUtils.generateId();
 
         System.out.println("Enter department Name :");
         String departmentName = scanner.nextLine();
@@ -36,6 +37,15 @@ public class DepartmentService implements Manageable, Searchable {
 
         System.out.println("Enter department available Beds :");
         int availableBeds = scanner.nextInt();
+
+        // Validate required fields
+        if (!HelperUtils.isValidString(departmentName) ||
+                !HelperUtils.isValidString(headDoctorId) ||
+                !HelperUtils.isPositive(bedCapacity) || !HelperUtils.isPositive(availableBeds)) {
+
+            System.out.println("Invalid input data.");
+            return null;
+        }
 
         Department department = new Department(departmentId,departmentName,headDoctorId,doctors,nurses,bedCapacity,availableBeds);
 
