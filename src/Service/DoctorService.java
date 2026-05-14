@@ -5,6 +5,7 @@ import Behavior.Searchable;
 import Entity.Department;
 import Entity.Doctor;
 import Entity.Patient;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,8 +24,8 @@ public class DoctorService implements Manageable, Searchable {
 
     public Doctor addDoctor(){
 
-        System.out.println("Enter Doctor id :");
-        String id = scanner.nextLine();
+
+        String id = HelperUtils.generateId();
 
         System.out.println("Enter Doctor first name :");
         String doctorFName = scanner.nextLine();
@@ -32,9 +33,16 @@ public class DoctorService implements Manageable, Searchable {
         System.out.println("Enter Doctor last name :");
         String doctorLName = scanner.nextLine();
 
-        System.out.println("Enter Doctor DOB: ");
-        String dateOfBirth = scanner.nextLine();
-        LocalDate DOB = LocalDate.parse(dateOfBirth);
+        System.out.println("Enter Doctor DOB (yyyy-MM-dd): ");
+        LocalDate dob;
+
+        try {
+            dob = LocalDate.parse(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid date format.");
+            return null;
+        }
+
 
         System.out.println("Enter Doctor gender :");
         String gender = scanner.nextLine();
@@ -58,15 +66,29 @@ public class DoctorService implements Manageable, Searchable {
         String qualification = scanner.nextLine();
 
         System.out.println("Enter Doctor experienceYears :");
-        int experienceYears = scanner.nextInt();
+        int experienceYears;
+
+        try {
+            experienceYears = Integer.parseInt(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid experience years.");
+            return null;
+        }
 
         System.out.println("Enter Doctor departmentId :");
         String departmentId = scanner.nextLine();
 
         System.out.println("Enter Doctor consultationFee :");
-        double consultationFee = scanner.nextDouble();
+        double consultationFee ;
 
-        Doctor doctor = new Doctor(id,doctorFName,DOB,doctorLName,gender,phone,email,address,doctorId,specialization,qualification,experienceYears,departmentId,consultationFee,availableSlots,assignedPatients);
+        try {
+            consultationFee = Double.parseDouble(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid consultation fee.");
+            return null;
+        }
+
+        Doctor doctor = new Doctor(id,doctorFName,dob,doctorLName,gender,phone,email,address,doctorId,specialization,qualification,experienceYears,departmentId,consultationFee,availableSlots,assignedPatients);
         return doctor;
     }
 
