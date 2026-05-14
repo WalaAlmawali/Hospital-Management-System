@@ -37,38 +37,63 @@ public class Appointment implements Displayable {
     }
 
     public void setAppointmentId(String appointmentId) {
+
         this.appointmentId = appointmentId;
     }
 
     public String getPatientId() {
+
         return patientId;
     }
 
     public void setPatientId(String patientId) {
+
+        if (!HelperUtils.isValidString(patientId)) {
+            throw new IllegalArgumentException("Invalid patient ID");
+        }
+
         this.patientId = patientId;
     }
 
     public String getDoctorId() {
+
         return doctorId;
     }
 
     public void setDoctorId(String doctorId) {
+
+        if (!HelperUtils.isValidString(doctorId)) {
+            throw new IllegalArgumentException("Invalid doctor ID");
+        }
+
         this.doctorId = doctorId;
     }
 
     public LocalDate getAppointmentDate() {
+
         return appointmentDate;
     }
 
     public void setAppointmentDate(LocalDate appointmentDate) {
+
+        if(HelperUtils.isNull(appointmentDate)){
+            throw new IllegalArgumentException("Date cannot be null");
+        }
+
         this.appointmentDate = appointmentDate;
     }
 
     public String getAppointmentTime() {
+
         return appointmentTime;
     }
 
     public void setAppointmentTime(String appointmentTime) {
+
+        if (!HelperUtils.isValidString(appointmentTime)) {
+            throw new IllegalArgumentException("Invalid appointment time");
+        }
+
         this.appointmentTime = appointmentTime;
     }
 
@@ -77,6 +102,10 @@ public class Appointment implements Displayable {
     }
 
     public void setStatus(String status) {
+
+        if (!HelperUtils.isValidString(status)) {
+            throw new IllegalArgumentException("Invalid status");
+        }
         this.status = status;
     }
 
@@ -85,6 +114,10 @@ public class Appointment implements Displayable {
     }
 
     public void setReason(String reason) {
+
+        if (!HelperUtils.isValidString(reason)) {
+            throw new IllegalArgumentException("Invalid reason");
+        }
         this.reason = reason;
     }
 
@@ -93,6 +126,12 @@ public class Appointment implements Displayable {
     }
 
     public void setNotes(String notes) {
+
+        if (HelperUtils.isNull(notes)) {
+            this.notes = "";
+            return;
+        }
+
         this.notes = notes;
     }
 

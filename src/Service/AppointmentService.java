@@ -453,7 +453,28 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     public void rescheduleAppointment(String appointmentId, LocalDate newDate){
 
+        if (!HelperUtils.isValidString(appointmentId)) {
+            System.out.println("Invalid appointment ID.");
+            return;
+        }
+        if (!HelperUtils.isValidDate(newDate)) {
+            System.out.println("Invalid appointment date.");
+            return;
+        }
+
+        if (HelperUtils.isPastDate(newDate)) {
+            System.out.println("Cannot reschedule to a past date.");
+            return;
+        }
+
         Appointment appointment = getAppointment(appointmentId);
+
+        if (appointment == null) {
+            System.out.println("Appointment not found.");
+            return;
+        }
+
+
         appointment.setAppointmentDate(newDate);
 
         appointment.setStatus("Rescheduled");
