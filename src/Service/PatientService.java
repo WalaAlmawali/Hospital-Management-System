@@ -152,10 +152,18 @@ public class PatientService implements Manageable, Searchable {
 
         List<Patient> matchedPatients = new ArrayList<>();
 
+        if (!HelperUtils.isValidString(keyword)) {
+            return matchedPatients;
+        }
+
 
         for (Patient patient : patients) {
-            if (patient.getPatientId().toLowerCase().contains(keyword.toLowerCase())
-                    || patient.getFirstName().toLowerCase().contains(keyword.toLowerCase())
+
+            if (HelperUtils.isNull(patient)) {
+                continue;
+            }
+
+            if ( patient.getFirstName().toLowerCase().contains(keyword.toLowerCase())
                     || patient.getLastName().toLowerCase().contains(keyword.toLowerCase())
                     || patient.getPhoneNumber().contains(keyword)
                     || patient.getBloodGroup().toLowerCase().contains(keyword.toLowerCase())
@@ -173,6 +181,8 @@ public class PatientService implements Manageable, Searchable {
     public List<Patient> searchPatients(String firstName, String lastName) {
 
         List<Patient> matchedPatients = new ArrayList<>();
+
+
 
         for (Patient patient : patients) {
 
