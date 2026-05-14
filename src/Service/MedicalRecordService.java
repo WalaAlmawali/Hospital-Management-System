@@ -4,6 +4,7 @@ import Behavior.Manageable;
 import Behavior.Searchable;
 import Entity.MedicalRecord;
 import Entity.Nurse;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,8 +18,7 @@ public class MedicalRecordService implements Manageable, Searchable {
 
     public MedicalRecord addMedicalRecord() {
 
-        System.out.println("Enter record Id :");
-        String recordId = scanner.nextLine();
+        String recordId = HelperUtils.generateId();
 
         System.out.println("Enter patient Id :");
         String patientId = scanner.nextLine();
@@ -26,9 +26,15 @@ public class MedicalRecordService implements Manageable, Searchable {
         System.out.println("Enter doctor Id :");
         String doctorId = scanner.nextLine();
 
-        System.out.println("Enter visit Date:");
-        String visitDate = scanner.nextLine();
-        LocalDate date = LocalDate.parse(visitDate);
+        System.out.println("Enter visit Date (yyyy-MM-dd):");
+        LocalDate date;
+
+        try {
+            date = LocalDate.parse(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid date format.");
+            return null;
+        }
 
         System.out.println("Enter diagnosis :");
         String diagnosis = scanner.nextLine();
@@ -41,6 +47,15 @@ public class MedicalRecordService implements Manageable, Searchable {
 
         System.out.println("Enter notes :");
         String notes = scanner.nextLine();
+
+        // Basic validation
+        if (!HelperUtils.isValidString(patientId) ||
+                !HelperUtils.isValidString(doctorId) ||
+                !HelperUtils.isValidString(diagnosis)) {
+
+            System.out.println("Invalid input data.");
+            return null;
+        }
 
         MedicalRecord medicalRecord = new MedicalRecord(recordId,patientId,doctorId,date,diagnosis,testResults,prescription,notes);
 
