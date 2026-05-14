@@ -365,11 +365,39 @@ public class DoctorService implements Manageable, Searchable {
     // Overloaded assignPatient(String doctorId, List<String> patientIds) - bulk assignment
     public void assignPatient(String doctorId, List<String> patientIds){
 
+        if (!HelperUtils.isValidString(doctorId) || HelperUtils.isNull(patientIds)) {
+            System.out.println("Invalid doctor ID or patient list.");
+            return;
+        }
+
         Doctor doctor = getDoctorById(doctorId);
+
+        if (HelperUtils.isNull(doctor)) {
+            System.out.println("Doctor not found.");
+            return;
+        }
+
+        if (HelperUtils.isNull(doctor.getAssignedPatients())) {
+            doctor.setAssignedPatients(new ArrayList<>());
+        }
 
         for(String patientId : patientIds){
 
-            doctor.getAssignedPatients().add(patientService.getPatientById(patientId));
+            Patient patient = patientService.getPatientById(patientId);
+
+            if (HelperUtils.isNull(patient)) {
+                System.out.println("Patient not found: " + patientId);
+                continue;
+            }
+
+            if (doctor.getAssignedPatients().contains(patient)) {
+                System.out.println("Already assigned: " + patientId);
+                continue;
+            }
+
+
+            doctor.getAssignedPatients().add(patient);
+            System.out.println("Assigned patient " + patientId + " to Dr. " + doctorId);
 
         }
 
