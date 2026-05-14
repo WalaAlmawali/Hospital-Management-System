@@ -448,12 +448,20 @@ public class PatientService implements Manageable, Searchable {
     //search functionality
     public void searchPatientsByName(String name) {
 
-        boolean found = false;
+        if (!HelperUtils.isValidString(name)) {
+            System.out.println("Invalid search name.");
+            return;
+        }
 
+        boolean found = false;
 
         for(Patient patient : patients){
 
-            String fullName = patient.getFirstName() + " " + patient.getLastName();
+            if (HelperUtils.isNull(patient)) {
+                continue;
+            }
+
+            String fullName =patient.getFirstName() + " " + patient.getLastName();
 
             if(fullName.toLowerCase().contains(name.toLowerCase())){
                 patient.displayInfo();
