@@ -135,10 +135,20 @@ public class MedicalRecordService implements Manageable, Searchable {
     // remove medical record by ID
     public void removeMedicalRecord(String recordId){
 
-        medicalRecordList.removeIf(M -> M.getRecordId() == recordId);
-        System.out.println("medical record removed successfully");
+        if (!HelperUtils.isValidString(recordId)) {
+            System.out.println("Invalid record ID.");
+            return;
+        }
 
-        System.out.println("medical record not found");
+        boolean removed = medicalRecordList.removeIf(
+                m -> m.getRecordId().equals(recordId));
+
+        if (removed) {
+            System.out.println("Medical record removed successfully.");
+        } else {
+            System.out.println("Medical record not found.");
+        }
+
 
     }
 
