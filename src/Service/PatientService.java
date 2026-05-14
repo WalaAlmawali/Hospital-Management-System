@@ -302,10 +302,21 @@ public class PatientService implements Manageable, Searchable {
    // remove patient by ID
    public void removePatient(String patientId){
 
-       patients.removeIf(b -> b.getPatientId() == patientId);
-       System.out.println("patient removed successfully");
+       if (!HelperUtils.isValidString(patientId)) {
+           System.out.println("Invalid patient ID.");
+           return;
+       }
 
-       System.out.println("patient not found");
+       boolean removed = patients.removeIf(
+               p -> p != null &&
+                       HelperUtils.isValidString(p.getPatientId()) &&
+                       p.getPatientId().equals(patientId));
+
+       if (removed) {
+           System.out.println("Patient removed successfully.");
+       } else {
+           System.out.println("Patient not found.");
+       }
 
    }
 
