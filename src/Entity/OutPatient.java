@@ -28,6 +28,12 @@ public class OutPatient extends Patient implements Displayable {
     }
 
     public void setVisitCount(int visitCount) {
+
+        if(!HelperUtils.isPositive(visitCount)){
+            throw new IllegalArgumentException("Visit count cannot be negative");
+
+        }
+
         this.visitCount = visitCount;
     }
 
@@ -36,6 +42,14 @@ public class OutPatient extends Patient implements Displayable {
     }
 
     public void setLastVisitDate(LocalDate lastVisitDate) {
+
+        if (HelperUtils.isNull(lastVisitDate)) {
+            throw new IllegalArgumentException("Last visit date cannot be null");
+        }
+
+        if (lastVisitDate.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("Last visit date cannot be in the future");
+        }
         this.lastVisitDate = lastVisitDate;
     }
 
@@ -44,6 +58,10 @@ public class OutPatient extends Patient implements Displayable {
     }
 
     public void setPreferredDoctorId(String preferredDoctorId) {
+
+        if (!HelperUtils.isValidString(preferredDoctorId)) {
+            throw new IllegalArgumentException("Preferred doctor ID cannot be null or empty");
+        }
         this.preferredDoctorId = preferredDoctorId;
     }
 
