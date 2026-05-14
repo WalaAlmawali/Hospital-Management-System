@@ -406,8 +406,16 @@ public class DoctorService implements Manageable, Searchable {
     //Overloaded displayDoctors()
     public void displayDoctors(){
 
+        if (HelperUtils.isNull(doctors)) {
+            System.out.println("No doctors available.");
+            return;
+        }
+
+        System.out.println("===== DOCTORS LIST =====");
+
         for (Doctor doctor : doctors){
             doctor.displayInfo();
+            System.out.println("------------------------");
         }
     }
 
