@@ -171,13 +171,17 @@ public class NurseService implements Manageable, Searchable {
     //retrieve nurse
     public Nurse getNurseById(String nurseId){
 
+        if (!HelperUtils.isValidString(nurseId)) {
+            return null;
+        }
+
         for(Nurse nurse: nurseList){
-            if(nurse.getNurseId().equals(nurseId)){
+
+            if(!HelperUtils.isNull(nurse) && nurse.getNurseId().equals(nurseId)){
                 return nurse;
             }
 
         }
-        System.out.println("Nurse not found");
         return null;
     }
 
