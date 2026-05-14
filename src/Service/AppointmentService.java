@@ -486,6 +486,31 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     public void rescheduleAppointment(Appointment appointment, LocalDate newDate, String newTime, String reason){
 
+        if (HelperUtils.isNull(appointment)) {
+            System.out.println("Appointment cannot be null.");
+            return;
+        }
+
+        if (!HelperUtils.isValidDate(newDate)) {
+            System.out.println("Invalid appointment date.");
+            return;
+        }
+
+        if (HelperUtils.isPastDate(newDate)) {
+            System.out.println("Cannot reschedule to a past date.");
+            return;
+        }
+
+        if (!HelperUtils.isValidString(newTime)) {
+            System.out.println("Invalid appointment time.");
+            return;
+        }
+
+        if (!HelperUtils.isValidString(reason)) {
+            System.out.println("Invalid reason.");
+            return;
+        }
+
         appointment.setAppointmentDate(newDate);
         appointment.setAppointmentTime(newTime);
         appointment.setReason(reason);
@@ -498,12 +523,24 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
     // Overloaded displayAppointments(LocalDate date)
     public void displayAppointments(LocalDate date){
 
+        if (!HelperUtils.isValidDate(date)) {
+            System.out.println("Invalid date.");
+            return;
+        }
+
+        boolean found = false;
+
         for(Appointment appointment: appointmentList){
 
             if(appointment.getAppointmentDate().equals(date)){
 
                 appointment.displayInfo();
+
+                found = true;
             }
+        }
+        if (!found) {
+            System.out.println("No appointments found for " + date);
         }
     }
 
