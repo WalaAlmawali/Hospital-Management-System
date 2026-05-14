@@ -411,18 +411,37 @@ public class PatientService implements Manageable, Searchable {
 
     //display limited number
     public void displayPatients(int limit){
+
+        if (HelperUtils.isNull(patients)) {
+            System.out.println("No patients available.");
+            return;
+        }
+
+        if (HelperUtils.isNegative(limit) || limit == 0) {
+            System.out.println("Invalid limit. Must be greater than 0.");
+            return;
+        }
+
+        System.out.println("===== PATIENT LIST (LIMIT " + limit + ") =====");
+
         int count = 0;
 
             for(Patient patient :patients){
 
+                if(HelperUtils.isNull(patient)){
+                    continue;
+                }
+
                 if(count >= limit) {
                     break;
                 }
+
                 patient.displayInfo();
+                System.out.println("------------------------");
+
                 count++;
             }
         }
-
 
 
 
