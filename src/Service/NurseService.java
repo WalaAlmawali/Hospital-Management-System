@@ -188,6 +188,11 @@ public class NurseService implements Manageable, Searchable {
     //display all nurses with formatted output
     public void displayAllNurses(){
 
+        if (HelperUtils.isNull(nurseList)) {
+            System.out.println("No nurses available.");
+            return;
+        }
+
         for(Nurse nurse: nurseList){
             nurse.displayInfo();
         }
