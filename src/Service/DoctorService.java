@@ -263,9 +263,13 @@ public class DoctorService implements Manageable, Searchable {
 
         List<Doctor> specializationDoctors = new ArrayList<>();
 
+        if (!HelperUtils.isValidString(specialization)) {
+            return specializationDoctors;
+        }
+
         for(Doctor doctor : doctors){
 
-            if(doctor.getSpecialization().equals(specialization)){
+            if(doctor.getSpecialization().equalsIgnoreCase(specialization)){
                 specializationDoctors.add(doctor);
             }
         }
