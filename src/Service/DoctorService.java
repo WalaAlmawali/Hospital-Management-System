@@ -347,6 +347,16 @@ public class DoctorService implements Manageable, Searchable {
     // Overloaded assignPatient(Doctor doctor, Patient patient)
     public void assignPatient(Doctor doctor ,  Patient patient) {
 
+        if (HelperUtils.isNull(doctor) || HelperUtils.isNull(patient)) {
+            System.out.println("Doctor or Patient cannot be null.");
+            return;
+        }
+
+        // if no patient assign yet
+        if (doctor.getAssignedPatients() == null) {
+            doctor.setAssignedPatients(new ArrayList<>());
+        }
+
         doctor.getAssignedPatients().add(patient);
         System.out.println("Patient : "+ patient.getPatientId() + " assigned to Dr. " + doctor.getDoctorId());
 
