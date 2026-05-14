@@ -5,6 +5,7 @@ import Behavior.Searchable;
 import Entity.Appointment;
 import Entity.MedicalRecord;
 import Entity.Patient;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,8 +24,8 @@ public class PatientService implements Manageable, Searchable {
 
     public Patient addPatient() {
 
-        System.out.println("Enter patient id :");
-        String id = scanner.nextLine();
+
+        String id = HelperUtils.generateId();
 
         System.out.println("Enter patient first name :");
         String patientFName = scanner.nextLine();
@@ -32,10 +33,15 @@ public class PatientService implements Manageable, Searchable {
         System.out.println("Enter patient last name :");
         String patientLName = scanner.nextLine();
 
-        System.out.println("Enter patient DOB: ");
-        String dateOfBirth = scanner.nextLine();
-        LocalDate DOB = LocalDate.parse(dateOfBirth);
+        System.out.println("Enter patient DOB (yyyy-MM-dd): ");
+        LocalDate DOB;
 
+        try {
+            DOB = LocalDate.parse(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid DOB format.");
+            return null;
+        }
         System.out.println("Enter patient gender :");
         String gender = scanner.nextLine();
 
@@ -57,30 +63,37 @@ public class PatientService implements Manageable, Searchable {
         System.out.println("Enter patient emergency Contact :");
         String emergencyContact = scanner.nextLine();
 
-        System.out.println("Enter registration Date :");
-        String dateOfRegistration = scanner.nextLine();
-        LocalDate DOR = LocalDate.parse(dateOfBirth);
+        System.out.println("Enter registration Date (yyyy-MM-dd) :");
+        LocalDate DOR;
+
+        try {
+            DOR = LocalDate.parse(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid registration date format.");
+            return null;
+        }
 
 
         System.out.println("Enter patient insurance Id :");
         String insuranceId = scanner.nextLine();
 
-        System.out.println("Enter patient allergies :");
-
-        Boolean continueFlag = true;
-
         List<String> allergies = new ArrayList<>();
 
-        while (continueFlag) {
+        System.out.println("Enter patient allergies (type 'q' to stop) :");
 
-            allergies.add(scanner.nextLine());
-            System.out.println("Enter c to add more allergies , and q to exit");
-            if (scanner.nextLine().equalsIgnoreCase("q")) {
-                continueFlag = false;
+        while (true) {
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("q")) {
+                break;
             }
+
+            allergies.add(input);
         }
 
         Patient patient = new Patient(id, patientFName, DOB, patientLName, gender, phone, email, address, patientID, bloodGroup, allergies, emergencyContact, DOR, medicalRecords, insuranceId, appointments);
+
+        System.out.println("Patient added successfully.");
 
         return patient;
     }
