@@ -136,9 +136,18 @@ public class DoctorService implements Manageable, Searchable {
 
     public void editDoctor(String doctorId){
 
+        if (!HelperUtils.isValidString(doctorId)) {
+            System.out.println("Invalid doctor ID.");
+            return;
+        }
+
+        boolean found = false;
+
         for(Doctor doctor : doctors){
 
             if(doctor.getDoctorId().equals(doctorId)){
+
+                found = true;
 
                 System.out.println("Enter updated Doctor first name :");
                 doctor.setFirstName(scanner.nextLine());
@@ -147,9 +156,13 @@ public class DoctorService implements Manageable, Searchable {
                doctor.setLastName(scanner.nextLine());
 
                 System.out.println("Enter updated Doctor DOB: ");
-                String dateOfBirth = scanner.nextLine();
-                LocalDate DOB = LocalDate.parse(dateOfBirth);
-                doctor.setDateOfBirth(DOB);
+
+                try {
+                    LocalDate dob = LocalDate.parse(scanner.nextLine());
+                    doctor.setDateOfBirth(dob);
+                } catch (Exception e) {
+                    System.out.println("Invalid date format.");
+                }
 
                 System.out.println("Enter updated Doctor gender :");
                 doctor.setGender(scanner.nextLine());
@@ -167,7 +180,7 @@ public class DoctorService implements Manageable, Searchable {
                 doctor.setSpecialization(scanner.nextLine());
 
                 System.out.println("Enter updated Doctor qualification :");
-              doctor.setQualification(scanner.nextLine());
+                doctor.setExperienceYears(Integer.parseInt(scanner.nextLine()));
 
                 System.out.println("Enter updated Doctor experienceYears :");
                 doctor.setExperienceYears(scanner.nextInt());
@@ -176,11 +189,16 @@ public class DoctorService implements Manageable, Searchable {
                doctor.setDepartmentId(scanner.nextLine());
 
                 System.out.println("Enter updated Doctor consultationFee :");
-                doctor.setConsultationFee(scanner.nextDouble());
+                doctor.setConsultationFee(Double.parseDouble(scanner.nextLine()));
 
                 System.out.println("doctor updated successfully");
 
+                break;
             }
+        }
+
+        if (!found) {
+            System.out.println("Doctor not found.");
         }
 
     }
