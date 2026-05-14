@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,7 +26,10 @@ public class EmergencyPatient extends InPatient implements Displayable {
     }
 
     public void setEmergencyType(String emergencyType) {
-        this.emergencyType = emergencyType;
+
+        if(HelperUtils.isValidString(emergencyType)) {
+            this.emergencyType = emergencyType;
+        }
     }
 
     public String getArrivalMode() {
@@ -33,7 +37,10 @@ public class EmergencyPatient extends InPatient implements Displayable {
     }
 
     public void setArrivalMode(String arrivalMode) {
-        this.arrivalMode = arrivalMode;
+
+        if(HelperUtils.isValidString(arrivalMode)) {
+            this.arrivalMode = arrivalMode;
+        }
     }
 
     public int getTriageLevel() {
