@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -46,6 +47,10 @@ public class Person implements Displayable {
     }
 
     public void setFirstName(String firstName) {
+
+        if (!HelperUtils.isValidString(firstName)) {
+            throw new IllegalArgumentException("First name cannot be null or empty");
+        }
         this.firstName = firstName;
     }
 
@@ -54,6 +59,10 @@ public class Person implements Displayable {
     }
 
     public void setLastName(String lastName) {
+
+        if (!HelperUtils.isValidString(lastName)) {
+            throw new IllegalArgumentException("Last name cannot be null or empty");
+        }
         this.lastName = lastName;
     }
 
@@ -62,6 +71,14 @@ public class Person implements Displayable {
     }
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
+
+        if (HelperUtils.isNull(dateOfBirth)) {
+            throw new IllegalArgumentException("Date of birth cannot be null");
+        }
+
+        if (dateOfBirth.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("Date of birth cannot be in the future");
+        }
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -70,6 +87,12 @@ public class Person implements Displayable {
     }
 
     public void setGender(String gender) {
+
+        if (!HelperUtils.isValidString(gender)) {
+            throw new IllegalArgumentException("Gender cannot be null or empty");
+        }
+
+
         this.gender = gender;
     }
 
@@ -78,6 +101,10 @@ public class Person implements Displayable {
     }
 
     public void setPhoneNumber(String phoneNumber) {
+
+        if (!HelperUtils.isValidString(phoneNumber)) {
+            throw new IllegalArgumentException("Phone number cannot be null or empty");
+        }
         this.phoneNumber = phoneNumber;
     }
 
@@ -86,6 +113,10 @@ public class Person implements Displayable {
     }
 
     public void setAddress(String address) {
+
+        if (!HelperUtils.isValidString(address)) {
+            throw new IllegalArgumentException("Address cannot be null or empty");
+        }
         this.address = address;
     }
 
@@ -94,6 +125,10 @@ public class Person implements Displayable {
     }
 
     public void setEmail(String email) {
+
+        if (!HelperUtils.isValidString(email)) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
         this.email = email;
     }
 
