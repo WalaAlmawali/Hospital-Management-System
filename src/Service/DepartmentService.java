@@ -150,6 +150,11 @@ public class DepartmentService implements Manageable, Searchable {
     //retrieve department
     public Department getDepartment(String departmentId){
 
+        if (!HelperUtils.isValidString(departmentId)) {
+            System.out.println("Invalid department ID.");
+            return null;
+        }
+
         for(Department department: departmentList){
 
             if(department.getDepartmentId().equals(departmentId)){
