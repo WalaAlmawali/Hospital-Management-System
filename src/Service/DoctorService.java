@@ -451,19 +451,43 @@ public class DoctorService implements Manageable, Searchable {
     // Overloaded displayDoctors(String departmentId, boolean showAvailableOnly)
 public void displayDoctors(String departmentId, boolean showAvailableOnly){
 
+    if (!HelperUtils.isValidString(departmentId)) {
+        System.out.println("Invalid department ID.");
+        return;
+    }
+
+
     Department department = departmentService.getDepartment(departmentId) ;
 
-        if(showAvailableOnly){
+    if (HelperUtils.isNull(department)) {
+        System.out.println("Department not found.");
+        return;
+    }
+
 
             List<Doctor> availableDoctors = department.getDoctors();
 
+            if (HelperUtils.isNull(availableDoctors)) {
+                System.out.println("No doctors in this department.");
+                return;
+            }
+
             for(Doctor doctor : availableDoctors){
+
+                if (doctor == null) {
+                    continue;
+                }
+
+                if (showAvailableOnly) {
 
                 if(!doctor.getAvailableSlots().isEmpty()){
 
                     doctor.displayInfo();
+                }else{
+                    doctor.displayInfo();
                 }
-            }
+                }
+
         }
 
 
