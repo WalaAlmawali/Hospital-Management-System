@@ -132,10 +132,19 @@ public class DepartmentService implements Manageable, Searchable {
     // remove department by ID
     public void removeDepartment(String departmentId){
 
-        departmentList.removeIf(D -> D.getDepartmentId() == departmentId);
-        System.out.println("Department removed successfully");
+        if (!HelperUtils.isValidString(departmentId)) {
+            System.out.println("Invalid department ID.");
+            return;
+        }
 
-        System.out.println("Department record not found");
+        boolean removed = departmentList.removeIf(
+                d -> d.getDepartmentId().equals(departmentId));
+
+        if (removed) {
+            System.out.println("Department removed successfully");
+        }else {
+            System.out.println("Department record not found");
+        }
     }
 
     //retrieve department
