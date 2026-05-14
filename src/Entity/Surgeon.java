@@ -30,14 +30,29 @@ public class Surgeon extends Doctor implements Displayable {
     }
 
     public void setSurgeriesPerformed(int surgeriesPerformed) {
+
+        if(HelperUtils.isNegative(surgeriesPerformed)){
+            throw new IllegalArgumentException("Surgeries performed cannot be negative");
+        }
         this.surgeriesPerformed = surgeriesPerformed;
     }
 
     public List<String> getSurgeryTypes() {
+
         return surgeryTypes;
     }
 
     public void setSurgeryTypes(List<String> surgeryTypes) {
+
+        if (HelperUtils.isNull(surgeryTypes)) {
+            throw new IllegalArgumentException("Surgery types cannot be null");
+        }
+
+        for (String type : surgeryTypes) {
+            if (!HelperUtils.isValidString(type)) {
+                throw new IllegalArgumentException("Invalid surgery type in list");
+            }
+        }
         this.surgeryTypes = surgeryTypes;
     }
 
