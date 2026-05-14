@@ -102,9 +102,14 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
             return;
         }
 
+        boolean found = false;
+
+
         for(Appointment appointment : appointmentList){
 
             if(appointment.getAppointmentId().equals(appointmentId)){
+
+                found = true;
 
                 System.out.println("Enter updated patient Id :");
                 appointment.setPatientId(scanner.nextLine());
@@ -130,10 +135,13 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
                appointment.setNotes(scanner.nextLine());
 
                 System.out.println("Appointment updated successfully");
-
+                break;
 
             }
 
+        }
+        if (!found) {
+            System.out.println("Appointment not found.");
         }
 
     }
