@@ -81,9 +81,18 @@ public class MedicalRecordService implements Manageable, Searchable {
 
     public void editMedicalRecord(String recordId) {
 
+        if (!HelperUtils.isValidString(recordId)) {
+            System.out.println("Invalid record ID.");
+            return;
+        }
+
+        boolean found = false;
+
         for(MedicalRecord medicalRecord : medicalRecordList){
 
             if(medicalRecord.getRecordId().equals(recordId)){
+
+                found = true;
 
                 System.out.println("Enter updated patient Id :");
                 medicalRecord.setPatientId(scanner.nextLine());
@@ -91,10 +100,14 @@ public class MedicalRecordService implements Manageable, Searchable {
                 System.out.println("Enter updated doctor Id :");
                 medicalRecord.setDoctorId(scanner.nextLine());
 
-                System.out.println("Enter updated visit Date:");
-                String visitDate = scanner.nextLine();
-                LocalDate date = LocalDate.parse(visitDate);
-                medicalRecord.setVisitDate(date);
+                System.out.println("Enter updated visit Date (yyyy-MM-dd):");
+
+                try {
+                    LocalDate date = LocalDate.parse(scanner.nextLine());
+                    medicalRecord.setVisitDate(date);
+                } catch (Exception e) {
+                    System.out.println("Invalid date format. Skipping update.");
+                }
 
                 System.out.println("Enter updated diagnosis :");
                 medicalRecord.setDiagnosis(scanner.nextLine());
@@ -109,10 +122,12 @@ public class MedicalRecordService implements Manageable, Searchable {
                 medicalRecord.setNotes(scanner.nextLine());
 
                 System.out.println("Medical record updated successfully");
-
-
+                break;
             }
 
+        }
+        if (!found) {
+            System.out.println("Medical record not found.");
         }
 
     }
