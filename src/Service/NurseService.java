@@ -208,7 +208,6 @@ public class NurseService implements Manageable, Searchable {
             return departmentNurse;
         }
 
-
         for(Nurse nurse : nurseList){
 
             if (HelperUtils.isNull(nurse)) {
@@ -227,7 +226,16 @@ public class NurseService implements Manageable, Searchable {
 
         List<Nurse> shiftNurse = new ArrayList<>();
 
+        if (!HelperUtils.isValidString(shift)) {
+            return shiftNurse;
+        }
+
         for(Nurse nurse : nurseList){
+
+            if (HelperUtils.isNull(nurse)) {
+                continue;
+            }
+
             if(nurse.getShift().equals(shift)){
                 shiftNurse.add(nurse);
             }
