@@ -52,7 +52,10 @@ public class Doctor extends Person implements Displayable {
     }
 
     public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+
+        if(HelperUtils.isValidString(specialization)) {
+            this.specialization = specialization;
+        }
     }
 
     public String getQualification() {
@@ -60,7 +63,10 @@ public class Doctor extends Person implements Displayable {
     }
 
     public void setQualification(String qualification) {
-        this.qualification = qualification;
+
+        if(HelperUtils.isValidString(qualification)) {
+            this.qualification = qualification;
+        }
     }
 
     public int getExperienceYears() {
@@ -68,7 +74,10 @@ public class Doctor extends Person implements Displayable {
     }
 
     public void setExperienceYears(int experienceYears) {
-        this.experienceYears = experienceYears;
+
+        if(HelperUtils.isPositive(experienceYears)) {
+            this.experienceYears = experienceYears;
+        }
     }
 
     public String getDepartmentId() {
@@ -84,7 +93,10 @@ public class Doctor extends Person implements Displayable {
     }
 
     public void setConsultationFee(double consultationFee) {
-        this.consultationFee = consultationFee;
+
+        if(HelperUtils.isPositive(consultationFee)) {
+            this.consultationFee = consultationFee;
+        }
     }
 
     public List<String> getAvailableSlots() {
@@ -92,7 +104,10 @@ public class Doctor extends Person implements Displayable {
     }
 
     public void setAvailableSlots(List<String> availableSlots) {
-        this.availableSlots = availableSlots;
+
+        if(HelperUtils.isNotNull(availableSlots)) {
+            this.availableSlots = availableSlots;
+        }
     }
 
     public List<Patient> getAssignedPatients() {
@@ -100,7 +115,10 @@ public class Doctor extends Person implements Displayable {
     }
 
     public void setAssignedPatients(List<Patient> assignedPatients) {
-        this.assignedPatients = assignedPatients;
+
+        if(HelperUtils.isNotNull(assignedPatients)) {
+            this.assignedPatients = assignedPatients;
+        }
     }
 
     @Override
