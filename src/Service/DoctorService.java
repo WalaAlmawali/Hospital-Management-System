@@ -422,12 +422,28 @@ public class DoctorService implements Manageable, Searchable {
     // Overloaded displayDoctors(String specialization)
     public void displayDoctors(String specialization){
 
+        if (!HelperUtils.isValidString(specialization)) {
+            System.out.println("Invalid specialization.");
+            return;
+        }
+
+        boolean found = false;
+
         for (Doctor doctor : doctors){
+
+            if (HelperUtils.isNull(doctor)) {
+                continue;
+            }
 
             if(doctor.getSpecialization().equalsIgnoreCase(specialization)){
                 doctor.displayInfo();
+                found = true;
+
             }
 
+        }
+        if (!found) {
+            System.out.println("No doctors found for specialization: " + specialization);
         }
 
     }
