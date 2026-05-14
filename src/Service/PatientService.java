@@ -363,17 +363,22 @@ public class PatientService implements Manageable, Searchable {
     // display filtered by criteria
     public void displayPatients(String filter){
 
+        if (!HelperUtils.isValidString(filter)) {
+            System.out.println("Invalid search filter.");
+            return;
+        }
+
+        boolean matches = false;
+
         for (Patient patient : patients) {
 
-            boolean matches = false;
-
-            // filter by ID
-            if (patient.getPatientId().toLowerCase().contains(filter.toLowerCase())) {
-                matches = true;
+            if (HelperUtils.isNull(patient)) {
+                continue;
             }
 
+
             // filter by first name
-            else if (patient.getFirstName().toLowerCase().contains(filter.toLowerCase())) {
+             if (patient.getFirstName().toLowerCase().contains(filter.toLowerCase())) {
                 matches = true;
             }
 
@@ -393,7 +398,11 @@ public class PatientService implements Manageable, Searchable {
             }
 
             if (matches) {
-                System.out.println(patient);
+                patient.displayInfo();
+
+            }else {
+                System.out.println("No patients found for: " + filter);
+
             }
         }
 
