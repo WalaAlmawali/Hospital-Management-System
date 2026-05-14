@@ -182,11 +182,18 @@ public class PatientService implements Manageable, Searchable {
 
         List<Patient> matchedPatients = new ArrayList<>();
 
-
+        if (!HelperUtils.isValidString(firstName) ||
+                !HelperUtils.isValidString(lastName)) {
+            return matchedPatients;
+        }
 
         for (Patient patient : patients) {
 
-            if(patient.getFirstName().equalsIgnoreCase(firstName) && patient.getLastName().equalsIgnoreCase(lastName.toLowerCase())){
+            if (HelperUtils.isNull(patient)) {
+                continue;
+            }
+
+            if(patient.getFirstName().equalsIgnoreCase(firstName) && patient.getLastName().equalsIgnoreCase(lastName)){
 
                 matchedPatients.add(patient);
             }
