@@ -242,9 +242,19 @@ public class DoctorService implements Manageable, Searchable {
     //display all doctors with formatted output
     public void displayAllDoctors(){
 
-        for(Doctor doctor: doctors){
-            doctor.displayInfo();
+        if (HelperUtils.isNull(doctors)) {
+            System.out.println("No doctors available.");
+            return;
         }
+
+        System.out.println("===== DOCTORS LIST =====");
+
+             for(Doctor doctor: doctors){
+                 doctor.displayInfo();
+
+            System.out.println("------------------------");
+
+             }
 
     }
 
