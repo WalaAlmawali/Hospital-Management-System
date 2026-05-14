@@ -75,8 +75,22 @@ public class DepartmentService implements Manageable, Searchable {
 
     public void editDepartment(String departmentId){
 
+        if (!HelperUtils.isValidString(departmentId)) {
+            System.out.println("Invalid department ID.");
+            return;
+        }
+
+        boolean found = false;
+
+
         for(Department department : departmentList){
-            if(department.getDepartmentId().equals(departmentId)){
+
+            if(!department.getDepartmentId().equals(departmentId)) {
+                continue;
+            }
+
+            found = true;
+
 
                 System.out.println("Enter updated department Name :");
                 department.setDepartmentName(scanner.nextLine());
@@ -85,18 +99,35 @@ public class DepartmentService implements Manageable, Searchable {
                 department.setHeadDoctorId(scanner.nextLine());
 
                 System.out.println("Enter updated department  bed Capacity :");
-                department.setBedCapacity(scanner.nextInt());
+                int bedCapacity = scanner.nextInt();
 
                 System.out.println("Enter updated department available Beds :");
-                department.setAvailableBeds(scanner.nextInt());
+                int availableBeds= scanner.nextInt();
 
-                System.out.println("department updated successfully");
+            if (!HelperUtils.isValidNumber(
+                    availableBeds,
+                    0,
+                    bedCapacity)) {
 
+                System.out.println("Available beds cannot exceed bed capacity.");
+                return;
             }
+
+            department.setBedCapacity(bedCapacity);
+            department.setAvailableBeds(availableBeds);
+
+            System.out.println("department updated successfully");
+
+            break;
+
+        }
+        if (!found) {
+            System.out.println("Department not found.");
+        }
 
         }
 
-    }
+
 
     // remove department by ID
     public void removeDepartment(String departmentId){
