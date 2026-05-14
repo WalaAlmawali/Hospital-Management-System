@@ -169,6 +169,11 @@ public class DepartmentService implements Manageable, Searchable {
     // display All Departments
     public void displayAllDepartments(){
 
+        if (HelperUtils.isNull(departmentList)) {
+            System.out.println("No departments available.");
+            return;
+        }
+
         for(Department department : departmentList){
             department.displayInfo();
         }
