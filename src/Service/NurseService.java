@@ -200,11 +200,22 @@ public class NurseService implements Manageable, Searchable {
     }
 
     // get Nurse By Department
-    public List<Nurse> getNursesByDepartment(String department){
+    public List<Nurse> getNursesByDepartment(String departmentId){
 
         List<Nurse> departmentNurse = new ArrayList<>();
+
+        if (!HelperUtils.isValidString(departmentId)) {
+            return departmentNurse;
+        }
+
+
         for(Nurse nurse : nurseList){
-            if(nurse.getDepartmentId().equals(department)){
+
+            if (HelperUtils.isNull(nurse)) {
+                continue;
+            }
+
+            if(nurse.getDepartmentId().equals(departmentId)){
                 departmentNurse.add(nurse);
             }
         }
