@@ -183,16 +183,43 @@ public class DepartmentService implements Manageable, Searchable {
 
     public void assignDoctorToDepartment(String doctorId, String departmentId){
 
+        if (!HelperUtils.isValidString(doctorId) ||
+                !HelperUtils.isValidString(departmentId)) {
+
+            System.out.println("Invalid doctor or department ID.");
+            return;
+        }
+
         Doctor doctor = doctorService.getDoctorById(doctorId);
+
+        if (HelperUtils.isNull(doctor)) {
+            System.out.println("Doctor not found.");
+            return;
+        }
+
+        boolean foundDepartment = false;
 
         for(Department department : departmentList){
 
             if(department.getDepartmentId().equals(departmentId)){
 
+                foundDepartment = true;
+
+                if (department.getDoctors().contains(doctor)) {
+                    System.out.println("Doctor already assigned to this department.");
+                    return;
+                }
+
                 department.getDoctors().add(doctor);
+
+                System.out.println("Doctor assigned successfully.");
+                return;
             }
         }
 
+            if (!foundDepartment) {
+             System.out.println("Department not found.");
+            }
 
         }
 
