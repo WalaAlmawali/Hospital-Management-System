@@ -30,6 +30,10 @@ public class Nurse extends Person implements Displayable {
     }
 
     public void setDepartmentId(String departmentId) {
+
+        if (!HelperUtils.isValidString(departmentId)) {
+            throw new IllegalArgumentException("Department ID cannot be null or empty");
+        }
         this.departmentId = departmentId;
     }
 
@@ -38,6 +42,10 @@ public class Nurse extends Person implements Displayable {
     }
 
     public void setShift(String shift) {
+
+        if (!HelperUtils.isValidString(shift)) {
+            throw new IllegalArgumentException("Shift cannot be null or empty");
+        }
         this.shift = shift;
     }
 
@@ -46,6 +54,10 @@ public class Nurse extends Person implements Displayable {
     }
 
     public void setQualification(String qualification) {
+
+        if (!HelperUtils.isValidString(qualification)) {
+            throw new IllegalArgumentException("Qualification cannot be null or empty");
+        }
         this.qualification = qualification;
     }
 
@@ -54,6 +66,10 @@ public class Nurse extends Person implements Displayable {
     }
 
     public void setAssignedPatients(List<Patient> assignedPatients) {
+
+        if (HelperUtils.isNull(assignedPatients)) {
+            throw new IllegalArgumentException("Assigned patients list cannot be null");
+        }
         this.assignedPatients = assignedPatients;
     }
 
