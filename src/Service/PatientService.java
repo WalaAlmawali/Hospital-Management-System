@@ -340,8 +340,22 @@ public class PatientService implements Manageable, Searchable {
    //display all patients with formatted output
     public void displayAllPatients(){
 
+        if(HelperUtils.isNull(patients)){
+            System.out.println("No patients available.");
+            return;
+        }
+
+        System.out.println("===== PATIENT LIST =====");
+
         for(Patient patient: patients){
+
+            if (HelperUtils.isNull(patient)) {
+                continue;
+            }
             patient.displayInfo();
+
+            System.out.println("------------------------");
+
         }
 
     }
