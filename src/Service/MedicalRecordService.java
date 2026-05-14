@@ -4,6 +4,7 @@ import Behavior.Manageable;
 import Behavior.Searchable;
 import Entity.MedicalRecord;
 import Entity.Nurse;
+import Entity.Patient;
 import Utils.HelperUtils;
 
 import java.time.LocalDate;
@@ -267,5 +268,52 @@ public class MedicalRecordService implements Manageable, Searchable {
     @Override
     public Object searchById(String id) {
         return null;
+    }
+
+    public Boolean handleRecordMenu(Integer recordOption) {
+        Scanner scanner = new Scanner(System.in);
+
+        switch (recordOption) {
+            case 1 -> {
+                addMedicalRecords();
+            }
+            case 2 -> {
+
+
+            }
+            case 3 -> {
+                System.out.println("Enter patient id");
+                String input = scanner.nextLine();
+                System.out.println(getRecordsByPatientId(input));
+
+            }
+
+            case 4 -> {
+                System.out.println("Enter doctor id");
+                String input = scanner.nextLine();
+                System.out.println(getRecordsByDoctorId(input));
+
+
+            }  case 5 -> {
+                System.out.println("Enter record id");
+                String input = scanner.nextLine();
+                editMedicalRecord(input);
+
+            }  case 6 -> {
+                System.out.println("Enter record id");
+                String input = scanner.nextLine();
+                removeMedicalRecord(input);
+
+            }  case 7 -> {
+                System.out.println("Enter patient id");
+                String input = scanner.nextLine();
+                displayPatientHistory(input);
+
+            }  case 8 -> {
+                return false;
+            }
+
+        }
+        return true;
     }
 }

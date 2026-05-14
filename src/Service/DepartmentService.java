@@ -2,10 +2,7 @@ package Service;
 
 import Behavior.Manageable;
 import Behavior.Searchable;
-import Entity.Appointment;
-import Entity.Department;
-import Entity.Doctor;
-import Entity.Nurse;
+import Entity.*;
 import Utils.HelperUtils;
 
 import java.util.ArrayList;
@@ -246,5 +243,71 @@ public class DepartmentService implements Manageable, Searchable {
     @Override
     public Object searchById(String id) {
         return null;
+    }
+
+    public Boolean handleDepMenu(Integer depOption) {
+        Scanner scanner = new Scanner(System.in);
+
+        switch (depOption) {
+            case 1 -> {
+                addDepartments();
+            }
+            case 2 -> {
+                displayAllDepartments();
+
+            }
+            case 3 -> {
+                System.out.println("Enter department id");
+                String depId = scanner.nextLine();
+
+            }
+
+            case 4 -> {
+                System.out.println("Enter department id");
+                String depId = scanner.nextLine();
+
+                System.out.println("Enter doctor id");
+                String docId = scanner.nextLine();
+
+                assignDoctorToDepartment(depId,docId);
+
+            }  case 5 -> {
+
+
+
+            }  case 6 -> {
+                System.out.println("Enter department id to update ");
+                String input = scanner.nextLine();
+
+                editDepartment(input);
+
+            }  case 7 -> {
+
+
+            }  case 8 -> {
+                return false;
+
+            }
+
+        }
+        return true;
+    }
+
+    public void departmentOccupancyReport(String departmentId) {
+        System.out.println("==== Department Occupancy Report ====");
+        if (HelperUtils.isNull(departmentId)) {
+            System.out.println("No departments found.");
+            return;
+        }
+
+        for (Department department : departmentList) {
+            int occupiedBeds = department.getBedCapacity() - department.getAvailableBeds();
+            System.out.println("Department: " + department.getDepartmentName() );
+            department.displaySummary();
+            System.out.println("Bed Capacity: " + department.getBedCapacity());
+            System.out.println("Available Beds: " + department.getAvailableBeds());
+            System.out.println("Occupied Beds: " + occupiedBeds);
+            System.out.println("-----------------------------------");
+        }
     }
 }

@@ -517,4 +517,75 @@ public void displayDoctors(String departmentId, boolean showAvailableOnly){
     public Object searchById(String id) {
         return null;
     }
+
+    public void DoctorPerformanceReport(String doctorId){
+
+        Doctor doctor = getDoctorById(doctorId);
+        if(HelperUtils.isNotNull(doctor)){
+            System.out.println("Doctor Performance Report");
+            doctor.displaySummary();
+            System.out.println("Number of patients handled:   " + doctor.getAssignedPatients().size());
+        }
+
+    }
+
+    public Boolean handleDoctorMenu(Integer doctorOption) {
+        Scanner scanner = new Scanner(System.in);
+
+        switch (doctorOption) {
+            case 1 -> {
+               addDoctors();
+
+            }
+            case 2 -> {
+
+
+
+            }
+            case 3 -> {
+
+            }
+
+            case 4 -> {
+
+
+            }  case 5 -> {
+               displayDoctors();
+
+            }  case 6 -> {
+                System.out.println("Enter Specialization");
+                String input = scanner.nextLine();
+                displayDoctors(input);
+
+
+            }  case 7 -> {
+                System.out.println("Enter Department id");
+                String input = scanner.nextLine();
+               displayDoctors(input,true);
+
+
+            }  case 8 -> {
+                System.out.println("Enter doctor id");
+                String doctorId = scanner.nextLine();
+                System.out.println("Enter patient id");
+                String patientId = scanner.nextLine();
+             assignPatient(doctorId,patientId);
+
+            }  case 9 -> {
+                System.out.println("Enter doctor id to update :");
+                String input = scanner.nextLine();
+               editDoctor(input);
+
+            }case 10 -> {
+                System.out.println("Enter doctor id to remove :");
+                String input = scanner.nextLine();
+                removeDoctor(input);
+            }case 11 -> {
+                return false;
+
+            }
+
+        }
+        return true;
+    }
 }

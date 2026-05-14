@@ -3,9 +3,7 @@ package Service;
 import Behavior.Appointable;
 import Behavior.Manageable;
 import Behavior.Searchable;
-import Entity.Appointment;
-import Entity.Doctor;
-import Entity.MedicalRecord;
+import Entity.*;
 import Utils.HelperUtils;
 
 import java.time.LocalDate;
@@ -15,10 +13,13 @@ import java.util.Scanner;
 
 public class AppointmentService implements Manageable,Searchable, Appointable {
 
+
     static List<Appointment> appointmentList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
     DoctorService doctorService = new DoctorService();
+    DepartmentService departmentService = new DepartmentService();
+    PatientService patientService = new PatientService();
 
     //add new appointment
     public Appointment addAppointment(){
@@ -613,5 +614,145 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
     @Override
     public Object searchById(String id) {
         return null;
+    }
+
+    public Boolean handleAppointmentMenu(Integer appointmentOption) {
+        Scanner scanner = new Scanner(System.in);
+
+        switch (appointmentOption) {
+            case 1 -> {
+               addAppointments();
+            }
+            case 2 -> {
+
+
+            }
+            case 3 -> {
+                System.out.println("Enter patient id");
+                String input = scanner.nextLine();
+                System.out.println(getAppointmentsByPatient(input));
+            }
+
+            case 4 -> {
+                System.out.println("Enter doctor id");
+                String input = scanner.nextLine();
+                System.out.println(getAppointmentsByDoctor(input));
+
+
+            }  case 5 -> {
+                System.out.println("Enter date (yyyy-MM-dd):");
+
+                String dateInput = scanner.nextLine();
+
+                LocalDate input = LocalDate.parse(dateInput);
+
+                System.out.println(getAppointmentsByDate(input));
+
+            }  case 6 -> {
+                System.out.println("Enter patient id ");
+                String patientId = scanner.nextLine();
+
+                System.out.println("Enter new time ");
+                String time = scanner.nextLine();
+
+                System.out.println("Enter new date (yyyy-MM-dd):");
+                String dateInput = scanner.nextLine();
+
+                LocalDate input = LocalDate.parse(dateInput);
+                rescheduleAppointment(patientId,input,time);
+
+            }  case 7 -> {
+                System.out.println("Enter appointment id to cancel");
+                String input = scanner.nextLine();
+                cancelAppointment(input);
+
+            }  case 8 -> {
+                System.out.println("Enter appointment id ");
+                String input = scanner.nextLine();
+                AppointmentService appointmentService = new AppointmentService();
+                Appointment appointment = appointmentService.getAppointment(input);
+
+                appointment.complete();
+
+            } case 9 ->{
+
+
+            }
+            case 10 -> {
+
+                return false;
+            }
+
+        }
+        return true;
+    }
+    public void getupComingAppointments() {
+
+        int scheduled = 0;
+        int completed = 0;
+        int cancelled = 0;
+
+        LocalDate today = LocalDate.now();
+
+        for (Appointment a : appointmentList) {
+            a.displaySummary();
+            if (a.getAppointmentDate().isAfter(today)) {
+
+                if (a.getStatus().equalsIgnoreCase("Scheduled")) {
+                    scheduled++;
+                }
+                else if (a.getStatus().equalsIgnoreCase("Completed")) {
+                    completed++;
+                }
+                else if (a.getStatus().equalsIgnoreCase("Cancelled")) {
+                    cancelled++;
+                }
+            }
+        }
+
+        System.out.println("===== FUTURE APPOINTMENT STATISTICS =====");
+        System.out.println("Scheduled : " + scheduled);
+        System.out.println("Completed : " + completed);
+        System.out.println("Cancelled : " + cancelled);
+    }
+
+    public Boolean handleReportMenu(Integer reportOption) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        switch (reportOption) {
+            case 1 -> {
+                getupComingAppointments();
+            }
+            case 2 -> {
+                System.out.println("Enter doctor Id");
+                String input = scanner.nextLine();
+                doctorService.DoctorPerformanceReport(input);
+
+            }
+            case 3 -> {
+                System.out.println("Enter department Id");
+                String input = scanner.nextLine();
+                departmentService.departmentOccupancyReport(input);
+
+            }
+
+            case 4 -> {
+                patientService.patientStatisticsReport();
+
+            }  case 5 -> {
+
+
+            }  case 6 -> {
+
+                return false;
+
+            }
+
+
+        }
+        return true;
+
+
     }
 }

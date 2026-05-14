@@ -4,6 +4,7 @@ import Behavior.Manageable;
 import Behavior.Searchable;
 import Entity.Doctor;
 import Entity.Nurse;
+import Entity.Patient;
 import Utils.HelperUtils;
 
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ public class NurseService implements Manageable, Searchable {
 
     static List<Nurse> nurseList = new ArrayList<>();
     List<String> assignedPatients = new ArrayList<>();
+
 
     public Nurse addNurse() {
 
@@ -267,5 +269,59 @@ public class NurseService implements Manageable, Searchable {
     @Override
     public Object searchById(String id) {
         return null;
+    }
+
+    public Boolean handleNurseMenu(Integer nurseOption) {
+        Scanner scanner = new Scanner(System.in);
+
+        switch (nurseOption) {
+            case 1 -> {
+                addNurses();
+            }
+            case 2 -> {
+                displayAllNurses();
+
+            }
+            case 3 -> {
+                System.out.println("Enter department id");
+                String input = scanner.nextLine();
+                System.out.println(getNursesByDepartment(input));
+            }
+
+            case 4 -> {
+                System.out.println("Enter shift");
+                String input = scanner.nextLine();
+                getNursesByShift(input);
+
+            }  case 5 -> {
+                System.out.println("Enter nurse id  ");
+                String nurseId = scanner.nextLine();
+
+                System.out.println("Enter patient id  ");
+                String patientId = scanner.nextLine();
+
+                Nurse nurse = getNurseById(nurseId);
+                PatientService patientService = new PatientService();
+                Patient patient = patientService.getPatientById(patientId);
+
+                nurse.assignPatient(patient,nurseId);
+
+            }  case 6 -> {
+                System.out.println("Enter nurse id to update ");
+                String input = scanner.nextLine();
+                editNurse(input);
+
+            }  case 7 -> {
+                System.out.println("Enter nurse id to remove ");
+                String input = scanner.nextLine();
+                removeNurse(input);
+
+            }  case 8 -> {
+                return false;
+
+            }
+
+        }
+        return true;
     }
 }

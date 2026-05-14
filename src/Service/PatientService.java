@@ -2,9 +2,7 @@ package Service;
 
 import Behavior.Manageable;
 import Behavior.Searchable;
-import Entity.Appointment;
-import Entity.MedicalRecord;
-import Entity.Patient;
+import Entity.*;
 import Utils.HelperUtils;
 
 import java.time.LocalDate;
@@ -18,6 +16,8 @@ public class PatientService implements Manageable, Searchable {
     static List<Patient> patients = new ArrayList<>();
     List<MedicalRecord> medicalRecords = new ArrayList<>();
     List<Appointment> appointments = new ArrayList<>();
+
+    MedicalRecordService medicalRecordService = new MedicalRecordService();
 
 
     //add new patient
@@ -443,6 +443,10 @@ public class PatientService implements Manageable, Searchable {
             }
         }
 
+        // add Inpatient
+
+
+
 
 
     //search functionality
@@ -499,4 +503,84 @@ public class PatientService implements Manageable, Searchable {
     public Object searchById(String id) {
         return null;
     }
-}
+
+    public Boolean handlePatientMenu(Integer patientOption) {
+        Scanner scanner = new Scanner(System.in);
+
+        switch (patientOption) {
+            case 1 -> {
+                addPatients();
+
+            }
+            case 2 -> {
+
+
+
+            }
+            case 3 -> {
+
+            }
+
+            case 4 -> {
+
+
+            }  case 5 -> {
+                displayAllPatients();
+
+            }  case 6 -> {
+                System.out.println("Enter world to search");
+                String input = scanner.nextLine();
+                searchPatients(input);
+
+            }  case 7 -> {
+                System.out.println("Enter patient id to update :");
+                String patientId = scanner.nextLine();
+                editPatient(patientId);
+
+
+            }  case 8 -> {
+                System.out.println("Enter patient id to remove :");
+                String patientId = scanner.nextLine();
+                removePatient(patientId);
+
+            }  case 9 -> {
+                System.out.println("Enter patient id to display history :");
+                String input = scanner.nextLine();
+                medicalRecordService.displayPatientHistory(input);
+
+            }case 10 -> {
+                return false;
+
+            }
+
+        }
+        return true;
+    }
+
+    public static void patientStatisticsReport() {
+
+        int inPatientCount = 0;
+        int outPatientCount = 0;
+        int emergencyCount = 0;
+        int count = 0;
+        for (Patient p : patients) {
+            count++;
+            if (p instanceof InPatient) {
+                inPatientCount++;
+            }if (p instanceof OutPatient) {
+                outPatientCount++;
+            }if (p instanceof EmergencyPatient) {
+                emergencyCount++;
+            }
+        }
+
+        System.out.println("  Total Patients     : " + count);
+        System.out.println("  In-Patients        : " + inPatientCount);
+        System.out.println("  Out-Patients       : " + outPatientCount);
+        System.out.println("  Emergency Patients : " + emergencyCount);
+    }
+
+        }
+
+
+
