@@ -304,15 +304,42 @@ public class DoctorService implements Manageable, Searchable {
     // Overloaded assignPatient(String doctorId , String patientId)
     public void assignPatient(String doctorId , String patientId) {
 
+        if (!HelperUtils.isValidString(doctorId) ||
+                !HelperUtils.isValidString(patientId)) {
+
+            System.out.println("Invalid doctor or patient ID.");
+            return;
+        }
+
+
         Patient patient = patientService.getPatientById(patientId);
+
+        if (HelperUtils.isNull(patient)) {
+            System.out.println("Patient not found.");
+            return;
+        }
+
+        boolean foundDoctor = false;
 
         for(Doctor doctor : doctors){
 
             if(doctor.getDoctorId().equals(doctorId)){
+                foundDoctor = true;
+
+                if (doctor.getAssignedPatients().contains(patient)) {
+                    System.out.println("Patient already assigned to this doctor.");
+                    return;
+                }
+
                 doctor.getAssignedPatients().add(patient);
 
                 System.out.println("Patient : "+ patientId + " assigned to Dr. " + doctorId);
+                return;
             }
+        }
+
+        if (!foundDoctor) {
+            System.out.println("Doctor not found.");
         }
 
     }
