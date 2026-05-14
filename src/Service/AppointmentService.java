@@ -548,7 +548,24 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     public void displayAppointments(String doctorId, LocalDate startDate, LocalDate endDate){
 
+        if (!HelperUtils.isValidString(doctorId)) {
+            System.out.println("Invalid doctor ID.");
+            return;
+        }
 
+        if (!HelperUtils.isValidDate(startDate)
+                || !HelperUtils.isValidDate(endDate)) {
+
+            System.out.println("Invalid date range.");
+            return;
+        }
+
+        if (endDate.isBefore(startDate)) {
+            System.out.println("End date cannot be before start date.");
+            return;
+        }
+
+        boolean found = false;
 
         for(Appointment appointment: appointmentList){
 
