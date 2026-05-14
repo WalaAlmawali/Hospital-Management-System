@@ -97,9 +97,18 @@ public class NurseService implements Manageable, Searchable {
 
     public void editNurse(String nurseId) {
 
+        if (!HelperUtils.isValidString(nurseId)) {
+            System.out.println("Invalid nurse ID.");
+            return;
+        }
+
+        boolean found = false;
+
         for (Nurse nurse : nurseList){
 
             if(nurse.getNurseId().equals(nurseId)){
+
+                found = true;
 
                 System.out.println("Enter updated Nurse first name :");
                 nurse.setFirstName(scanner.nextLine());
@@ -107,10 +116,14 @@ public class NurseService implements Manageable, Searchable {
                 System.out.println("Enter updated Nurse last name :");
                 nurse.setLastName(scanner.nextLine());
 
-                System.out.println("Enter updated Nurse DOB: ");
-                String dateOfBirth = scanner.nextLine();
-                LocalDate DOB = LocalDate.parse(dateOfBirth);
-                nurse.setDateOfBirth(DOB);
+                System.out.println("Enter updated Nurse DOB (yyyy-MM-dd): ");
+
+                try {
+                    LocalDate DOB = LocalDate.parse(scanner.nextLine());
+                    nurse.setDateOfBirth(DOB);
+                } catch (Exception e) {
+                    System.out.println("Invalid date format. Skipping DOB update.");
+                }
 
                 System.out.println("Enter updated Nurse gender :");
                 nurse.setGender(scanner.nextLine());
@@ -134,10 +147,13 @@ public class NurseService implements Manageable, Searchable {
                 nurse.setQualification(scanner.nextLine());
 
                 System.out.println("Nurse updated successfully");
-
+                break;
 
             }
 
+        }
+        if (!found) {
+            System.out.println("Nurse not found.");
         }
 
     }
