@@ -36,6 +36,10 @@ public class InPatient extends Patient implements Displayable, Billable {
     }
 
     public void setAdmissionDate(LocalDate admissionDate) {
+
+        if (HelperUtils.isNull(admissionDate)) {
+            throw new IllegalArgumentException("Admission date cannot be null");
+        }
         this.admissionDate = admissionDate;
     }
 
@@ -44,6 +48,10 @@ public class InPatient extends Patient implements Displayable, Billable {
     }
 
     public void setDischargeDate(LocalDate dischargeDate) {
+
+        if(HelperUtils.isNull(dischargeDate) || HelperUtils.isNull(admissionDate) || dischargeDate.isBefore(admissionDate)){
+            throw new IllegalArgumentException("discharge Date cannot be null or Discharge date cannot be before admission date");
+        }
         this.dischargeDate = dischargeDate;
     }
 
@@ -52,6 +60,10 @@ public class InPatient extends Patient implements Displayable, Billable {
     }
 
     public void setRoomNumber(String roomNumber) {
+
+        if (!HelperUtils.isValidString(roomNumber)) {
+            throw new IllegalArgumentException("Invalid room number");
+        }
         this.roomNumber = roomNumber;
     }
 
@@ -60,6 +72,10 @@ public class InPatient extends Patient implements Displayable, Billable {
     }
 
     public void setBedNumber(String bedNumber) {
+
+        if (!HelperUtils.isValidString(bedNumber)) {
+            throw new IllegalArgumentException("Invalid bed number");
+        }
         this.bedNumber = bedNumber;
     }
 
@@ -68,6 +84,10 @@ public class InPatient extends Patient implements Displayable, Billable {
     }
 
     public void setAdmittingDoctorId(String admittingDoctorId) {
+
+        if (!HelperUtils.isValidString(admittingDoctorId)) {
+            throw new IllegalArgumentException("Invalid doctor ID");
+        }
         this.admittingDoctorId = admittingDoctorId;
     }
 
@@ -76,6 +96,10 @@ public class InPatient extends Patient implements Displayable, Billable {
     }
 
     public void setDailyCharges(double dailyCharges) {
+
+        if (!HelperUtils.isValidNumber(dailyCharges, 0, Double.MAX_VALUE)) {
+            throw new IllegalArgumentException("Daily charges must be positive");
+        }
         this.dailyCharges = dailyCharges;
     }
 

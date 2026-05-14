@@ -53,9 +53,10 @@ public class Doctor extends Person implements Displayable {
 
     public void setSpecialization(String specialization) {
 
-        if(HelperUtils.isValidString(specialization)) {
-            this.specialization = specialization;
+        if (!HelperUtils.isValidString(specialization)) {
+            throw new IllegalArgumentException("Invalid specialization");
         }
+            this.specialization = specialization;
     }
 
     public String getQualification() {
@@ -64,9 +65,12 @@ public class Doctor extends Person implements Displayable {
 
     public void setQualification(String qualification) {
 
-        if(HelperUtils.isValidString(qualification)) {
-            this.qualification = qualification;
+        if (!HelperUtils.isValidString(qualification)) {
+            throw new IllegalArgumentException("Invalid qualification");
         }
+
+            this.qualification = qualification;
+
     }
 
     public int getExperienceYears() {
@@ -75,9 +79,12 @@ public class Doctor extends Person implements Displayable {
 
     public void setExperienceYears(int experienceYears) {
 
-        if(HelperUtils.isPositive(experienceYears)) {
-            this.experienceYears = experienceYears;
+        if (HelperUtils.isNegative(experienceYears)) {
+            throw new IllegalArgumentException("Invalid experience years");
         }
+
+            this.experienceYears = experienceYears;
+
     }
 
     public String getDepartmentId() {
@@ -85,6 +92,10 @@ public class Doctor extends Person implements Displayable {
     }
 
     public void setDepartmentId(String departmentId) {
+
+        if (!HelperUtils.isValidString(departmentId)) {
+            throw new IllegalArgumentException("Department ID cannot be null or empty");
+        }
         this.departmentId = departmentId;
     }
 
@@ -94,9 +105,12 @@ public class Doctor extends Person implements Displayable {
 
     public void setConsultationFee(double consultationFee) {
 
-        if(HelperUtils.isPositive(consultationFee)) {
-            this.consultationFee = consultationFee;
+        if (!HelperUtils.isPositive(consultationFee)) {
+            throw new IllegalArgumentException("Consultation fee must be positive");
         }
+
+            this.consultationFee = consultationFee;
+
     }
 
     public List<String> getAvailableSlots() {
@@ -105,9 +119,11 @@ public class Doctor extends Person implements Displayable {
 
     public void setAvailableSlots(List<String> availableSlots) {
 
-        if(HelperUtils.isNotNull(availableSlots)) {
-            this.availableSlots = availableSlots;
+        if (HelperUtils.isNull(availableSlots)) {
+            throw new IllegalArgumentException("Available slots cannot be null");
         }
+            this.availableSlots = availableSlots;
+
     }
 
     public List<Patient> getAssignedPatients() {
@@ -116,9 +132,11 @@ public class Doctor extends Person implements Displayable {
 
     public void setAssignedPatients(List<Patient> assignedPatients) {
 
-        if(HelperUtils.isNotNull(assignedPatients)) {
-            this.assignedPatients = assignedPatients;
+        if (HelperUtils.isNull(assignedPatients)) {
+            throw new IllegalArgumentException("Assigned patients cannot be null");
         }
+            this.assignedPatients = assignedPatients;
+
     }
 
     @Override

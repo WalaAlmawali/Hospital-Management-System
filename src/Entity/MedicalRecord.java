@@ -1,6 +1,7 @@
 package Entity;
 
 import Behavior.Displayable;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 
@@ -38,6 +39,10 @@ public class MedicalRecord implements Displayable {
     }
 
     public void setPatientId(String patientId) {
+
+        if (!HelperUtils.isValidString(patientId)) {
+            throw new IllegalArgumentException("Invalid patient ID");
+        }
         this.patientId = patientId;
     }
 
@@ -46,6 +51,14 @@ public class MedicalRecord implements Displayable {
     }
 
     public void setVisitDate(LocalDate visitDate) {
+
+        if (HelperUtils.isNull(visitDate)) {
+            throw new IllegalArgumentException("Visit date cannot be null");
+        }
+
+        if (visitDate.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("Visit date cannot be in the future");
+        }
         this.visitDate = visitDate;
     }
 
@@ -54,6 +67,10 @@ public class MedicalRecord implements Displayable {
     }
 
     public void setDoctorId(String doctorId) {
+
+        if (!HelperUtils.isValidString(doctorId)) {
+            throw new IllegalArgumentException("Invalid doctor ID");
+        }
         this.doctorId = doctorId;
     }
 
@@ -62,6 +79,10 @@ public class MedicalRecord implements Displayable {
     }
 
     public void setDiagnosis(String diagnosis) {
+
+        if (!HelperUtils.isValidString(diagnosis)) {
+            throw new IllegalArgumentException("Diagnosis cannot be empty");
+        }
         this.diagnosis = diagnosis;
     }
 
@@ -70,6 +91,10 @@ public class MedicalRecord implements Displayable {
     }
 
     public void setPrescription(String prescription) {
+
+        if (!HelperUtils.isValidString(prescription)) {
+            throw new IllegalArgumentException("Prescription cannot be empty");
+        }
         this.prescription = prescription;
     }
 
@@ -78,6 +103,10 @@ public class MedicalRecord implements Displayable {
     }
 
     public void setTestResults(String testResults) {
+
+        if (!HelperUtils.isValidString(testResults)) {
+            throw new IllegalArgumentException("Test results cannot be empty");
+        }
         this.testResults = testResults;
     }
 
@@ -86,6 +115,7 @@ public class MedicalRecord implements Displayable {
     }
 
     public void setNotes(String notes) {
+
         this.notes = notes;
     }
 

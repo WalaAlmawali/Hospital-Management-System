@@ -27,9 +27,11 @@ public class EmergencyPatient extends InPatient implements Displayable {
 
     public void setEmergencyType(String emergencyType) {
 
-        if(HelperUtils.isValidString(emergencyType)) {
-            this.emergencyType = emergencyType;
+        if (!HelperUtils.isValidString(emergencyType)) {
+            throw new IllegalArgumentException("Emergency type cannot be null or empty");
         }
+            this.emergencyType = emergencyType;
+
     }
 
     public String getArrivalMode() {
@@ -38,9 +40,11 @@ public class EmergencyPatient extends InPatient implements Displayable {
 
     public void setArrivalMode(String arrivalMode) {
 
-        if(HelperUtils.isValidString(arrivalMode)) {
-            this.arrivalMode = arrivalMode;
+        if (!HelperUtils.isValidString(arrivalMode)) {
+            throw new IllegalArgumentException("Arrival mode cannot be null or empty");
         }
+            this.arrivalMode = arrivalMode;
+
     }
 
     public int getTriageLevel() {

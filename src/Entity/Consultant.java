@@ -28,9 +28,12 @@ public class Consultant extends Doctor implements Displayable {
 
     public void setConsultationTypes(List<String> consultationTypes) {
 
-        if(HelperUtils.isNotNull(consultationTypes)) {
-            this.consultationTypes = consultationTypes;
+        if (HelperUtils.isNull(consultationTypes) || consultationTypes.isEmpty()) {
+            throw new IllegalArgumentException("Consultation types cannot be null or empty");
         }
+
+        this.consultationTypes = consultationTypes;
+
     }
 
     public boolean isOnlineConsultationAvailable() {
@@ -46,9 +49,12 @@ public class Consultant extends Doctor implements Displayable {
     }
 
     public void setConsultationDuration(int consultationDuration) {
-        if(HelperUtils.isPositive(consultationDuration)) {
-            this.consultationDuration = consultationDuration;
+
+        if (!HelperUtils.isPositive(consultationDuration)) {
+            throw new IllegalArgumentException("Consultation duration must be positive");
         }
+            this.consultationDuration = consultationDuration;
+
     }
 
     @Override

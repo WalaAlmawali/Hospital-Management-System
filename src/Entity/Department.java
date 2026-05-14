@@ -46,10 +46,12 @@ public class Department implements Displayable {
 
     public void setDepartmentName(String departmentName) {
 
-        if(HelperUtils.isValidString(departmentName)){
+        if (!HelperUtils.isValidString(departmentName)) {
+            throw new IllegalArgumentException("Department name cannot be null or empty");
+        }
 
         this.departmentName = departmentName;
-        }
+
     }
 
     public String getHeadDoctorId() {
@@ -58,9 +60,11 @@ public class Department implements Displayable {
 
     public void setHeadDoctorId(String headDoctorId) {
 
-        if(HelperUtils.isValidString(headDoctorId)) {
-            this.headDoctorId = headDoctorId;
+        if (!HelperUtils.isValidString(headDoctorId)) {
+            throw new IllegalArgumentException("Invalid head doctor ID");
         }
+            this.headDoctorId = headDoctorId;
+
     }
 
     public List<Doctor> getDoctors() {
@@ -68,9 +72,12 @@ public class Department implements Displayable {
     }
 
     public void setDoctors(List<Doctor> doctors) {
-        if(HelperUtils.isNotNull(doctors)) {
-            this.doctors = doctors;
+
+        if (HelperUtils.isNull(doctors)) {
+            throw new IllegalArgumentException("Doctors list cannot be null");
         }
+            this.doctors = doctors;
+
     }
 
     public List<Nurse> getNurses() {
@@ -79,9 +86,11 @@ public class Department implements Displayable {
 
     public void setNurses(List<Nurse> nurses) {
 
-        if(HelperUtils.isNotNull(nurses)) {
-            this.nurses = nurses;
+        if (HelperUtils.isNull(nurses)) {
+            throw new IllegalArgumentException("Nurses list cannot be null");
         }
+            this.nurses = nurses;
+
     }
 
     public int getBedCapacity() {
@@ -90,9 +99,16 @@ public class Department implements Displayable {
 
     public void setBedCapacity(int bedCapacity) {
 
-        if(HelperUtils.isPositive(bedCapacity)) {
-            this.bedCapacity = bedCapacity;
+        if (!HelperUtils.isPositive(bedCapacity)) {
+            throw new IllegalArgumentException("Bed capacity must be positive");
         }
+
+        if (availableBeds > bedCapacity) {
+            throw new IllegalArgumentException("Available beds cannot exceed capacity");
+        }
+
+            this.bedCapacity = bedCapacity;
+
     }
 
     public int getAvailableBeds() {
@@ -100,9 +116,16 @@ public class Department implements Displayable {
     }
 
     public void setAvailableBeds(int availableBeds) {
-        if(HelperUtils.isPositive(availableBeds)) {
-            this.availableBeds = availableBeds;
+
+        if (!HelperUtils.isPositive(availableBeds)) {
+            throw new IllegalArgumentException("Available beds must be positive");
         }
+
+        if (bedCapacity > 0 && availableBeds > bedCapacity) {
+            throw new IllegalArgumentException("Available beds cannot exceed capacity");
+        }
+            this.availableBeds = availableBeds;
+
     }
 
     public void displayInfo() {
