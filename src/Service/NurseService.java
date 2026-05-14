@@ -4,6 +4,7 @@ import Behavior.Manageable;
 import Behavior.Searchable;
 import Entity.Doctor;
 import Entity.Nurse;
+import Utils.HelperUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class NurseService implements Manageable, Searchable {
 
     public Nurse addNurse() {
 
-        System.out.println("Enter Nurse id :");
-        String id = scanner.nextLine();
+
+        String id = HelperUtils.generateId();
 
         System.out.println("Enter Nurse first name :");
         String nurseFName = scanner.nextLine();
@@ -27,9 +28,16 @@ public class NurseService implements Manageable, Searchable {
         System.out.println("Enter Nurse last name :");
         String nurseLName = scanner.nextLine();
 
-        System.out.println("Enter Nurse DOB: ");
-        String dateOfBirth = scanner.nextLine();
-        LocalDate DOB = LocalDate.parse(dateOfBirth);
+        System.out.println("Enter Nurse DOB (yyyy-MM-dd): ");
+        LocalDate DOB;
+
+        try {
+            DOB = LocalDate.parse(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid date format.");
+            return null;
+        }
+
 
         System.out.println("Enter Nurse gender :");
         String gender = scanner.nextLine();
@@ -55,8 +63,18 @@ public class NurseService implements Manageable, Searchable {
         System.out.println("Enter Nurse qualification :");
         String qualification = scanner.nextLine();
 
+        // Basic validation
+        if (!HelperUtils.isValidString(nurseFName) ||
+                !HelperUtils.isValidString(nurseId) ||
+                !HelperUtils.isValidString(departmentId)) {
+
+            System.out.println("Invalid nurse data.");
+            return null;
+        }
+
         Nurse nurse = new Nurse(id, nurseFName, DOB, nurseLName, gender, phone, email, address, nurseId, departmentId, shift, qualification, assignedPatients);
 
+        System.out.println("Nurse created successfully.");
         return nurse;
     }
 
