@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import Utils.InputHandler;
+
 
 public class PatientService implements Manageable, Searchable {
     Scanner scanner = new Scanner(System.in);
@@ -20,62 +22,30 @@ public class PatientService implements Manageable, Searchable {
     MedicalRecordService medicalRecordService = new MedicalRecordService();
 
 
-    //add new patient
+    //add new normal patient
 
     public Patient addPatient() {
 
 
         String id = HelperUtils.generateId();
+        String patientID = HelperUtils.generateId();
 
-        System.out.println("Enter patient first name :");
-        String patientFName = scanner.nextLine();
+        String patientFName = InputHandler.getStringInput("Enter patient first name :");
+        String patientLName = InputHandler.getStringInput("Enter patient last name :");
 
-        System.out.println("Enter patient last name :");
-        String patientLName = scanner.nextLine();
+        LocalDate DOB = InputHandler.getDateInput("Enter patient DOB : ");
+        String gender = InputHandler.getStringInput("Enter patient gender :");
 
-        System.out.println("Enter patient DOB (yyyy-MM-dd): ");
-        LocalDate DOB;
+        String phone = InputHandler.getStringInput("Enter patient phone number : ");
+        String email = InputHandler.getStringInput("Enter patient email : ");
 
-        try {
-            DOB = LocalDate.parse(scanner.nextLine());
-        } catch (Exception e) {
-            System.out.println("Invalid DOB format.");
-            return null;
-        }
-        System.out.println("Enter patient gender :");
-        String gender = scanner.nextLine();
+        String address = InputHandler.getStringInput("Enter patient address :");
+        String bloodGroup = InputHandler.getStringInput("Enter patient blood Group : ");
 
-        System.out.println("Enter patient phone number :");
-        String phone = scanner.nextLine();
+        String emergencyContact = InputHandler.getStringInput("Enter patient emergency Contact : ");
+        String insuranceId = InputHandler.getStringInput("Enter patient Insurance ID: ");
 
-        System.out.println("Enter patient email :");
-        String email = scanner.nextLine();
-
-        System.out.println("Enter patient address :");
-        String address = scanner.nextLine();
-
-        System.out.println("Enter patient id :");
-        String patientID = scanner.nextLine();
-
-        System.out.println("Enter patient blood Group :");
-        String bloodGroup = scanner.nextLine();
-
-        System.out.println("Enter patient emergency Contact :");
-        String emergencyContact = scanner.nextLine();
-
-        System.out.println("Enter registration Date (yyyy-MM-dd) :");
-        LocalDate DOR;
-
-        try {
-            DOR = LocalDate.parse(scanner.nextLine());
-        } catch (Exception e) {
-            System.out.println("Invalid registration date format.");
-            return null;
-        }
-
-
-        System.out.println("Enter patient insurance Id :");
-        String insuranceId = scanner.nextLine();
+        LocalDate DOR = InputHandler.getDateInput("Enter registration Date (yyyy-MM-dd) :");
 
         List<String> allergies = new ArrayList<>();
 
@@ -97,6 +67,166 @@ public class PatientService implements Manageable, Searchable {
 
         return patient;
     }
+    //add new  Inpatient
+
+    public void addInpatient(){
+
+        String id = HelperUtils.generateId();
+        String patientID = HelperUtils.generateId();
+
+        String patientFName = InputHandler.getStringInput("Enter patient first name :");
+        String patientLName = InputHandler.getStringInput("Enter patient last name :");
+
+        LocalDate DOB = InputHandler.getDateInput("Enter patient DOB : ");
+        String gender = InputHandler.getStringInput("Enter patient gender :");
+
+        String phone = InputHandler.getStringInput("Enter patient phone number : ");
+        String email = InputHandler.getStringInput("Enter patient email : ");
+
+        String address = InputHandler.getStringInput("Enter patient address :");
+        String bloodGroup = InputHandler.getStringInput("Enter patient blood Group : ");
+
+        String emergencyContact = InputHandler.getStringInput("Enter patient emergency Contact : ");
+        String insuranceId = InputHandler.getStringInput("Enter patient Insurance ID: ");
+
+        LocalDate DOR = InputHandler.getDateInput("Enter registration Date (yyyy-MM-dd) :");
+
+        String roomNumber = InputHandler.getStringInput(" Enter Room Number: ");
+        String bedNumber = InputHandler.getStringInput(" Enter Bed Number: ");
+
+        String doctorId = InputHandler.getStringInput("Enter Admitting Doctor ID: ");
+        double dailyCharge = InputHandler.getDoubleInput("Enter Daily Charges : ");
+
+        List<String> allergies = new ArrayList<>();
+
+        System.out.println("Enter patient allergies (type 'q' to stop) :");
+
+        while (true) {
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("q")) {
+                break;
+            }
+
+            allergies.add(input);
+        }
+
+        InPatient inpatient = new InPatient(id, patientFName, DOB, patientLName, gender, phone, email, address, patientID, bloodGroup, allergies, emergencyContact, DOR, medicalRecords, insuranceId, appointments,LocalDate.now(),LocalDate.now(),roomNumber,bedNumber,doctorId,dailyCharge);
+
+        patients.add(inpatient);
+
+        System.out.println("Patient added successfully.");
+
+    }
+
+    // add out patient
+    public void addOutpatient() {
+
+        String id = HelperUtils.generateId();
+        String patientID = HelperUtils.generateId();
+
+        String patientFName = InputHandler.getStringInput("Enter patient first name :");
+        String patientLName = InputHandler.getStringInput("Enter patient last name :");
+
+        LocalDate DOB = InputHandler.getDateInput("Enter patient DOB : ");
+        String gender = InputHandler.getStringInput("Enter patient gender :");
+
+        String phone = InputHandler.getStringInput("Enter patient phone number : ");
+        String email = InputHandler.getStringInput("Enter patient email : ");
+
+        String address = InputHandler.getStringInput("Enter patient address :");
+        String bloodGroup = InputHandler.getStringInput("Enter patient blood Group : ");
+
+        String emergencyContact = InputHandler.getStringInput("Enter patient emergency Contact : ");
+        String insuranceId = InputHandler.getStringInput("Enter patient Insurance ID: ");
+
+        LocalDate DOR = InputHandler.getDateInput("Enter registration Date (yyyy-MM-dd) :");
+        LocalDate lastVisit = InputHandler.getDateInput("Enter last visit date (yyyy-MM-dd) :");
+
+        String prefDoctor= InputHandler.getStringInput("Enter doctor ID: ");
+        int visit = InputHandler.getIntInput("Enter visit count number: ");
+
+        List<String> allergies = new ArrayList<>();
+
+        System.out.println("Enter patient allergies (type 'q' to stop) :");
+
+        while (true) {
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("q")) {
+                break;
+            }
+
+            allergies.add(input);
+        }
+
+        OutPatient outPatient = new OutPatient(id, patientFName, DOB, patientLName, gender, phone, email, address, patientID, bloodGroup, allergies, emergencyContact, DOR, medicalRecords, insuranceId, appointments,visit,lastVisit,prefDoctor);
+
+        patients.add(outPatient);
+
+        System.out.println("Patient added successfully.");
+    }
+
+    // add Emergency Patient
+
+    public void addEmergencyPatient(){
+
+        String id = HelperUtils.generateId();
+        String patientID = HelperUtils.generateId();
+
+        String patientFName = InputHandler.getStringInput("Enter patient first name :");
+        String patientLName = InputHandler.getStringInput("Enter patient last name :");
+
+        LocalDate DOB = InputHandler.getDateInput("Enter patient DOB : ");
+        String gender = InputHandler.getStringInput("Enter patient gender :");
+
+        String phone = InputHandler.getStringInput("Enter patient phone number : ");
+        String email = InputHandler.getStringInput("Enter patient email : ");
+
+        String address = InputHandler.getStringInput("Enter patient address :");
+        String bloodGroup = InputHandler.getStringInput("Enter patient blood Group : ");
+
+        String emergencyContact = InputHandler.getStringInput("Enter patient emergency Contact : ");
+        String insuranceId = InputHandler.getStringInput("Enter patient Insurance ID: ");
+
+        LocalDate DOR = InputHandler.getDateInput("Enter registration Date (yyyy-MM-dd) :");
+
+        String roomNumber = InputHandler.getStringInput(" Enter Room Number: ");
+        String bedNumber = InputHandler.getStringInput(" Enter Bed Number: ");
+
+        String doctorId = InputHandler.getStringInput("Enter Admitting Doctor ID: ");
+        double dailyCharge = InputHandler.getDoubleInput("Enter Daily Charges : ");
+
+        String type = InputHandler.getStringInput("Enter Emergency Type: ");
+        String mode = InputHandler.getStringInput("Enter Arrival Mode: ");
+
+        int triage = InputHandler.getIntInput("Enter Triage Level (1-5): ", 1, 5);
+
+        Boolean admittedViaER = InputHandler.getConfirmation("Admitted via ER? ");
+
+        List<String> allergies = new ArrayList<>();
+
+        System.out.println("Enter patient allergies (type 'q' to stop) :");
+
+        while (true) {
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("q")) {
+                break;
+            }
+
+            allergies.add(input);
+        }
+
+        EmergencyPatient emergencyPatient = new EmergencyPatient(id, patientFName, DOB, patientLName, gender, phone, email, address, patientID, bloodGroup, allergies, emergencyContact, DOR, medicalRecords, insuranceId, appointments,LocalDate.now(),LocalDate.now(),roomNumber,bedNumber,doctorId,dailyCharge,type,mode,triage,admittedViaER);
+        patients.add(emergencyPatient);
+
+        System.out.println("Patient added successfully.");
+
+    }
+
+
+    //add normal patient in patient list
 
     public List<Patient> addPatients() {
 
@@ -106,7 +236,7 @@ public class PatientService implements Manageable, Searchable {
             patients.add(addPatient());
             System.out.println("Patient add successfully");
 
-            System.out.println("Enter c to add more , and q to exit");
+            System.out.println("Enter c to add more patient , and q to exit");
             if (scanner.nextLine().equalsIgnoreCase("q")) {
                 continueFlag = false;
             }
@@ -225,54 +355,26 @@ public class PatientService implements Manageable, Searchable {
 
                 found = true;
 
-                System.out.println("Enter updated patient first name :");
-                patient.setFirstName(scanner.nextLine());
+                String patientFName = InputHandler.getStringInput("Enter updated patient first name :");
+                String patientLName = InputHandler.getStringInput("Enter updated patient last name :");
 
-                System.out.println("Enter updated patient last name :");
-                patient.setLastName(scanner.nextLine());
+                LocalDate DOB = InputHandler.getDateInput("Enter updated patient DOB : ");
+                String gender = InputHandler.getStringInput("Enter updated patient gender :");
 
-                System.out.println("Enter updated patient DOB (yyyy-MM-dd): ");
+                String phone = InputHandler.getStringInput("Enter updated patient phone number : ");
+                String email = InputHandler.getStringInput("Enter updated patient email : ");
 
-                try {
-                    patient.setDateOfBirth(LocalDate.parse(scanner.nextLine()));
-                } catch (Exception e) {
-                    System.out.println("Invalid DOB format. Skipping update.");
-                }
+                String address = InputHandler.getStringInput("Enter updated patient address :");
+                String bloodGroup = InputHandler.getStringInput("Enter updated patient blood Group : ");
 
-                System.out.println("Enter updated patient gender :");
-                patient.setGender(scanner.nextLine());
+                String emergencyContact = InputHandler.getStringInput("Enter updated patient emergency Contact : ");
+                String insuranceId = InputHandler.getStringInput("Enter updated patient Insurance ID: ");
 
-                System.out.println("Enter updated patient phone number :");
-                patient.setPhoneNumber(scanner.nextLine());
-
-                System.out.println("Enter updated patient email :");
-                patient.setEmail(scanner.nextLine());
-
-                System.out.println("Enter updated patient address :");
-                patient.setAddress(scanner.nextLine());
-
-                System.out.println("Enter updated patient blood Group :");
-               patient.setBloodGroup(scanner.nextLine());
-
-                System.out.println("Enter updated patient emergency Contact :");
-                patient.setEmergencyContact(scanner.nextLine());
-
-                System.out.println("Enter updated registration Date (yyyy-MM-dd) :");
-
-                try {
-                    LocalDate DOR = LocalDate.parse(scanner.nextLine());
-                    patient.setRegistrationDate(DOR);
-                } catch (Exception e) {
-                    System.out.println("Invalid registration date. Skipping update.");
-                }
-
-
-                System.out.println("Enter updated patient insurance Id :");
-               patient.setInsuranceId(scanner.nextLine());
-
-                System.out.println("Enter allergies (type 'q' to stop):");
+                LocalDate DOR = InputHandler.getDateInput("Enter updated registration Date (yyyy-MM-dd) :");
 
                 List<String> allergies = new ArrayList<>();
+
+                System.out.println("Enter updated patient allergies (type 'q' to stop) :");
 
                 while (true) {
                     String input = scanner.nextLine();
@@ -281,12 +383,8 @@ public class PatientService implements Manageable, Searchable {
                         break;
                     }
 
-                    if (!input.trim().isEmpty()) {
-                        allergies.add(input);
-                    }
+                    allergies.add(input);
                 }
-
-                patient.setAllergies(allergies);
 
                 System.out.println("Patient updated successfully");
                 break;
@@ -443,9 +541,6 @@ public class PatientService implements Manageable, Searchable {
             }
         }
 
-        // add Inpatient
-
-
 
 
 
@@ -504,6 +599,8 @@ public class PatientService implements Manageable, Searchable {
         return null;
     }
 
+
+
     public Boolean handlePatientMenu(Integer patientOption) {
         Scanner scanner = new Scanner(System.in);
 
@@ -513,40 +610,36 @@ public class PatientService implements Manageable, Searchable {
 
             }
             case 2 -> {
-
-
+                addInpatient();
 
             }
             case 3 -> {
 
+                addOutpatient();
             }
 
             case 4 -> {
 
+                addEmergencyPatient();
 
             }  case 5 -> {
                 displayAllPatients();
 
             }  case 6 -> {
-                System.out.println("Enter world to search");
-                String input = scanner.nextLine();
-                searchPatients(input);
+                String input = InputHandler.getStringInput("Enter world to search");
+                System.out.println(searchPatients(input));
 
             }  case 7 -> {
-                System.out.println("Enter patient id to update :");
-                String patientId = scanner.nextLine();
+                String patientId = InputHandler.getStringInput("Enter patient id to update");
                 editPatient(patientId);
 
-
             }  case 8 -> {
-                System.out.println("Enter patient id to remove :");
-                String patientId = scanner.nextLine();
+                String patientId = InputHandler.getStringInput("Enter patient id to remove");
                 removePatient(patientId);
 
             }  case 9 -> {
-                System.out.println("Enter patient id to display history :");
-                String input = scanner.nextLine();
-                medicalRecordService.displayPatientHistory(input);
+                String patientId = InputHandler.getStringInput("Enter patient id to display history");
+                medicalRecordService.displayPatientHistory(patientId);
 
             }case 10 -> {
                 return false;
@@ -579,6 +672,79 @@ public class PatientService implements Manageable, Searchable {
         System.out.println("  Out-Patients       : " + outPatientCount);
         System.out.println("  Emergency Patients : " + emergencyCount);
     }
+
+    public void emergencyCasesReport() {
+
+        List<EmergencyPatient> emergencyPatients = new ArrayList<>();
+        for (Patient p : patients) {
+            if (p instanceof EmergencyPatient) {
+                emergencyPatients.add((EmergencyPatient) p);
+            }
+        }
+
+        int triage1 = 0, triage2 = 0, triage3 = 0, triage4 = 0, triage5 = 0;
+        for (EmergencyPatient ep : emergencyPatients) {
+            switch (ep.getTriageLevel()) {
+                case 1 -> triage1++;
+                case 2 -> triage2++;
+                case 3 -> triage3++;
+                case 4 -> triage4++;
+                case 5 -> triage5++;
+            }
+        }
+
+        int admittedViaERCount    = 0;
+        int notAdmittedViaERCount = 0;
+        for (EmergencyPatient ep : emergencyPatients) {
+            if (ep.getAdmittedViaER()) {
+                admittedViaERCount++;
+            } else {
+                notAdmittedViaERCount++;
+            }
+        }
+
+        int ambulanceCount = 0;
+        int walkInCount    = 0;
+        for (EmergencyPatient ep : emergencyPatients) {
+            if (ep.getArrivalMode().equalsIgnoreCase("Ambulance")) {
+                ambulanceCount++;
+            } else if (ep.getArrivalMode().equalsIgnoreCase("Walk-in")) {
+                walkInCount++;
+            }
+        }
+
+        // ── Print Report ──────────────────────────────────────────────
+        System.out.println("EMERGENCY CASES REPORT");
+        System.out.println("-----------------------");
+        System.out.println("Total Emergency Cases : " + emergencyPatients.size());
+        System.out.println();
+        System.out.println("------------------------");
+        System.out.println("TRIAGE LEVEL BREAKDOWN");
+        System.out.println("Level 1 - Critical       : " + triage1);
+        System.out.println("Level 2 - Emergent       : " + triage2);
+        System.out.println("Level 3 - Urgent         : " + triage3);
+        System.out.println("Level 4 - Less Urgent    : " + triage4);
+        System.out.println("Level 5 - Non Urgent     : " + triage5);
+        System.out.println();
+
+        System.out.println("--------------------------");
+        System.out.println("ADMITTED VIA ER BREAKDOWN");
+        System.out.println("--------------------------");
+        System.out.println("Admitted Via ER          : " + admittedViaERCount);
+        System.out.println("Not Admitted Via ER      : " + notAdmittedViaERCount);
+        System.out.println();
+
+        System.out.println("---------------------------");
+        System.out.println("ARRIVAL MODE BREAKDOWN");
+        System.out.println("----------------------------");
+        System.out.println("Ambulance                : " + ambulanceCount);
+        System.out.println("Walk-in                  : " + walkInCount);
+        System.out.println();
+
+
+
+    }
+}
 
         }
 
