@@ -16,6 +16,7 @@ public class PatientService implements Manageable, Searchable {
     Scanner scanner = new Scanner(System.in);
 
     static List<Patient> patients = new ArrayList<>();
+
     List<MedicalRecord> medicalRecords = new ArrayList<>();
     List<Appointment> appointments = new ArrayList<>();
 
@@ -77,7 +78,7 @@ public class PatientService implements Manageable, Searchable {
         String patientFName = InputHandler.getStringInput("Enter patient first name :");
         String patientLName = InputHandler.getStringInput("Enter patient last name :");
 
-        LocalDate DOB = InputHandler.getDateInput("Enter patient DOB : ");
+        LocalDate DOB = InputHandler.getDateInput("Enter patient DOB (yyyy-MM-dd): ");
         String gender = InputHandler.getStringInput("Enter patient gender :");
 
         String phone = InputHandler.getStringInput("Enter patient phone number : ");
@@ -128,7 +129,7 @@ public class PatientService implements Manageable, Searchable {
         String patientFName = InputHandler.getStringInput("Enter patient first name :");
         String patientLName = InputHandler.getStringInput("Enter patient last name :");
 
-        LocalDate DOB = InputHandler.getDateInput("Enter patient DOB : ");
+        LocalDate DOB = InputHandler.getDateInput("Enter patient DOB (yyyy-MM-dd): ");
         String gender = InputHandler.getStringInput("Enter patient gender :");
 
         String phone = InputHandler.getStringInput("Enter patient phone number : ");
@@ -140,7 +141,7 @@ public class PatientService implements Manageable, Searchable {
         String emergencyContact = InputHandler.getStringInput("Enter patient emergency Contact : ");
         String insuranceId = InputHandler.getStringInput("Enter patient Insurance ID: ");
 
-        LocalDate DOR = InputHandler.getDateInput("Enter registration Date (yyyy-MM-dd) :");
+        LocalDate DOR = InputHandler.getDateInput("Enter registration Date (yyyy-MM-dd):");
         LocalDate lastVisit = InputHandler.getDateInput("Enter last visit date (yyyy-MM-dd) :");
 
         String prefDoctor= InputHandler.getStringInput("Enter doctor ID: ");
@@ -278,12 +279,13 @@ public class PatientService implements Manageable, Searchable {
 
     // search Patients by any field
 
-    public List<Patient> searchPatients(String keyword) {
+    public void searchPatients(String keyword) {
 
         List<Patient> matchedPatients = new ArrayList<>();
 
         if (!HelperUtils.isValidString(keyword)) {
-            return matchedPatients;
+            System.out.println("Invalid search keyword");
+            return;
         }
 
 
@@ -304,7 +306,10 @@ public class PatientService implements Manageable, Searchable {
             }
 
         }
-        return matchedPatients;
+        for (Patient patient : matchedPatients) {
+
+            patient.displayInfo();
+        }
     }
 
     // search by name
@@ -356,21 +361,37 @@ public class PatientService implements Manageable, Searchable {
                 found = true;
 
                 String patientFName = InputHandler.getStringInput("Enter updated patient first name :");
+                patient.setFirstName(patientFName);
+
                 String patientLName = InputHandler.getStringInput("Enter updated patient last name :");
+                patient.setLastName(patientLName);
 
                 LocalDate DOB = InputHandler.getDateInput("Enter updated patient DOB : ");
+                patient.setDateOfBirth(DOB);
+
                 String gender = InputHandler.getStringInput("Enter updated patient gender :");
+                patient.setGender(gender);
 
                 String phone = InputHandler.getStringInput("Enter updated patient phone number : ");
+                patient.setPhoneNumber(phone);
+
                 String email = InputHandler.getStringInput("Enter updated patient email : ");
+                patient.setEmail(email);
 
                 String address = InputHandler.getStringInput("Enter updated patient address :");
+                patient.setAddress(address);
+
                 String bloodGroup = InputHandler.getStringInput("Enter updated patient blood Group : ");
+                patient.setBloodGroup(bloodGroup);
 
                 String emergencyContact = InputHandler.getStringInput("Enter updated patient emergency Contact : ");
-                String insuranceId = InputHandler.getStringInput("Enter updated patient Insurance ID: ");
+                patient.setEmergencyContact(emergencyContact);
 
-                LocalDate DOR = InputHandler.getDateInput("Enter updated registration Date (yyyy-MM-dd) :");
+                String insuranceId = InputHandler.getStringInput("Enter updated patient Insurance ID: ");
+                patient.setInsuranceId(insuranceId);
+
+                LocalDate DOR = InputHandler.getDateInput("Enter updated registration Date :");
+                patient.setRegistrationDate(DOR);
 
                 List<String> allergies = new ArrayList<>();
 
@@ -385,6 +406,7 @@ public class PatientService implements Manageable, Searchable {
 
                     allergies.add(input);
                 }
+                patient.setAllergies(allergies);
 
                 System.out.println("Patient updated successfully");
                 break;
@@ -626,19 +648,19 @@ public class PatientService implements Manageable, Searchable {
                 displayAllPatients();
 
             }  case 6 -> {
-                String input = InputHandler.getStringInput("Enter world to search");
-                System.out.println(searchPatients(input));
+                String input = InputHandler.getStringInput("Enter world to search :");
+                searchPatients(input);
 
             }  case 7 -> {
-                String patientId = InputHandler.getStringInput("Enter patient id to update");
+                String patientId = InputHandler.getStringInput("Enter patient id to update :");
                 editPatient(patientId);
 
             }  case 8 -> {
-                String patientId = InputHandler.getStringInput("Enter patient id to remove");
+                String patientId = InputHandler.getStringInput("Enter patient id to remove :");
                 removePatient(patientId);
 
             }  case 9 -> {
-                String patientId = InputHandler.getStringInput("Enter patient id to display history");
+                String patientId = InputHandler.getStringInput("Enter patient id to display history :");
                 medicalRecordService.displayPatientHistory(patientId);
 
             }case 10 -> {
@@ -696,7 +718,7 @@ public class PatientService implements Manageable, Searchable {
         int admittedViaERCount    = 0;
         int notAdmittedViaERCount = 0;
         for (EmergencyPatient ep : emergencyPatients) {
-            if (ep.getAdmittedViaER()) {
+            if (ep.isAdmittedViaER()) {
                 admittedViaERCount++;
             } else {
                 notAdmittedViaERCount++;
@@ -746,7 +768,7 @@ public class PatientService implements Manageable, Searchable {
     }
 }
 
-        }
+
 
 
 

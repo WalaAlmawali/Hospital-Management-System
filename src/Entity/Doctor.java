@@ -17,10 +17,10 @@ public class Doctor extends Person implements Displayable {
     private String departmentId;
     private double consultationFee;
     private List<String> availableSlots;
-    private List<Patient> assignedPatients;
+    private List<String> assignedPatients;
 
     // Constructor chaining to Person
-    public Doctor(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address, String doctorId, String specialization, String qualification, int experienceYears, String departmentId, double consultationFee, List<String> availableSlots, List<Patient> assignedPatients) {
+    public Doctor(String id, String firstName, LocalDate dateOfBirth, String lastName, String gender, String phoneNumber, String email, String address, String doctorId, String specialization, String qualification, int experienceYears, String departmentId, double consultationFee, List<String> availableSlots, List<String> assignedPatients) {
 
         // Calls Person constructor
         super(id, firstName, dateOfBirth, lastName, gender, phoneNumber, email, address);
@@ -126,11 +126,11 @@ public class Doctor extends Person implements Displayable {
 
     }
 
-    public List<Patient> getAssignedPatients() {
+    public List<String> getAssignedPatients() {
         return assignedPatients;
     }
 
-    public void setAssignedPatients(List<Patient> assignedPatients) {
+    public void setAssignedPatients(List<String> assignedPatients) {
 
         if (HelperUtils.isNull(assignedPatients)) {
             throw new IllegalArgumentException("Assigned patients cannot be null");
@@ -161,25 +161,24 @@ public class Doctor extends Person implements Displayable {
 
     // Method to assign a patient
 
-    public void assignPatient(Patient patient) {
+    public void assignPatient(String patientId) {
 
         // Validate patient using HelperUtils
-        if (HelperUtils.isNull(patient)) {
+        if (HelperUtils.isNull(patientId)) {
             System.out.println("Invalid patient.");
             return;
         }
 
         // Check duplicate assignment
-        if (assignedPatients.contains(patient)) {
+        if (assignedPatients.contains(patientId)) {
             System.out.println("Patient already assigned.");
             return;
         }
 
         // Assign patient
-        assignedPatients.add(patient);
+        assignedPatients.add(patientId);
 
-        System.out.println("Patient assigned successfully: "
-                + patient.getPatientId());
+        System.out.println("Patient assigned successfully: " + patientId);
 
     }
 

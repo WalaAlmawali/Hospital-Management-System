@@ -6,20 +6,22 @@ import java.util.Scanner;
 
 public class HospitalManagementApp {
 
-    static Menu menu = new Menu();
 
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args){
+         Menu menu = new Menu();
+
 
 //        AppointmentService appointmentService = new AppointmentService();
 //        DepartmentService departmentService = new DepartmentService();
-//        DoctorService doctorService = new DoctorService();
+         DoctorService doctorService = new DoctorService();
 //        MedicalRecordService medicalRecordService = new MedicalRecordService();
-//        NurseService nurseService = new NurseService();
-        PatientService patientService = new PatientService();
+ //         NurseService nurseService = new NurseService();
+          PatientService patientService = new PatientService();
 
         Boolean mainMenuContinue = true;
+
         while (mainMenuContinue) {
 
             menu.displayMenu();
@@ -27,24 +29,24 @@ public class HospitalManagementApp {
             Integer option = input.nextInt();
             switch (option) {
                 case 1 -> {
-                    Boolean patientMenuContinue = true;
-                    while (patientMenuContinue) {
+                  Boolean patientMenuContinue = true;
+                   while (patientMenuContinue) {
                         System.out.println(" ***********Patient Menu ***********");
                         System.out.println(MenuMessages.PATIENT_MENU_MESSAGE);
-                        Integer patientOption = input.nextInt();
+                       Integer patientOption = input.nextInt();
                         patientMenuContinue = patientService.handlePatientMenu(patientOption);
-                    }
+                  }
                 }
-//                case 2 -> {
-//                    Boolean doctorMenuContinue = true;
-//                    while (doctorMenuContinue) {
-//                        System.out.println(" ***********Doctor Menu ***********");
-//                        System.out.println(MenuMessages.DOCTOR_MENU_MESSAGE);
-//                        Integer doctorOption = input.nextInt();
-//                        doctorMenuContinue = doctorService.handleDoctorMenu(doctorOption);
-//                    }
-//
-//                }
+               case 2 -> {
+                   Boolean doctorMenuContinue = true;
+                    while (doctorMenuContinue) {
+                        System.out.println(" ***********Doctor Menu ***********");
+                        System.out.println(MenuMessages.DOCTOR_MENU_MESSAGE);
+                        Integer doctorOption = input.nextInt();
+                        doctorMenuContinue = doctorService.handleDoctorMenu(doctorOption);
+                    }
+
+                }
 //                case 3 ->{
 //                    Boolean nurseMenuContinue = true;
 //                    while (nurseMenuContinue) {

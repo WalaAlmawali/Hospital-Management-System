@@ -61,7 +61,7 @@ public class InputHandler {
 
     public static LocalDate getDateInput(String prompt) {
         while (true) {
-            System.out.print(prompt + " (yyyy-MM-dd): ");
+            System.out.print(prompt);
             String raw = scanner.nextLine().trim();
 
             try {

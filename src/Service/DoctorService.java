@@ -6,6 +6,7 @@ import Entity.Department;
 import Entity.Doctor;
 import Entity.Patient;
 import Utils.HelperUtils;
+import Utils.InputHandler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,13 +14,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DoctorService implements Manageable, Searchable {
-    Scanner scanner = new Scanner(System.in);
+
+    private static final Scanner scanner = new Scanner(System.in);
 
     static List<Doctor> doctors = new ArrayList<>();
-    private List<String> availableSlots;
-    private List<Patient> assignedPatients;
-    PatientService patientService = new PatientService();
-    DepartmentService departmentService = new DepartmentService();
+
+    private List<String> availableSlots = new ArrayList<>();
+    private List<String> assignedPatients = new ArrayList<>();
+
+
+    private DepartmentService departmentService ;
 
 
     public Doctor addDoctor(){
@@ -56,8 +60,7 @@ public class DoctorService implements Manageable, Searchable {
         System.out.println("Enter Doctor address :");
         String address = scanner.nextLine();
 
-        System.out.println("Enter Doctor ID :");
-        String doctorId = scanner.nextLine();
+        String doctorId = HelperUtils.generateId();
 
         System.out.println("Enter Doctor specialization :");
         String specialization = scanner.nextLine();
@@ -311,40 +314,22 @@ public class DoctorService implements Manageable, Searchable {
             return;
         }
 
+        Doctor doctor = getDoctorById(doctorId);
 
-        Patient patient = patientService.getPatientById(patientId);
-
-        if (HelperUtils.isNull(patient)) {
-            System.out.println("Patient not found.");
+        if (HelperUtils.isNull(doctor)) {
+            System.out.println("doctor not found.");
             return;
         }
 
-        boolean foundDoctor = false;
-
-        for(Doctor doctor : doctors){
-
-            if(doctor.getDoctorId().equals(doctorId)){
-                foundDoctor = true;
-
-                if (doctor.getAssignedPatients().contains(patient)) {
-                    System.out.println("Patient already assigned to this doctor.");
-                    return;
-                }
-
-                doctor.getAssignedPatients().add(patient);
+                doctor.getAssignedPatients().add(patientId);
 
                 System.out.println("Patient : "+ patientId + " assigned to Dr. " + doctorId);
                 return;
             }
-        }
 
-        if (!foundDoctor) {
-            System.out.println("Doctor not found.");
-        }
-
-    }
 
     // Overloaded assignPatient(Doctor doctor, Patient patient)
+
     public void assignPatient(Doctor doctor ,  Patient patient) {
 
         if (HelperUtils.isNull(doctor) || HelperUtils.isNull(patient)) {
@@ -352,12 +337,12 @@ public class DoctorService implements Manageable, Searchable {
             return;
         }
 
-        // if no patient assign yet
-        if (doctor.getAssignedPatients() == null) {
-            doctor.setAssignedPatients(new ArrayList<>());
-        }
+//        // if no patient assign yet
+//        if (doctor.getAssignedPatients() == null) {
+//            doctor.setAssignedPatients(new ArrayList<>());
+//        }
 
-        doctor.getAssignedPatients().add(patient);
+        doctor.getAssignedPatients().add(patient.getPatientId());
         System.out.println("Patient : "+ patient.getPatientId() + " assigned to Dr. " + doctor.getDoctorId());
 
     }
@@ -377,26 +362,19 @@ public class DoctorService implements Manageable, Searchable {
             return;
         }
 
-        if (HelperUtils.isNull(doctor.getAssignedPatients())) {
-            doctor.setAssignedPatients(new ArrayList<>());
-        }
+//        if (HelperUtils.isNull(doctor.getAssignedPatients())) {
+//            doctor.setAssignedPatients(new ArrayList<>());
+//        }
 
         for(String patientId : patientIds){
 
-            Patient patient = patientService.getPatientById(patientId);
-
-            if (HelperUtils.isNull(patient)) {
-                System.out.println("Patient not found: " + patientId);
-                continue;
-            }
-
-            if (doctor.getAssignedPatients().contains(patient)) {
+            if (doctor.getAssignedPatients().contains(patientId)) {
                 System.out.println("Already assigned: " + patientId);
                 continue;
             }
 
 
-            doctor.getAssignedPatients().add(patient);
+            doctor.getAssignedPatients().add(patientId);
             System.out.println("Assigned patient " + patientId + " to Dr. " + doctorId);
 
         }
@@ -530,11 +508,11 @@ public void displayDoctors(String departmentId, boolean showAvailableOnly){
     }
 
     public Boolean handleDoctorMenu(Integer doctorOption) {
-        Scanner scanner = new Scanner(System.in);
+
 
         switch (doctorOption) {
             case 1 -> {
-               addDoctors();
+
 
             }
             case 2 -> {
