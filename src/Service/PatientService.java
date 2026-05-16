@@ -671,6 +671,7 @@ public class PatientService implements Manageable, Searchable {
         int outPatientCount = 0;
         int emergencyCount = 0;
         int count = 0;
+
         for (Patient p : patients) {
             count++;
             if (p instanceof InPatient) {
@@ -710,6 +711,7 @@ public class PatientService implements Manageable, Searchable {
 
         int admittedViaERCount    = 0;
         int notAdmittedViaERCount = 0;
+
         for (EmergencyPatient ep : emergencyPatients) {
             if (ep.isAdmittedViaER()) {
                 admittedViaERCount++;

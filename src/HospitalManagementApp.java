@@ -88,17 +88,17 @@ public class HospitalManagementApp {
                     }
 
                 }
-//                case 7 ->{
-//                    Boolean reportMenuContinue = true;
-//                    while (reportMenuContinue) {
-//                        System.out.println(" *********** Reports Menu ***********");
-//                        System.out.println(MenuMessages.REPORT_MENU_MESSAGE);
-//                        Integer reportOption = input.nextInt();
-//                        reportMenuContinue = appointmentService.handleReportMenu(reportOption);
-//                    }
-//
+                case 7 ->{
+                    Boolean reportMenuContinue = true;
+                    while (reportMenuContinue) {
+                        System.out.println(" *********** Reports Menu ***********");
+                        System.out.println(MenuMessages.REPORT_MENU_MESSAGE);
+                        Integer reportOption = input.nextInt();
+                        reportMenuContinue = appointmentService.handleReportMenu(reportOption);
+                    }
 
-  //              }
+
+                }
                 case 8->{
                     System.out.println("Exit");
                     mainMenuContinue = false;

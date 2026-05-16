@@ -17,9 +17,9 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     static List<Appointment> appointmentList = new ArrayList<>();
 
-    DoctorService doctorService = new DoctorService();
-    DepartmentService departmentService = new DepartmentService();
-    PatientService patientService = new PatientService();
+    DoctorService doctorService ;
+    DepartmentService departmentService;
+    PatientService patientService;
 
     //add new appointment
     public Appointment addAppointment(){
@@ -709,33 +709,26 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     public Boolean handleReportMenu(Integer reportOption) {
 
-        Scanner scanner = new Scanner(System.in);
 
         switch (reportOption) {
             case 1 -> {
-                addAppointments();
+                getupComingAppointments();
             }
             case 2 -> {
-
-
+                doctorService.DoctorPerformanceReport();
             }
             case 3 -> {
-                System.out.println("Enter department Id");
-                String input = scanner.nextLine();
-                departmentService.departmentOccupancyReport(input);
-
+                departmentService.departmentOccupancyReport();
             }
 
             case 4 -> {
                 patientService.patientStatisticsReport();
-
-            }  case 5 -> {
-
+            }
+            case 5 -> {
+                patientService.emergencyCasesReport();
 
             }  case 6 -> {
-
                 return false;
-
             }
 
 

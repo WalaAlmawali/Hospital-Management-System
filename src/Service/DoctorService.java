@@ -564,10 +564,12 @@ public void displayDoctors(String departmentId, boolean showAvailableOnly){
         return null;
     }
 
-    public void DoctorPerformanceReport(String doctorId){
+    public void DoctorPerformanceReport(){
 
-        Doctor doctor = getDoctorById(doctorId);
+        Doctor doctor = getDoctorById(InputHandler.getStringInput("Enter doctor id"));
+
         if(HelperUtils.isNotNull(doctor)){
+
             System.out.println("Doctor Performance Report");
             doctor.displaySummary();
             System.out.println("Number of patients handled:   " + doctor.getAssignedPatients().size());

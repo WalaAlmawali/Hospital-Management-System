@@ -309,14 +309,17 @@ public class DepartmentService implements Manageable, Searchable {
         return true;
     }
 
-    public void departmentOccupancyReport(String departmentId) {
+    public void departmentOccupancyReport() {
+
         System.out.println("==== Department Occupancy Report ====");
-        if (HelperUtils.isNull(departmentId)) {
+
+        if (HelperUtils.isNull(departmentList)) {
             System.out.println("No departments found.");
             return;
         }
 
         for (Department department : departmentList) {
+
             int occupiedBeds = department.getBedCapacity() - department.getAvailableBeds();
             System.out.println("Department: " + department.getDepartmentName() );
             department.displaySummary();
@@ -326,4 +329,5 @@ public class DepartmentService implements Manageable, Searchable {
             System.out.println("-----------------------------------");
         }
     }
+
 }
