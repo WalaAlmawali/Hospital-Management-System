@@ -503,7 +503,7 @@ public void displayDoctors(String departmentId, boolean showAvailableOnly){
     }
 
 
-    Department department = departmentService.getDepartment(departmentId) ;
+    Department department = departmentService.getDepartmentById(departmentId) ;
 
     if (HelperUtils.isNull(department)) {
         System.out.println("Department not found.");
