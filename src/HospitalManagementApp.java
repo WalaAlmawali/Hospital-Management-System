@@ -17,7 +17,7 @@ public class HospitalManagementApp {
 //        DepartmentService departmentService = new DepartmentService();
          DoctorService doctorService = new DoctorService();
 //        MedicalRecordService medicalRecordService = new MedicalRecordService();
- //         NurseService nurseService = new NurseService();
+          NurseService nurseService = new NurseService();
           PatientService patientService = new PatientService();
 
         Boolean mainMenuContinue = true;
@@ -47,16 +47,16 @@ public class HospitalManagementApp {
                     }
 
                 }
-//                case 3 ->{
-//                    Boolean nurseMenuContinue = true;
-//                    while (nurseMenuContinue) {
-//                        System.out.println(" ***********Nurse Menu ***********");
-//                        System.out.println(MenuMessages.NURSE_MENU_MESSAGE);
-//                        Integer nurseOption = input.nextInt();
-//                        nurseMenuContinue = nurseService.handleNurseMenu(nurseOption);
-//                    }
-//
-//                }
+                case 3 ->{
+                    Boolean nurseMenuContinue = true;
+                    while (nurseMenuContinue) {
+                        System.out.println(" ***********Nurse Menu ***********");
+                        System.out.println(MenuMessages.NURSE_MENU_MESSAGE);
+                        Integer nurseOption = input.nextInt();
+                        nurseMenuContinue = nurseService.handleNurseMenu(nurseOption);
+                    }
+
+                }
 //                case 4 -> {
 //                    Boolean appointmentMenuContinue = true;
 //                    while (appointmentMenuContinue) {

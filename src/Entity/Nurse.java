@@ -15,7 +15,7 @@ public class Nurse extends Person implements Displayable {
     private String departmentId;
     private String shift; // Morning / Evening / Night
     private String qualification;
-    private List<Patient> assignedPatients;
+    private List<String> assignedPatients;
 
     public String getNurseId() {
         return nurseId;
@@ -61,11 +61,11 @@ public class Nurse extends Person implements Displayable {
         this.qualification = qualification;
     }
 
-    public List<Patient> getAssignedPatients() {
+    public List<String> getAssignedPatients() {
         return assignedPatients;
     }
 
-    public void setAssignedPatients(List<Patient> assignedPatients) {
+    public void setAssignedPatients(List<String> assignedPatients) {
 
         if (HelperUtils.isNull(assignedPatients)) {
             throw new IllegalArgumentException("Assigned patients list cannot be null");
@@ -101,31 +101,6 @@ public class Nurse extends Person implements Displayable {
 
     }
 
-    // Method to assign patient
-    public void assignPatient(Patient patient ,String nurseId ) {
-
-        // Validate patient object
-        if (HelperUtils.isNull(patient)) {
-            System.out.println("Invalid patient.");
-            return;
-        }
-
-        // Validate nurse ID
-        if (HelperUtils.isValidString(nurseId)) {
-            System.out.println("Invalid nurse ID.");
-            return;
-        }
-
-        // Check if patient already assigned
-        if (assignedPatients.contains(patient)) {
-            System.out.println("Patient " + patient.getPatientId() + " is already assigned.");
-            return;
-        }
-
-        assignedPatients.add(patient);
-        System.out.println("Patient " + patient.getPatientId()
-                + " assigned to Nurse " + nurseId);
-    }
 
     // Method to remove patient
     public void removePatient(Patient patient ,String nurseId) {

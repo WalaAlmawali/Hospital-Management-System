@@ -6,6 +6,7 @@ import Entity.Doctor;
 import Entity.Nurse;
 import Entity.Patient;
 import Utils.HelperUtils;
+import Utils.InputHandler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,55 +25,23 @@ public class NurseService implements Manageable, Searchable {
 
         String id = HelperUtils.generateId();
 
-        System.out.println("Enter Nurse first name :");
-        String nurseFName = scanner.nextLine();
 
-        System.out.println("Enter Nurse last name :");
-        String nurseLName = scanner.nextLine();
+        String nurseFName = InputHandler.getStringInput("Enter Nurse first name :");
+        String nurseLName = InputHandler.getStringInput("Enter Nurse last name :");
 
-        System.out.println("Enter Nurse DOB (yyyy-MM-dd): ");
-        LocalDate DOB;
+        LocalDate DOB = InputHandler.getDateInput("Enter DOB (yyyy-MM-dd): ");
+        String gender = InputHandler.getStringInput("Enter Nurse gender (M/F): ");
 
-        try {
-            DOB = LocalDate.parse(scanner.nextLine());
-        } catch (Exception e) {
-            System.out.println("Invalid date format.");
-            return null;
-        }
+        String phone = InputHandler.getStringInput("Enter Nurse phone number :");
+        String email = InputHandler.getStringInput("Enter Nurse email :");
 
+        String address = InputHandler.getStringInput("Enter Nurse address :");
+        String nurseId = HelperUtils.generateId();
 
-        System.out.println("Enter Nurse gender :");
-        String gender = scanner.nextLine();
+        String departmentId = InputHandler.getStringInput("Enter Nurse department Id :");
+        String shift = InputHandler.getStringInput("Enter Nurse shift :");
 
-        System.out.println("Enter Nurse phone number :");
-        String phone = scanner.nextLine();
-
-        System.out.println("Enter Nurse email :");
-        String email = scanner.nextLine();
-
-        System.out.println("Enter Nurse address :");
-        String address = scanner.nextLine();
-
-        System.out.println("Enter Nurse nurse Id :");
-        String nurseId = scanner.nextLine();
-
-        System.out.println("Enter Nurse department Id :");
-        String departmentId = scanner.nextLine();
-
-        System.out.println("Enter Nurse shift :");
-        String shift = scanner.nextLine();
-
-        System.out.println("Enter Nurse qualification :");
-        String qualification = scanner.nextLine();
-
-        // Basic validation
-        if (!HelperUtils.isValidString(nurseFName) ||
-                !HelperUtils.isValidString(nurseId) ||
-                !HelperUtils.isValidString(departmentId)) {
-
-            System.out.println("Invalid nurse data.");
-            return null;
-        }
+        String qualification = InputHandler.getStringInput("Enter Nurse qualification :");
 
         Nurse nurse = new Nurse(id, nurseFName, DOB, nurseLName, gender, phone, email, address, nurseId, departmentId, shift, qualification, assignedPatients);
 
@@ -112,41 +81,35 @@ public class NurseService implements Manageable, Searchable {
 
                 found = true;
 
-                System.out.println("Enter updated Nurse first name :");
-                nurse.setFirstName(scanner.nextLine());
+                String nurseFName = InputHandler.getStringInput("Enter updated Nurse first name :");
+                nurse.setFirstName(nurseFName);
 
-                System.out.println("Enter updated Nurse last name :");
-                nurse.setLastName(scanner.nextLine());
+                String nurseLName = InputHandler.getStringInput("Enter updated Nurse last name :");
+                nurse.setLastName(nurseLName);
 
-                System.out.println("Enter updated Nurse DOB (yyyy-MM-dd): ");
+                LocalDate DOB = InputHandler.getDateInput("Enter updated DOB (yyyy-MM-dd): ");
+                nurse.setDateOfBirth(DOB);
 
-                try {
-                    LocalDate DOB = LocalDate.parse(scanner.nextLine());
-                    nurse.setDateOfBirth(DOB);
-                } catch (Exception e) {
-                    System.out.println("Invalid date format. Skipping DOB update.");
-                }
+                String gender = InputHandler.getStringInput("Enter updated Nurse gender (M/F): ");
+                nurse.setGender(gender);
 
-                System.out.println("Enter updated Nurse gender :");
-                nurse.setGender(scanner.nextLine());
+                String phone = InputHandler.getStringInput("Enter updated Nurse phone number :");
+                nurse.setPhoneNumber(phone);
 
-                System.out.println("Enter updated Nurse phone number :");
-                nurse.setPhoneNumber(scanner.nextLine());
+                String email = InputHandler.getStringInput("Enter updated Nurse email :");
+                nurse.setEmail(email);
 
-                System.out.println("Enter updated Nurse email :");
-                nurse.setEmail(scanner.nextLine());
+                String address = InputHandler.getStringInput("Enter updated Nurse address :");
+                nurse.setAddress(address);
 
-                System.out.println("Enter updated Nurse address :");
-                nurse.setAddress(scanner.nextLine());
+                String departmentId = InputHandler.getStringInput("Enter updated Nurse department Id :");
+                nurse.setDepartmentId(departmentId);
 
-                System.out.println("Enter updated Nurse department Id :");
-                nurse.setDepartmentId(scanner.nextLine());
+                String shift = InputHandler.getStringInput("Enter updated Nurse shift :");
+                nurse.setShift(shift);
 
-                System.out.println("Enter updated Nurse shift :");
-                nurse.setShift(scanner.nextLine());
-
-                System.out.println("Enter updated Nurse qualification :");
-                nurse.setQualification(scanner.nextLine());
+                String qualification = InputHandler.getStringInput("Enter updated Nurse qualification :");
+                nurse.setQualification(qualification);
 
                 System.out.println("Nurse updated successfully");
                 break;
@@ -169,6 +132,33 @@ public class NurseService implements Manageable, Searchable {
         System.out.println("Nurse not found");
 
     }
+
+    // Method to assign patient to nurse
+    public void assignPatient(String patientId ,String nurseId ) {
+
+        // Validate patientId
+        if (HelperUtils.isNull(patientId)) {
+            System.out.println("Invalid patient.");
+            return;
+        }
+
+        // Validate nurse ID
+        if (HelperUtils.isValidString(nurseId)) {
+            System.out.println("Invalid nurse ID.");
+            return;
+        }
+
+        // Check if patient already assigned
+        if (assignedPatients.contains(patientId)) {
+            System.out.println("Patient " + patientId + " is already assigned.");
+            return;
+        }
+
+        assignedPatients.add(patientId);
+        System.out.println("Patient " + patientId
+                + " assigned to Nurse " + nurseId);
+    }
+
 
     //retrieve nurse
     public Nurse getNurseById(String nurseId){
@@ -202,12 +192,11 @@ public class NurseService implements Manageable, Searchable {
     }
 
     // get Nurse By Department
-    public List<Nurse> getNursesByDepartment(String departmentId){
-
-        List<Nurse> departmentNurse = new ArrayList<>();
+    public void getNursesByDepartment(String departmentId){
 
         if (!HelperUtils.isValidString(departmentId)) {
-            return departmentNurse;
+            System.out.println("Invalid department ID.");
+            return;
         }
 
         for(Nurse nurse : nurseList){
@@ -217,19 +206,18 @@ public class NurseService implements Manageable, Searchable {
             }
 
             if(nurse.getDepartmentId().equals(departmentId)){
-                departmentNurse.add(nurse);
+                nurse.displayInfo();
             }
         }
-        return departmentNurse;
+
     }
 
     // get Nurse By Shift
-    public List<Nurse> getNursesByShift(String shift){
-
-        List<Nurse> shiftNurse = new ArrayList<>();
+    public void getNursesByShift(String shift){
 
         if (!HelperUtils.isValidString(shift)) {
-            return shiftNurse;
+            System.out.println("Invalid shift");
+            return ;
         }
 
         for(Nurse nurse : nurseList){
@@ -239,31 +227,64 @@ public class NurseService implements Manageable, Searchable {
             }
 
             if(nurse.getShift().equals(shift)){
-                shiftNurse.add(nurse);
+                nurse.displayInfo();
             }
         }
-        return shiftNurse;
+
     }
 
 
     @Override
     public void add(Object entity) {
 
+        Nurse nurse = (Nurse) entity;
+        for(Nurse n : nurseList){
+            if (n.getId().equals(nurse.getId())) {
+                return;
+            }
+        }
+        nurseList.add(nurse);
+
     }
 
     @Override
     public void remove(String id) {
 
+        Nurse nurse = getNurseById(id);
+        nurseList.remove(nurse);
+
     }
 
     @Override
     public List<Object> getAll() {
-        return List.of();
+
+        return List.of(nurseList);
     }
 
     @Override
     public void search(String keyword) {
+        boolean found = false;
 
+        for (Nurse nurse : nurseList) {
+
+            if (
+                    nurse.getFirstName().equalsIgnoreCase(keyword) ||
+                            nurse.getLastName().equalsIgnoreCase(keyword) ||
+                            nurse.getGender().equalsIgnoreCase(keyword) ||
+                            nurse.getPhoneNumber().equalsIgnoreCase(keyword) ||
+                            nurse.getEmail().equalsIgnoreCase(keyword) ||
+                            nurse.getAddress().equalsIgnoreCase(keyword) ||
+                            nurse.getDepartmentId().equalsIgnoreCase(keyword) ||
+                            nurse.getShift().equalsIgnoreCase(keyword) ||
+                            nurse.getQualification().equalsIgnoreCase(keyword) ||
+                            nurse.getDateOfBirth().toString().equalsIgnoreCase(keyword)
+            ) {
+
+                nurse.displayInfo();
+                found = true;
+            }
+
+        }
     }
 
     @Override
@@ -283,38 +304,29 @@ public class NurseService implements Manageable, Searchable {
 
             }
             case 3 -> {
-                System.out.println("Enter department id");
-                String input = scanner.nextLine();
-                System.out.println(getNursesByDepartment(input));
+                String input = InputHandler.getStringInput("Enter department id");
+                getNursesByDepartment(input);
             }
 
             case 4 -> {
-                System.out.println("Enter shift");
-                String input = scanner.nextLine();
+
+                String input = InputHandler.getStringInput("Enter shift");
                 getNursesByShift(input);
 
             }  case 5 -> {
-                System.out.println("Enter nurse id  ");
-                String nurseId = scanner.nextLine();
+                String nurseId = InputHandler.getStringInput("Enter Nurse ID: ");
+                String patientId = InputHandler.getStringInput("Enter Patient ID: ");
 
-                System.out.println("Enter patient id  ");
-                String patientId = scanner.nextLine();
-
-                Nurse nurse = getNurseById(nurseId);
-                PatientService patientService = new PatientService();
-                Patient patient = patientService.getPatientById(patientId);
-
-                nurse.assignPatient(patient,nurseId);
+                assignPatient(patientId,nurseId);
 
             }  case 6 -> {
-                System.out.println("Enter nurse id to update ");
-                String input = scanner.nextLine();
-                editNurse(input);
+
+                String nurseId = InputHandler.getStringInput("Enter Nurse ID to update: ");
+                editNurse(nurseId);
 
             }  case 7 -> {
-                System.out.println("Enter nurse id to remove ");
-                String input = scanner.nextLine();
-                removeNurse(input);
+                String nurseId = InputHandler.getStringInput("Enter Nurse ID to remove: ");
+                removeNurse(nurseId);
 
             }  case 8 -> {
                 return false;
