@@ -13,10 +13,10 @@ public class HospitalManagementApp {
          Menu menu = new Menu();
 
 
-//        AppointmentService appointmentService = new AppointmentService();
-//        DepartmentService departmentService = new DepartmentService();
-         DoctorService doctorService = new DoctorService();
-//        MedicalRecordService medicalRecordService = new MedicalRecordService();
+          AppointmentService appointmentService = new AppointmentService();
+          DepartmentService departmentService = new DepartmentService();
+          DoctorService doctorService = new DoctorService();
+          MedicalRecordService medicalRecordService = new MedicalRecordService();
           NurseService nurseService = new NurseService();
           PatientService patientService = new PatientService();
 
@@ -57,38 +57,37 @@ public class HospitalManagementApp {
                     }
 
                 }
-//                case 4 -> {
-//                    Boolean appointmentMenuContinue = true;
-//                    while (appointmentMenuContinue) {
-//                        System.out.println(" ***********Appointment Menu ***********");
-//                        System.out.println(MenuMessages.APPOINTMENT_MENU_MESSAGE);
-//                        Integer appointmentOption = input.nextInt();
-//                        appointmentMenuContinue = appointmentService.handleAppointmentMenu(appointmentOption);
-//                    }
-//                }
-//
-//                case 5 ->{
-//                    Boolean recordMenuContinue = true;
-//                    while (recordMenuContinue) {
-//                        System.out.println(" *********** Medical Records Menu ***********");
-//                        System.out.println(MenuMessages.MEDICALRECORDS_MENU_MESSAGE);
-//                        Integer recordOption = input.nextInt();
-//                        recordMenuContinue = medicalRecordService.handleRecordMenu(recordOption);
-//                    }
-//
-//
-//                }
-//
-//                case 6 ->{
-//                    Boolean depMenuContinue = true;
-//                    while (depMenuContinue) {
-//                        System.out.println(" *********** Department Menu ***********");
-//                        System.out.println(MenuMessages.DEPARTMENT_MENU_MESSAGE);
-//                        Integer depOption = input.nextInt();
-//                        depMenuContinue = departmentService.handleDepMenu(depOption);
-//                    }
-//
-//                }
+                case 4 -> {
+                    Boolean appointmentMenuContinue = true;
+                    while (appointmentMenuContinue) {
+                        System.out.println(" ***********Appointment Menu ***********");
+                        System.out.println(MenuMessages.APPOINTMENT_MENU_MESSAGE);
+                        Integer appointmentOption = input.nextInt();
+                        appointmentMenuContinue = appointmentService.handleAppointmentMenu(appointmentOption);
+                    }
+                }
+
+                case 5 ->{
+                    Boolean recordMenuContinue = true;
+                    while (recordMenuContinue) {
+                        System.out.println(" *********** Medical Records Menu ***********");
+                        System.out.println(MenuMessages.MEDICALRECORDS_MENU_MESSAGE);
+                        Integer recordOption = input.nextInt();
+                        recordMenuContinue = medicalRecordService.handleRecordMenu(recordOption);
+                    }
+
+                }
+
+                case 6 ->{
+                    Boolean depMenuContinue = true;
+                    while (depMenuContinue) {
+                        System.out.println(" *********** Department Menu ***********");
+                        System.out.println(MenuMessages.DEPARTMENT_MENU_MESSAGE);
+                        Integer depOption = input.nextInt();
+                        depMenuContinue = departmentService.handleDepMenu(depOption);
+                    }
+
+                }
 //                case 7 ->{
 //                    Boolean reportMenuContinue = true;
 //                    while (reportMenuContinue) {

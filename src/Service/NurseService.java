@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class NurseService implements Manageable, Searchable {
-    Scanner scanner = new Scanner(System.in);
 
     static List<Nurse> nurseList = new ArrayList<>();
     List<String> assignedPatients = new ArrayList<>();
@@ -57,8 +56,7 @@ public class NurseService implements Manageable, Searchable {
             nurseList.add(addNurse());
             System.out.println("Nurse add successfully");
 
-            System.out.println("Enter c to add more , and q to exit");
-            if (scanner.nextLine().equalsIgnoreCase("q")) {
+            if (InputHandler.getStringInput("Enter c to add more , and q to exit").equals("q")) {
                 continueFlag = false;
             }
         }

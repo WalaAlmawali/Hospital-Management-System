@@ -13,7 +13,6 @@ import Utils.InputHandler;
 
 
 public class PatientService implements Manageable, Searchable {
-    Scanner scanner = new Scanner(System.in);
 
     static List<Patient> patients = new ArrayList<>();
 
@@ -50,10 +49,9 @@ public class PatientService implements Manageable, Searchable {
 
         List<String> allergies = new ArrayList<>();
 
-        System.out.println("Enter patient allergies (type 'q' to stop) :");
 
         while (true) {
-            String input = scanner.nextLine();
+            String input = InputHandler.getStringInput("Enter patient allergies (type 'q' to stop) : ");
 
             if (input.equalsIgnoreCase("q")) {
                 break;
@@ -100,10 +98,9 @@ public class PatientService implements Manageable, Searchable {
 
         List<String> allergies = new ArrayList<>();
 
-        System.out.println("Enter patient allergies (type 'q' to stop) :");
 
         while (true) {
-            String input = scanner.nextLine();
+            String input = InputHandler.getStringInput("Enter patient allergies (type 'q' to stop) : ");
 
             if (input.equalsIgnoreCase("q")) {
                 break;
@@ -149,10 +146,9 @@ public class PatientService implements Manageable, Searchable {
 
         List<String> allergies = new ArrayList<>();
 
-        System.out.println("Enter patient allergies (type 'q' to stop) :");
 
         while (true) {
-            String input = scanner.nextLine();
+            String input = InputHandler.getStringInput("Enter patient allergies (type 'q' to stop) : ");
 
             if (input.equalsIgnoreCase("q")) {
                 break;
@@ -207,10 +203,9 @@ public class PatientService implements Manageable, Searchable {
 
         List<String> allergies = new ArrayList<>();
 
-        System.out.println("Enter patient allergies (type 'q' to stop) :");
 
         while (true) {
-            String input = scanner.nextLine();
+            String input = InputHandler.getStringInput("Enter patient allergies (type 'q' to stop) : ");
 
             if (input.equalsIgnoreCase("q")) {
                 break;
@@ -237,8 +232,7 @@ public class PatientService implements Manageable, Searchable {
             patients.add(addPatient());
             System.out.println("Patient add successfully");
 
-            System.out.println("Enter c to add more patient , and q to exit");
-            if (scanner.nextLine().equalsIgnoreCase("q")) {
+            if (InputHandler.getStringInput("Enter c to add more patient , and q to exit").equals("q")) {
                 continueFlag = false;
             }
         }
@@ -395,10 +389,9 @@ public class PatientService implements Manageable, Searchable {
 
                 List<String> allergies = new ArrayList<>();
 
-                System.out.println("Enter updated patient allergies (type 'q' to stop) :");
 
                 while (true) {
-                    String input = scanner.nextLine();
+                    String input = InputHandler.getStringInput("Enter updated patient allergies (type 'q' to stop) : ");
 
                     if (input.equalsIgnoreCase("q")) {
                         break;
