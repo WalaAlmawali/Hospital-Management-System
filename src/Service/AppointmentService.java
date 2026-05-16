@@ -574,21 +574,59 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     @Override
     public void add(Object entity) {
-
+        Appointment appointment = (Appointment) entity;
+        appointmentList.add(appointment);
     }
 
     @Override
     public void remove(String id) {
 
+        if (HelperUtils.isNull(appointmentList)) {
+            System.out.println("appointment list is empty.");
+            return;
+        }
+
+        for (Appointment a : appointmentList) {
+            if (a.getAppointmentId().equals(id)) {
+                appointmentList.remove(a);
+                System.out.println("appointment removed successfully.");
+                return;
+            }
+        }
+
+        System.out.println("appointment not found.");
+
     }
 
     @Override
     public List<Object> getAll() {
+
         return List.of();
     }
 
     @Override
     public void search(String keyword) {
+        if (HelperUtils.isNull(appointmentList)) {
+            System.out.println("appointment list is empty.");
+            return;
+        }
+
+        boolean found = false;
+
+        for (Appointment appointment : appointmentList) {
+
+            if (appointment.getAppointmentId().contains(keyword)
+                    || appointment.getDoctorId().contains(keyword)
+                    || appointment.getPatientId().contains(keyword)) {
+
+                appointment.displayInfo();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("appointment not found.");
+        }
 
     }
 
@@ -720,7 +758,6 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
             case 3 -> {
                 departmentService.departmentOccupancyReport();
             }
-
             case 4 -> {
                 patientService.patientStatisticsReport();
             }

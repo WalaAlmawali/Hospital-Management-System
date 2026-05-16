@@ -542,10 +542,27 @@ public void displayDoctors(String departmentId, boolean showAvailableOnly){
     @Override
     public void add(Object entity) {
 
+        Doctor doctor = (Doctor) entity;
+        for(Doctor doc : doctors){
+
+            if (doc.getId().equals(doctor.getId())) {
+                doctors.add(doctor);
+
+            }
+        }
+
     }
 
     @Override
     public void remove(String id) {
+
+        Doctor doctor = getDoctorById(id);
+        if (HelperUtils.isNull(doctor)) {
+            System.out.println("doctor not found.");
+            return;
+        }
+        doctors.remove(doctor);
+        System.out.println("doctor removed successfully.");
 
     }
 
@@ -557,10 +574,47 @@ public void displayDoctors(String departmentId, boolean showAvailableOnly){
     @Override
     public void search(String keyword) {
 
+        boolean found = false;
+
+        for(Doctor doctor : doctors){
+
+            if(
+
+                    doctor.getId().equalsIgnoreCase(keyword) ||
+                            doctor.getFirstName().equalsIgnoreCase(keyword) ||
+                            doctor.getLastName().equalsIgnoreCase(keyword) ||
+                            doctor.getGender().equalsIgnoreCase(keyword) ||
+                            doctor.getPhoneNumber().equalsIgnoreCase(keyword) ||
+                            doctor.getEmail().equalsIgnoreCase(keyword) ||
+                            doctor.getAddress().equalsIgnoreCase(keyword) ||
+                            doctor.getSpecialization().equalsIgnoreCase(keyword) ||
+                            doctor.getQualification().equalsIgnoreCase(keyword) ||
+                            doctor.getDepartmentId().equalsIgnoreCase(keyword) ||
+                            doctor.getDateOfBirth().toString().equalsIgnoreCase(keyword) ||
+                            String.valueOf(doctor.getExperienceYears()).equals(keyword) ||
+                            String.valueOf(doctor.getConsultationFee()).equals(keyword)
+
+            ){
+
+                doctor.displayInfo();
+                found = true;
+            }
+        }
+
+        if(!found){
+            System.out.println("doctors not found.");
+        }
+
     }
 
     @Override
     public Object searchById(String id) {
+
+        for(Doctor doctor : doctors){
+            if(doctor.getId().equals(id)){
+                return doctor;
+            }
+        }
         return null;
     }
 

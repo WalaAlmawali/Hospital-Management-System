@@ -236,12 +236,13 @@ public class NurseService implements Manageable, Searchable {
     public void add(Object entity) {
 
         Nurse nurse = (Nurse) entity;
+
         for(Nurse n : nurseList){
+
             if (n.getId().equals(nurse.getId())) {
-                return;
+                nurseList.add(nurse);
             }
         }
-        nurseList.add(nurse);
 
     }
 
@@ -287,6 +288,18 @@ public class NurseService implements Manageable, Searchable {
 
     @Override
     public Object searchById(String id) {
+
+        boolean found = false;
+        for(Nurse n : nurseList){
+            if(n.getId().equals(id)){
+
+              return n;
+            }
+        }
+
+        if(!found){
+            System.out.println("nurse not found.");
+        }
         return null;
     }
 

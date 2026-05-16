@@ -592,11 +592,31 @@ public class PatientService implements Manageable, Searchable {
     @Override
     public void add(Object entity) {
 
+        Patient patient = (Patient) entity;
+
+        for (Patient p : patients) {
+
+            if (p.getId().equals(patient.getId())) {
+                return;
+            }
+        }
+
+        patients.add(patient);
     }
 
     @Override
     public void remove(String id) {
 
+        Patient patient = getPatientById(id);
+
+        if (HelperUtils.isNull(patient)) {
+
+            System.out.println("patient not found.");
+            return;
+        }
+        patients.remove(patient);
+
+        System.out.println("patient removed successfully.");
     }
 
     @Override
@@ -606,11 +626,55 @@ public class PatientService implements Manageable, Searchable {
 
     @Override
     public void search(String keyword) {
+        boolean found = false;
+
+        for (Patient patient : patients) {
+
+            if (
+
+                    patient.getId().equalsIgnoreCase(keyword)
+                            || patient.getFirstName().equalsIgnoreCase(keyword)
+                            || patient.getLastName().equalsIgnoreCase(keyword)
+                            || patient.getGender().equalsIgnoreCase(keyword)
+                            || patient.getPhoneNumber().equalsIgnoreCase(keyword)
+                            || patient.getEmail().equalsIgnoreCase(keyword)
+                            || patient.getAddress().equalsIgnoreCase(keyword)
+                            || patient.getBloodGroup().equalsIgnoreCase(keyword)
+                            || patient.getEmergencyContact().equalsIgnoreCase(keyword)
+                            || patient.getInsuranceId().equalsIgnoreCase(keyword)
+                            || patient.getDateOfBirth().toString().equalsIgnoreCase(keyword)
+                            || patient.getRegistrationDate().toString().equalsIgnoreCase(keyword)
+
+            ) {
+
+                patient.displayInfo();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("patient not found.");
+        }
 
     }
 
     @Override
     public Object searchById(String id) {
+
+        if (HelperUtils.isNull(patients)) {
+
+            System.out.println("patient list is empty.");
+            return null;
+        }
+
+        for (Patient patient : patients) {
+
+            if (patient.getId().equalsIgnoreCase(id)) {
+                return patient;
+            }
+        }
+
+        System.out.println("patient not found.");
         return null;
     }
 

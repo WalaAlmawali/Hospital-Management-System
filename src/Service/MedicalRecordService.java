@@ -271,7 +271,9 @@ public class MedicalRecordService implements Manageable, Searchable {
 
     @Override
     public void remove(String id) {
+
         MedicalRecord medicalRecord = getMedicalRecord(id);
+
         if(HelperUtils.isNotNull(medicalRecord)){
             medicalRecordList.remove(medicalRecord);
         }

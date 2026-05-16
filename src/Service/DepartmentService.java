@@ -218,10 +218,22 @@ public class DepartmentService implements Manageable, Searchable {
     @Override
     public void add(Object entity) {
 
+        Department department = (Department) entity;
+        for(Department d : departmentList){
+            if (d.getDepartmentId().equals(department.getDepartmentId())) {
+                return;
+            }
+        }
+        departmentList.add(department);
     }
 
     @Override
     public void remove(String id) {
+
+        Department department = getDepartmentById(id);
+        if (HelperUtils.isNotNull(department)) {
+            departmentList.remove(department);
+        }
 
     }
 
@@ -233,10 +245,31 @@ public class DepartmentService implements Manageable, Searchable {
     @Override
     public void search(String keyword) {
 
+        boolean found = false;
+        for (Department department : departmentList) {
+            if (department.getDepartmentName().equalsIgnoreCase(keyword) ||
+                    department.getDepartmentId().equalsIgnoreCase(keyword)   ||
+                    department.getHeadDoctorId().equalsIgnoreCase(keyword)) {
+                department.displayInfo();
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("department not found.");
+        }
+
     }
 
     @Override
     public Object searchById(String id) {
+
+        for (Department department : departmentList) {
+            if (department.getDepartmentId().equals(id)) {
+
+                return  department;
+            }
+        }
+        System.out.println("department not found.");
         return null;
     }
 
@@ -273,11 +306,8 @@ public class DepartmentService implements Manageable, Searchable {
 
                 String depId = InputHandler.getStringInput("Enter Department ID");
                 getDepartment(depId);
-
             }
-
             case 4 -> {
-
                 String doctorId     = InputHandler.getStringInput("Enter doctor ID: ");
                 String departmentId = InputHandler.getStringInput("Enter department ID: ");
 
@@ -293,7 +323,6 @@ public class DepartmentService implements Manageable, Searchable {
 
                 department.getNurses().add(nurse);
 
-
             }  case 6 -> {
                 String input = InputHandler.getStringInput("Enter department ID to update: ");
                 editDepartment(input);
@@ -302,7 +331,6 @@ public class DepartmentService implements Manageable, Searchable {
                 viewDepartmentStatistics();
             }  case 8 -> {
                 return false;
-
             }
 
         }
