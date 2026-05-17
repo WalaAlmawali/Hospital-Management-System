@@ -17,9 +17,9 @@ public class AppointmentService implements Manageable,Searchable, Appointable {
 
     static List<Appointment> appointmentList = new ArrayList<>();
 
-    DoctorService doctorService ;
-    DepartmentService departmentService;
-    PatientService patientService;
+    DoctorService doctorService = new DoctorService();
+    DepartmentService departmentService = new DepartmentService();
+    PatientService patientService = new PatientService();
 
     //add new appointment
     public Appointment addAppointment(){
